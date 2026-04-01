@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# TODO: change to the actual domain when the site goes live
 Sitemap: https://www.mbmmeccanica.it/sitemap.xml
