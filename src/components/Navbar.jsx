@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,30 +13,30 @@ export default function Navbar() {
                     </div>
 
                     <div className="hidden gap-10 md:flex">
-                        <a
-                            href="home"
+                        <Link
+                            to="/"
                             className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
                         >
                             Home
-                        </a>
+                        </Link>
                         <a
                             href="azienda"
                             className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
                         >
                             Azienda
                         </a>
-                        <a
-                            href="servizi"
+                        <Link
+                            to="/servizi"
                             className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
                         >
                             Servizi
-                        </a>
-                        <a
-                            href="contattaci"
+                        </Link>
+                        <Link
+                            to="/contattaci"
                             className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
                         >
                             Contattaci
-                        </a>
+                        </Link>
                     </div>
 
                     <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
@@ -66,30 +67,30 @@ export default function Navbar() {
 
                 {isOpen && (
                     <div className="space-y-3 rounded-lg bg-black/50 px-4 py-4 backdrop-blur-md md:hidden">
-                        <a
-                            href="home"
+                        <Link
+                            to="/"
                             className="block py-2 font-medium text-white hover:text-blue-300"
                         >
                             Home
-                        </a>
+                        </Link>
                         <a
                             href="azienda"
                             className="block py-2 font-medium text-white hover:text-blue-300"
                         >
                             Azienda
                         </a>
-                        <a
-                            href="servizi"
+                        <Link
+                            to="/servizi"
                             className="block py-2 font-medium text-white hover:text-blue-300"
                         >
                             Servizi
-                        </a>
-                        <a
-                            href="contattaci"
+                        </Link>
+                        <Link
+                            to="/contattaci"
                             className="block py-2 font-medium text-white hover:text-blue-300"
                         >
                             Contattaci
-                        </a>
+                        </Link>
                     </div>
                 )}
             </div>
