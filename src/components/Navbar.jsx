@@ -19,12 +19,12 @@ export default function Navbar() {
                         >
                             Home
                         </Link>
-                        <a
-                            href="azienda"
+                        <Link
+                            to="azienda"
                             className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
                         >
                             Azienda
-                        </a>
+                        </Link>
                         <Link
                             to="/servizi"
                             className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
