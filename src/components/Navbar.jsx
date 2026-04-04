@@ -42,13 +42,12 @@ export default function Navbar() {
         >
             <div className="mx-auto max-w-7xl px-6">
                 <div className="flex h-20 items-center justify-between">
-                    <Link
-                        to="/"
-                        className={`text-xl font-medium tracking-wide transition-colors duration-300 ${
-                            isDark ? 'text-white' : 'text-slate-800'
-                        }`}
-                    >
-                        M.B.M. Meccanica
+                    <Link to="/">
+                        <img
+                            src="/src/assets/logo/MBM_logo.png"
+                            alt="M.B.M. Meccanica"
+                            className="h-10 w-auto"
+                        />
                     </Link>
 
                     <div className="hidden gap-10 md:flex">
