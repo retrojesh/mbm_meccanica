@@ -1,47 +1,87 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [visible, setVisible] = useState(true);
+    const [scrolled, setScrolled] = useState(false);
+    const lastScrollY = useRef(0);
+    const location = useLocation();
+    const isHome = location.pathname === '/';
+
+    const isDark = isHome && !scrolled;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentY = window.scrollY;
+
+            if (currentY < 60) {
+                setVisible(true);
+            } else if (currentY > lastScrollY.current) {
+                setVisible(false);
+                setIsOpen(false);
+            } else {
+                setVisible(true);
+            }
+
+            setScrolled(currentY > 20);
+            lastScrollY.current = currentY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <nav className="absolute top-0 left-0 z-50 w-full bg-transparent">
+        <nav
+            className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'} ${
+                isDark
+                    ? 'bg-transparent'
+                    : 'border-b border-slate-100 bg-white/90 shadow-sm backdrop-blur-md'
+            } `}
+        >
             <div className="mx-auto max-w-7xl px-6">
                 <div className="flex h-20 items-center justify-between">
-                    <div className="text-xl font-medium tracking-wide text-white">
+                    <Link
+                        to="/"
+                        className={`text-xl font-medium tracking-wide transition-colors duration-300 ${
+                            isDark ? 'text-white' : 'text-slate-800'
+                        }`}
+                    >
                         M.B.M. Meccanica
-                    </div>
+                    </Link>
 
                     <div className="hidden gap-10 md:flex">
-                        <Link
-                            to="/"
-                            className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            to="azienda"
-                            className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
-                        >
-                            Azienda
-                        </Link>
-                        <Link
-                            to="/servizi"
-                            className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
-                        >
-                            Servizi
-                        </Link>
-                        <Link
-                            to="/contattaci"
-                            className="font-medium text-white transition-colors duration-200 hover:text-blue-300"
-                        >
-                            Contattaci
-                        </Link>
+                        {[
+                            { to: '/', label: 'Home' },
+                            { to: '/azienda', label: 'Azienda' },
+                            { to: '/servizi', label: 'Servizi' },
+                            { to: '/contattaci', label: 'Contattaci' },
+                        ].map(({ to, label }) => (
+                            <Link
+                                key={to}
+                                to={to}
+                                className={`font-medium transition-colors duration-200 ${
+                                    isDark
+                                        ? 'text-white hover:text-blue-300'
+                                        : 'text-slate-700 hover:text-blue-600'
+                                }`}
+                            >
+                                {label}
+                            </Link>
+                        ))}
                     </div>
 
-                    <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
+                    {/* Hamburger Menù*/}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden"
+                        aria-label="Menu"
+                    >
                         <svg
-                            className="h-6 w-6 text-white"
+                            className={`h-6 w-6 transition-colors duration-300 ${
+                                isDark ? 'text-white' : 'text-slate-800'
+                            }`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -66,31 +106,22 @@ export default function Navbar() {
                 </div>
 
                 {isOpen && (
-                    <div className="space-y-3 rounded-lg bg-black/50 px-4 py-4 backdrop-blur-md md:hidden">
-                        <Link
-                            to="/"
-                            className="block py-2 font-medium text-white hover:text-blue-300"
-                        >
-                            Home
-                        </Link>
-                        <a
-                            href="azienda"
-                            className="block py-2 font-medium text-white hover:text-blue-300"
-                        >
-                            Azienda
-                        </a>
-                        <Link
-                            to="/servizi"
-                            className="block py-2 font-medium text-white hover:text-blue-300"
-                        >
-                            Servizi
-                        </Link>
-                        <Link
-                            to="/contattaci"
-                            className="block py-2 font-medium text-white hover:text-blue-300"
-                        >
-                            Contattaci
-                        </Link>
+                    <div className="space-y-1 rounded-xl border border-slate-100 bg-white/95 px-4 py-4 shadow-lg backdrop-blur-md md:hidden">
+                        {[
+                            { to: '/', label: 'Home' },
+                            { to: '/azienda', label: 'Azienda' },
+                            { to: '/servizi', label: 'Servizi' },
+                            { to: '/contattaci', label: 'Contattaci' },
+                        ].map(({ to, label }) => (
+                            <Link
+                                key={to}
+                                to={to}
+                                onClick={() => setIsOpen(false)}
+                                className="block rounded-lg px-3 py-2.5 font-medium text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
+                            >
+                                {label}
+                            </Link>
+                        ))}
                     </div>
                 )}
             </div>
