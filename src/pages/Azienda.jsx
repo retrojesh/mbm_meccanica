@@ -1,3 +1,4 @@
+import officina from '../assets/pages/azienda/photos/officina.jpg';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
 import { useEffect, useRef, useState } from 'react';
@@ -61,20 +62,28 @@ export default function Azienda() {
                 <style>{font}</style>
 
                 {/* Hero Section */}
-                <section className="px-6 pt-32 pb-20 text-center md:pt-40 md:pb-28">
-                    <div className="scale-in mb-6 inline-flex items-center gap-2 rounded-full bg-blue-600/10 px-4 py-2">
-                        <span className="h-2 w-2 animate-pulse rounded-full bg-blue-600" />
-                        <p className="text-xs font-semibold tracking-wide text-blue-700 uppercase">
-                            La nostra azienda
+                <section className="relative mt-20 flex h-[calc(100vh-80px)] items-center justify-center overflow-hidden text-center">
+                    <img
+                        src={officina}
+                        alt="Officina MBM Meccanica"
+                        className="absolute inset-0 h-full w-full object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/90" />
+                    <div className="relative z-10 px-6 pt-32 pb-20 md:pt-40 md:pb-28">
+                        <div className="scale-in mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                            <span className="h-2 w-2 animate-pulse rounded-full bg-blue-400" />
+                            <p className="text-xs font-semibold tracking-wide text-blue-300 uppercase">
+                                La nostra azienda
+                            </p>
+                        </div>
+                        <h1 className="font-display mb-6 text-5xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
+                            M.B.M. <span className="gradient-text">Meccanica Srl</span>
+                        </h1>
+                        <p className="mx-auto max-w-2xl text-xl text-white/75 md:text-2xl">
+                            Una nuova realtà nel settore della meccanica di precisione, nata dalla
+                            passione per l'ingegneria e l'innovazione.
                         </p>
                     </div>
-                    <h1 className="font-display mb-6 text-5xl leading-tight font-bold md:text-7xl lg:text-8xl">
-                        M.B.M. <span className="gradient-text">Meccanica Srl</span>
-                    </h1>
-                    <p className="mx-auto max-w-2xl text-xl text-slate-600 md:text-2xl">
-                        Una nuova realtà nel settore della meccanica di precisione, nata dalla
-                        passione per l'ingegneria e l'innovazione.
-                    </p>
                 </section>
 
                 {/* Founders' section*/}
