@@ -112,13 +112,6 @@ export default function Azienda() {
                                 clienti. Crediamo nel nostro legame familiare come motore di una
                                 collaborazione basata su passione e integrità.
                             </p>
-                            <div className="rounded-2xl border-l-4 border-blue-600 bg-slate-50 p-6">
-                                <p className="font-display mb-1 text-xl text-slate-800 italic">
-                                    "Trasformare idee e necessità in componenti che fanno la
-                                    differenza."
-                                </p>
-                                <p className="text-sm text-slate-500">— La nostra missione</p>
-                            </div>
                         </Reveal>
                         <Reveal delay="d2">
                             <div className="relative">
