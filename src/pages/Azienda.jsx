@@ -14,8 +14,18 @@ const font = `@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Dis
   from { opacity: 0; transform: scale(0.95); }
   to   { opacity: 1; transform: scale(1); }
 }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes expandLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
 .fade-up { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .scale-in { animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.slide-in { animation: slideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.expand-line { animation: expandLine 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: left; transform: scaleX(0); }
 .d1 { animation-delay: 0.1s; opacity: 0; }
 .d2 { animation-delay: 0.2s; opacity: 0; }
 .d3 { animation-delay: 0.3s; opacity: 0; }
@@ -30,7 +40,7 @@ const font = `@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Dis
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
 }`;
 
-function Reveal({ children, delay = '' }) {
+function Reveal({ children, delay = '', className = '' }) {
     const ref = useRef(null);
     const [inView, setInView] = useState(false);
     useEffect(() => {
@@ -42,13 +52,52 @@ function Reveal({ children, delay = '' }) {
         return () => obs.disconnect();
     }, []);
     return (
-        <div ref={ref} className={`${inView ? `fade-up ${delay}` : 'opacity-0'}`}>
+        <div ref={ref} className={`${inView ? `fade-up ${delay}` : 'opacity-0'} ${className}`}>
             {children}
         </div>
     );
 }
 
+function RevealRow({ children, delay = '', className = '' }) {
+    const ref = useRef(null);
+    const [inView, setInView] = useState(false);
+    useEffect(() => {
+        const obs = new IntersectionObserver(
+            ([e]) => e.isIntersecting && setInView(true) && obs.disconnect(),
+            { threshold: 0.1 }
+        );
+        if (ref.current) obs.observe(ref.current);
+        return () => obs.disconnect();
+    }, []);
+    return (
+        <div ref={ref} className={className}>
+            {/* divider line expands first */}
+            <div
+                className={inView ? `expand-line ${delay}` : ''}
+                style={{
+                    height: '1px',
+                    background: '#e2e8f0',
+                    marginBottom: '2.75rem',
+                    transformOrigin: 'left',
+                    transform: inView ? undefined : 'scaleX(0)',
+                }}
+            />
+            {/* content slides in slightly after */}
+            <div className={inView ? `slide-in ${delay}` : 'opacity-0'}>{children}</div>
+        </div>
+    );
+}
+
 export default function Azienda() {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % 3);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <>
             <SEO
@@ -90,7 +139,7 @@ export default function Azienda() {
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
                         <Reveal delay="d1">
-                            <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-bold tracking-wider text-blue-700 uppercase">
+                            <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
                                 Due fratelli, una stessa visione
                             </div>
                             <h2 className="font-display mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
@@ -140,67 +189,72 @@ export default function Azienda() {
                 </section>
 
                 {/* Company values section */}
-                <section className="bg-slate-50 px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="mb-16 text-center">
-                            <Reveal delay="d1">
-                                <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-bold tracking-wider text-blue-700 uppercase">
-                                    I nostri principi
-                                </div>
-                                <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl">
-                                    Valori che guidano il nostro lavoro
-                                </h2>
-                            </Reveal>
-                        </div>
-                        <div className="grid gap-8 md:grid-cols-3">
-                            {[
-                                {
-                                    delay: 'd2',
-                                    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
-                                    title: 'Precisione',
-                                    desc: 'Ogni dettaglio conta. Lavoriamo con tolleranze micrometriche per garantire componenti perfetti.',
-                                },
-                                {
-                                    delay: 'd3',
-                                    icon: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z',
-                                    title: 'Innovazione',
-                                    desc: "Sempre al passo con le tecnologie più avanzate per offrire soluzioni all'avanguardia.",
-                                },
-                                {
-                                    delay: 'd4',
-                                    icon: 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0z',
-                                    title: 'Affidabilità',
-                                    desc: 'Costruiamo partnership trasparenti e durature con i nostri clienti.',
-                                },
-                            ].map((v, i) => (
-                                <Reveal delay={v.delay} key={i}>
-                                    <div className="group flex h-[380px] flex-col rounded-2xl border border-slate-100 bg-white p-8 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl">
-                                        <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50">
-                                            <svg
-                                                className="h-6 w-6 text-blue-600"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="1.5"
-                                                    d={v.icon}
-                                                />
-                                            </svg>
+                <section className="px-6 py-20 md:py-28">
+                    <div className="mx-auto max-w-2xl">
+                        <Reveal delay="d1">
+                            <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
+                                I nostri principi
+                            </div>
+                            <h2 className="font-display mb-14 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
+                                Valori che guidano il nostro lavoro
+                            </h2>
+                        </Reveal>
+
+                        {/* Carousel with reveal effect */}
+                        <Reveal delay="d2">
+                            <div className="relative min-h-[180px]">
+                                {[
+                                    {
+                                        title: 'Precisione',
+                                        desc: 'Ogni dettaglio conta. Lavoriamo con tolleranze micrometriche per garantire componenti perfetti.',
+                                    },
+                                    {
+                                        title: 'Innovazione',
+                                        desc: "Sempre al passo con le tecnologie più avanzate per offrire soluzioni all'avanguardia.",
+                                    },
+                                    {
+                                        title: 'Affidabilità',
+                                        desc: 'Costruiamo partnership trasparenti e durature con i nostri clienti.',
+                                    },
+                                ].map((v, i) => (
+                                    <div
+                                        key={i}
+                                        className="absolute inset-0 transition-all duration-500 ease-out"
+                                        style={{
+                                            opacity: activeIndex === i ? 1 : 0,
+                                            visibility: activeIndex === i ? 'visible' : 'hidden',
+                                            transform: `translateX(${(i - activeIndex) * 20}px)`,
+                                        }}
+                                    >
+                                        <div className="py-10">
+                                            <div className="flex items-baseline justify-between gap-12">
+                                                <h3 className="shrink-0 text-xl font-medium text-slate-900">
+                                                    {v.title}
+                                                </h3>
+                                                <p className="max-w-xs text-right text-base leading-relaxed text-slate-500">
+                                                    {v.desc}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <h3 className="font-display mb-4 text-2xl font-bold text-slate-800">
-                                            {v.title}
-                                        </h3>
-                                        <p className="flex-1 leading-relaxed text-slate-600">
-                                            {v.desc}
-                                        </p>
-                                        <div className="mt-6 h-1 w-12 rounded-full bg-blue-600 transition-all group-hover:w-24" />
                                     </div>
-                                </Reveal>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+
+                            {/* Dots indicator */}
+                            <div className="mt-8 flex justify-center gap-2">
+                                {[0, 1, 2].map(idx => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setActiveIndex(idx)}
+                                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                                            activeIndex === idx
+                                                ? 'w-8 bg-blue-600'
+                                                : 'w-1.5 bg-slate-300 hover:bg-slate-400'
+                                        }`}
+                                    />
+                                ))}
+                            </div>
+                        </Reveal>
                     </div>
                 </section>
 
@@ -209,7 +263,7 @@ export default function Azienda() {
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
                             <Reveal delay="d1">
-                                <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-bold tracking-wider text-blue-700 uppercase">
+                                <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
                                     La nostra sede
                                 </div>
                                 <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl">
@@ -248,7 +302,7 @@ export default function Azienda() {
                 {/* CTA */}
                 <section className="gradient-bg px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <div className="mb-6 inline-block rounded-full bg-white/10 px-4 py-2 text-xs font-bold tracking-wider text-white uppercase backdrop-blur-sm">
+                        <div className="mb-6 inline-block rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase backdrop-blur-sm">
                             La nostra promessa
                         </div>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
