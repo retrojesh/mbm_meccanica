@@ -46,7 +46,9 @@ export default function Navbar() {
                         <img
                             src="/src/assets/logo/MBM_logo.png"
                             alt="M.B.M. Meccanica"
-                            className="h-10 w-auto"
+                            className={`h-10 w-auto transition-all duration-300 ${
+                                isDark ? 'brightness-0 invert' : ''
+                            }`}
                         />
                     </Link>
 
