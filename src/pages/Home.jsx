@@ -192,7 +192,6 @@ export default function Home() {
                 
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
-                        {/* Intestazione */}
                         <div className="mb-16 max-w-2xl">
                             <Reveal delay="d1">
                                 <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">— Cosa facciamo</p>
@@ -240,7 +239,6 @@ export default function Home() {
                             ].map((s) => (
                                 <Reveal delay={s.delay} key={s.label}>
                                     <div className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg">
-                                        {/* Banda colorata superiore */}
                                         <div className={`bg-gradient-to-r ${s.accent} p-7`}>
                                             <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/15 backdrop-blur-sm">
                                                 <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -249,7 +247,6 @@ export default function Home() {
                                             </div>
                                             <h3 className="font-display text-2xl font-bold text-white">{s.label}</h3>
                                         </div>
-                                        {/* Corpo */}
                                         <div className="flex flex-1 flex-col p-7">
                                             <p className="flex-1 leading-relaxed text-slate-600">{s.desc}</p>
                                             <Link
@@ -433,8 +430,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                
-                {/* ── VIDEO SECTION — sostituire hero.mp4 con video di lavorazione CNC ── */}
+
                 <section className="relative h-[70vh] w-full overflow-hidden">
                     <video
                         className="absolute inset-0 h-full w-full object-cover"
@@ -471,9 +467,6 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* ══════════════════════════════════════════════════
-                    8. CTA FINALE
-                ══════════════════════════════════════════════════ */}
                 <section className="bg-white px-6 py-24 text-center md:py-32">
                     <Reveal>
                         <p className="mb-6 text-xs font-bold tracking-widest text-blue-600 uppercase">— Iniziamo a lavorare insieme</p>
