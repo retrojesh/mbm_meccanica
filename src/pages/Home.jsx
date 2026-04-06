@@ -372,11 +372,11 @@ export default function Home() {
                                 </Reveal>
                             ))}
                         </div>
+
                     </div>
                 </section>
 
-                
-                <section className="gradient-bg px-6 py-24 md:py-32">
+<section className="gradient-bg px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
                             <Reveal delay="d1">
