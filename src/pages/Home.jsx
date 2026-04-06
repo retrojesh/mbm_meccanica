@@ -434,23 +434,33 @@ export default function Home() {
                 </section>
 
                 
-                <section className="px-6 py-24 md:py-32">
-                    <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
-                        {/* Testo sinistro */}
+                {/* ── VIDEO SECTION — sostituire hero.mp4 con video di lavorazione CNC ── */}
+                <section className="relative h-[70vh] w-full overflow-hidden">
+                    <video
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src="/video/lavorazione.mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/50 to-slate-900/20" />
+
+                    <div className="relative z-10 flex h-full items-center px-8 md:px-20">
                         <Reveal delay="d1">
-                            <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">— Perché scegliere MBM</p>
-                            <h2 className="font-display mb-6 text-4xl font-bold leading-tight md:text-5xl">
+                            <p className="mb-4 text-xs font-bold tracking-widest text-blue-400 uppercase">— Perché scegliere MBM</p>
+                            <h2 className="font-display mb-6 max-w-xl text-4xl font-bold leading-tight text-white md:text-5xl">
                                 Standard elevati,<br />
                                 consegne puntuali.
                             </h2>
-                            <p className="mb-8 text-lg leading-relaxed text-slate-500">
+                            <p className="mb-8 max-w-md text-lg leading-relaxed text-white/70">
                                 Siamo una realtà giovane e dinamica con l'ambizione di diventare
                                 il partner di riferimento per la meccanica di precisione in Emilia-Romagna.
                                 Ogni commessa è seguita direttamente dai fondatori.
                             </p>
                             <Link
                                 to="/contattaci"
-                                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-500/25"
+                                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-500/30"
                             >
                                 Parlaci del tuo progetto
                                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -458,53 +468,27 @@ export default function Home() {
                                 </svg>
                             </Link>
                         </Reveal>
-
-                        {/* Materiali lavorati */}
-                        <Reveal delay="d2">
-                            <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-slate-400">Materiali lavorati</p>
-                            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                                {[
-                                    'Alluminio 6082',
-                                    'Alluminio 7075',
-                                    'Acciaio inox 304',
-                                    'Acciaio inox 316L',
-                                    'Acciaio bonificato',
-                                    'Acciaio da utensile',
-                                    'Ottone CW614N',
-                                    'Titanio Gr.5',
-                                    'Polimeri tecnici',
-                                ].map((mat) => (
-                                    <div
-                                        key={mat}
-                                        className="flex items-center gap-2.5 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3"
-                                    >
-                                        <span className="h-1.5 w-1.5 flex-none rounded-full bg-blue-600" />
-                                        <span className="text-sm font-medium text-slate-700">{mat}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </Reveal>
                     </div>
                 </section>
 
                 {/* ══════════════════════════════════════════════════
                     8. CTA FINALE
                 ══════════════════════════════════════════════════ */}
-                <section className="gradient-bg px-6 py-24 text-center md:py-32">
+                <section className="bg-white px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <p className="mb-6 text-xs font-bold tracking-widest text-blue-400 uppercase">— Iniziamo a lavorare insieme</p>
-                        <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+                        <p className="mb-6 text-xs font-bold tracking-widest text-blue-600 uppercase">— Iniziamo a lavorare insieme</p>
+                        <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                             Hai un progetto?<br />
                             Parliamone subito.
                         </h2>
-                        <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-white/70">
+                        <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-slate-500">
                             Inviaci il disegno tecnico o descrivi il componente: prepareremo
                             un preventivo personalizzato in tempi rapidi.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <Link
                                 to="/contattaci"
-                                className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-bold text-slate-800 transition-all hover:-translate-y-0.5 hover:shadow-2xl"
+                                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-10 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-500/30"
                             >
                                 Richiedi preventivo
                                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -513,7 +497,7 @@ export default function Home() {
                             </Link>
                             <Link
                                 to="/servizi"
-                                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-10 py-4 font-bold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/20"
+                                className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-10 py-4 font-bold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-50"
                             >
                                 Tutti i servizi
                             </Link>
