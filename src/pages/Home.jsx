@@ -94,9 +94,6 @@ function ServicesAccordion() {
                         onClick={() => setOpen(open === i ? -1 : i)}
                         className="group flex w-full items-center gap-6 py-7 text-left"
                     >
-                        <span className="font-display w-8 shrink-0 text-sm font-bold tabular-nums text-slate-300">
-                            {s.num}
-                        </span>
                         <span className={`font-display flex-1 text-2xl font-bold transition-colors md:text-3xl ${
                             open === i ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-700'
                         }`}>
@@ -211,11 +208,6 @@ function SettoriCarousel() {
                                         : 'border-transparent text-slate-400 hover:border-slate-300 hover:text-slate-700'
                                 }`}
                             >
-                                <span className={`font-display text-sm font-bold tabular-nums transition-colors ${
-                                    active === i ? 'text-blue-500' : 'text-slate-300 group-hover:text-slate-400'
-                                }`}>
-                                    {item.num}
-                                </span>
                                 <span className={`transition-all ${active === i ? 'font-semibold' : 'font-medium'}`}>
                                     {item.title}
                                 </span>
@@ -226,14 +218,9 @@ function SettoriCarousel() {
                     {/* Contenuto attivo */}
                     <div className="md:col-span-3">
                         <div
-                            className="rounded-2xl border border-slate-100 bg-white p-10 shadow-sm transition-opacity duration-200"
+                            className="flex h-64 flex-col justify-center rounded-2xl border border-slate-100 bg-white p-10 shadow-sm transition-opacity duration-200"
                             style={{ opacity: animating ? 0 : 1 }}
                         >
-                            <div className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-slate-50`}>
-                                <svg className={`h-7 w-7 ${s.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={s.icon} />
-                                </svg>
-                            </div>
                             <h3 className="font-display mb-4 text-3xl font-bold text-slate-900">{s.title}</h3>
                             <p className="text-lg leading-relaxed text-slate-500">{s.desc}</p>
                             <div className="mt-8 flex gap-1.5">
@@ -379,7 +366,7 @@ export default function Home() {
                 </section>
 
                 {/* 4 — Settori */}
-                <section className="bg-slate-50 px-6 py-24 md:py-32">
+                <section className="bg-slate-50 px-6 py-32 md:py-40">
                     <SettoriCarousel />
                 </section>
 
