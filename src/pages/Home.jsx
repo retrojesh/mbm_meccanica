@@ -143,8 +143,8 @@ export default function Home() {
                             <span className="gradient-text">che si vede.</span>
                         </h1>
                         <p className="fade-up d3 mx-auto mb-10 max-w-xl text-lg text-white/75 md:text-xl">
-                            Tornitura e fresatura CNC di alta precisione per automotive,
-                            racing e industria alimentare.
+                            Tornitura e fresatura CNC di alta precisione per il settore
+                            packaging, motorsport e meccanica di precisione.
                         </p>
                         <div className="fade-up d4 flex flex-wrap justify-center gap-4">
                             <Link
@@ -195,12 +195,10 @@ export default function Home() {
                         {/* Intestazione */}
                         <div className="mb-16 max-w-2xl">
                             <Reveal delay="d1">
-                                <div className="mb-4 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-bold tracking-wider text-blue-700 uppercase">
-                                    Cosa facciamo
-                                </div>
+                                <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">— Cosa facciamo</p>
                                 <h2 className="font-display mb-4 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
                                     Lavorazioni CNC<br />
-                                    <span className="gradient-text">di alta precisione</span>
+                                    di alta precisione
                                 </h2>
                                 <p className="text-lg leading-relaxed text-slate-500">
                                     Dal grezzo al pezzo finito: gestiamo l'intero ciclo produttivo
@@ -224,7 +222,7 @@ export default function Home() {
                                 {
                                     delay: 'd2',
                                     label: 'Fresatura CNC',
-                                    desc: 'Centri di lavoro CNC 3 e 4 assi per la realizzazione di pezzi complessi, stampi, particolari strutturali e superfici di precisione in alluminio, acciaio e leghe speciali.',
+                                    desc: 'Centri di lavoro CNC 3 e 5 assi per la realizzazione di pezzi complessi, stampi, particolari strutturali e superfici di precisione in alluminio, acciaio e leghe speciali.',
                                     icon: (
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
                                     ),
@@ -289,9 +287,9 @@ export default function Home() {
                                     700 m² di tecnologia e precisione
                                 </h2>
                                 <p className="mb-8 text-lg leading-relaxed text-white/75">
-                                    Una struttura moderna a Castelvetro di Modena, progettata per
-                                    ospitare macchinari CNC di ultima generazione e crescere con
-                                    le esigenze dei clienti.
+                                    Una struttura moderna a Castelvetro di Modena, con temperatura
+                                    controllata a 20° tutto l'anno, progettata per ospitare
+                                    macchinari CNC di ultima generazione e crescere con le esigenze dei clienti.
                                 </p>
                                 <Link
                                     to="/azienda"
@@ -312,15 +310,13 @@ export default function Home() {
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
                             <Reveal delay="d1">
-                                <div className="mb-4 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-bold tracking-wider text-blue-700 uppercase">
-                                    Settori di applicazione
-                                </div>
+                                <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">— Settori di applicazione</p>
                                 <h2 className="font-display mb-4 text-4xl font-bold md:text-5xl">
                                     Dove lavora la nostra precisione
                                 </h2>
                                 <p className="mx-auto max-w-xl text-lg text-slate-500">
-                                    Componenti che finiscono nelle auto di serie, nelle monoposto di
-                                    Formula 1 e nelle linee di produzione alimentare.
+                                    Componenti per il motorsport, il packaging industriale
+                                    e la meccanica di precisione conto terzi.
                                 </p>
                             </Reveal>
                         </div>
@@ -337,16 +333,16 @@ export default function Home() {
                                 },
                                 {
                                     delay: 'd2',
-                                    title: 'Formula 1 & Racing',
-                                    desc: 'Particolari ultraleggeri e ad altissima resistenza per il motorsport, dove ogni grammo e ogni decimo contano.',
+                                    title: 'Motorsport',
+                                    desc: 'Particolari ultraleggeri e ad altissima resistenza per auto ad alte prestazioni in edizioni limitate, dove ogni grammo e ogni decimo contano.',
                                     icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
                                     color: 'text-red-600',
                                     bg: 'bg-red-50',
                                 },
                                 {
                                     delay: 'd3',
-                                    title: 'Alimentare',
-                                    desc: 'Componenti per macchine confezionatrici e linee di imbottigliamento, realizzati con materiali food-grade.',
+                                    title: 'Packaging',
+                                    desc: 'Componenti per macchine confezionatrici e linee di produzione, inclusa ricambistica e prototipazione per il settore packaging.',
                                     icon: 'M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5',
                                     color: 'text-green-600',
                                     bg: 'bg-green-50',
@@ -384,9 +380,7 @@ export default function Home() {
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 text-center">
                             <Reveal delay="d1">
-                                <div className="mb-4 inline-block rounded-lg bg-white/10 px-4 py-2 text-xs font-bold tracking-wider text-blue-300 uppercase">
-                                    Il nostro metodo
-                                </div>
+                                <p className="mb-4 text-xs font-bold tracking-widest text-blue-400 uppercase">— Il nostro metodo</p>
                                 <h2 className="font-display mb-4 text-4xl font-bold text-white md:text-5xl">
                                     Dal disegno al pezzo finito
                                 </h2>
@@ -444,12 +438,10 @@ export default function Home() {
                     <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
                         {/* Testo sinistro */}
                         <Reveal delay="d1">
-                            <div className="mb-4 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-bold tracking-wider text-blue-700 uppercase">
-                                Perché scegliere MBM
-                            </div>
+                            <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">— Perché scegliere MBM</p>
                             <h2 className="font-display mb-6 text-4xl font-bold leading-tight md:text-5xl">
                                 Standard elevati,<br />
-                                <span className="gradient-text">consegne puntuali.</span>
+                                consegne puntuali.
                             </h2>
                             <p className="mb-8 text-lg leading-relaxed text-slate-500">
                                 Siamo una realtà giovane e dinamica con l'ambizione di diventare
@@ -467,16 +459,28 @@ export default function Home() {
                             </Link>
                         </Reveal>
 
-                        {/* Barre competenza */}
+                        {/* Materiali lavorati */}
                         <Reveal delay="d2">
-                            <div className="space-y-8">
+                            <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-slate-400">Materiali lavorati</p>
+                            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                                 {[
-                                    { label: 'Tornitura CNC',         pct: 95 },
-                                    { label: 'Fresatura CNC',         pct: 90 },
-                                    { label: 'Progettazione CAD/CAM', pct: 85 },
-                                    { label: 'Controllo qualità',     pct: 98 },
-                                ].map((b) => (
-                                    <SkillBar key={b.label} label={b.label} pct={b.pct} />
+                                    'Alluminio 6082',
+                                    'Alluminio 7075',
+                                    'Acciaio inox 304',
+                                    'Acciaio inox 316L',
+                                    'Acciaio bonificato',
+                                    'Acciaio da utensile',
+                                    'Ottone CW614N',
+                                    'Titanio Gr.5',
+                                    'Polimeri tecnici',
+                                ].map((mat) => (
+                                    <div
+                                        key={mat}
+                                        className="flex items-center gap-2.5 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3"
+                                    >
+                                        <span className="h-1.5 w-1.5 flex-none rounded-full bg-blue-600" />
+                                        <span className="text-sm font-medium text-slate-700">{mat}</span>
+                                    </div>
                                 ))}
                             </div>
                         </Reveal>
@@ -488,12 +492,10 @@ export default function Home() {
                 ══════════════════════════════════════════════════ */}
                 <section className="gradient-bg px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <div className="mb-6 inline-block rounded-full bg-white/10 px-4 py-2 text-xs font-bold tracking-wider text-white uppercase backdrop-blur-sm">
-                            Iniziamo a lavorare insieme
-                        </div>
+                        <p className="mb-6 text-xs font-bold tracking-widest text-blue-400 uppercase">— Iniziamo a lavorare insieme</p>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
                             Hai un progetto?<br />
-                            <span className="gradient-text">Parliamone subito.</span>
+                            Parliamone subito.
                         </h2>
                         <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-white/70">
                             Inviaci il disegno tecnico o descrivi il componente: prepareremo
@@ -524,30 +526,3 @@ export default function Home() {
     );
 }
 
-
-function SkillBar({ label, pct }) {
-    const ref = useRef(null);
-    const [inView, setInView] = useState(false);
-    useEffect(() => {
-        const obs = new IntersectionObserver(
-            ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
-            { threshold: 0.5 }
-        );
-        if (ref.current) obs.observe(ref.current);
-        return () => obs.disconnect();
-    }, []);
-    return (
-        <div ref={ref}>
-            <div className="mb-2 flex items-center justify-between">
-                <span className="font-semibold text-slate-700">{label}</span>
-                <span className="text-sm font-bold text-blue-600">{pct}%</span>
-            </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
-                <div
-                    className="h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 transition-all duration-1000 ease-out"
-                    style={{ width: inView ? `${pct}%` : '0%' }}
-                />
-            </div>
-        </div>
-    );
-}
