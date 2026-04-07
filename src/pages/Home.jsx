@@ -52,7 +52,12 @@ function Reveal({ children, delay = '', className = '' }) {
     const [inView, setInView] = useState(false);
     useEffect(() => {
         const obs = new IntersectionObserver(
-            ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
+            ([e]) => {
+                if (e.isIntersecting) {
+                    setInView(true);
+                    obs.disconnect();
+                }
+            },
             { threshold: 0.12 }
         );
         if (ref.current) obs.observe(ref.current);
@@ -87,35 +92,60 @@ function ServicesAccordion() {
     const [open, setOpen] = useState(0);
 
     return (
-        <div className="border-y border-slate-200 divide-y divide-slate-200">
+        <div className="divide-y divide-slate-200 border-y border-slate-200">
             {SERVIZI.map((s, i) => (
                 <div key={s.num}>
                     <button
                         onClick={() => setOpen(open === i ? -1 : i)}
                         className="group flex w-full items-center gap-6 py-7 text-left"
                     >
-                        <span className={`font-display flex-1 text-2xl font-bold transition-colors md:text-3xl ${
-                            open === i ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-700'
-                        }`}>
+                        <span
+                            className={`font-display flex-1 text-2xl font-bold transition-colors md:text-3xl ${
+                                open === i
+                                    ? 'text-slate-900'
+                                    : 'text-slate-400 group-hover:text-slate-700'
+                            }`}
+                        >
                             {s.title}
                         </span>
                         <svg
                             className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
                         >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m-8-8h16" />
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M12 4v16m-8-8h16"
+                            />
                         </svg>
                     </button>
-                    <div className={`overflow-hidden transition-all duration-300 ease-out ${open === i ? 'max-h-56 pb-8' : 'max-h-0'}`}>
+                    <div
+                        className={`overflow-hidden transition-all duration-300 ease-out ${open === i ? 'max-h-56 pb-8' : 'max-h-0'}`}
+                    >
                         <div className="pl-14">
-                            <p className="mb-5 max-w-2xl text-lg leading-relaxed text-slate-500">{s.desc}</p>
+                            <p className="mb-5 max-w-2xl text-lg leading-relaxed text-slate-500">
+                                {s.desc}
+                            </p>
                             <Link
                                 to="/servizi"
                                 className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition-all hover:gap-3"
                             >
                                 Scopri di più
-                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                <svg
+                                    className="h-4 w-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5l7 7-7 7"
+                                    />
                                 </svg>
                             </Link>
                         </div>
@@ -165,7 +195,7 @@ function SettoriCarousel() {
     const [active, setActive] = useState(0);
     const [animating, setAnimating] = useState(false);
 
-    const goTo = (idx) => {
+    const goTo = idx => {
         if (idx === active) return;
         setAnimating(true);
         setTimeout(() => {
@@ -187,7 +217,9 @@ function SettoriCarousel() {
         <div className="mx-auto max-w-6xl">
             <div className="mb-16">
                 <Reveal delay="d1">
-                    <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">— Settori di applicazione</p>
+                    <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
+                        — Settori di applicazione
+                    </p>
                     <h2 className="font-display text-4xl font-bold md:text-5xl">
                         Dove lavora la nostra precisione
                     </h2>
@@ -197,7 +229,7 @@ function SettoriCarousel() {
             <Reveal delay="d2">
                 <div className="grid items-start gap-12 md:grid-cols-5">
                     {/* Lista settori */}
-                    <div className="md:col-span-2 flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 md:col-span-2">
                         {SETTORI.map((item, i) => (
                             <button
                                 key={item.num}
@@ -208,7 +240,9 @@ function SettoriCarousel() {
                                         : 'border-transparent text-slate-400 hover:border-slate-300 hover:text-slate-700'
                                 }`}
                             >
-                                <span className={`transition-all ${active === i ? 'font-semibold' : 'font-medium'}`}>
+                                <span
+                                    className={`transition-all ${active === i ? 'font-semibold' : 'font-medium'}`}
+                                >
                                     {item.title}
                                 </span>
                             </button>
@@ -221,7 +255,9 @@ function SettoriCarousel() {
                             className="flex h-64 flex-col justify-center rounded-2xl border border-slate-100 bg-white p-10 shadow-sm transition-opacity duration-200"
                             style={{ opacity: animating ? 0 : 1 }}
                         >
-                            <h3 className="font-display mb-4 text-3xl font-bold text-slate-900">{s.title}</h3>
+                            <h3 className="font-display mb-4 text-3xl font-bold text-slate-900">
+                                {s.title}
+                            </h3>
                             <p className="text-lg leading-relaxed text-slate-500">{s.desc}</p>
                             <div className="mt-8 flex gap-1.5">
                                 {SETTORI.map((_, i) => (
@@ -242,7 +278,6 @@ function SettoriCarousel() {
     );
 }
 
-
 export default function Home() {
     return (
         <>
@@ -255,7 +290,6 @@ export default function Home() {
             <style>{css}</style>
 
             <div className="font-body bg-white text-slate-800">
-
                 {/* 1 — Hero */}
                 <section className="relative h-svh w-full overflow-hidden">
                     <video
@@ -280,8 +314,8 @@ export default function Home() {
                             <span className="gradient-text">che si vede.</span>
                         </h1>
                         <p className="fade-up d3 mx-auto mb-10 max-w-xl text-lg text-white/75 md:text-xl">
-                            Tornitura e fresatura CNC di alta precisione per il settore
-                            packaging, motorsport e meccanica di precisione.
+                            Tornitura e fresatura CNC di alta precisione per il settore packaging,
+                            motorsport e meccanica di precisione.
                         </p>
                         <div className="fade-up d4 flex flex-wrap justify-center gap-4">
                             <Link
@@ -300,8 +334,18 @@ export default function Home() {
                     </div>
 
                     <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
-                        <svg className="hero-scroll-arrow h-6 w-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <svg
+                            className="hero-scroll-arrow h-6 w-6 text-white/60"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 9l-7 7-7-7"
+                            />
                         </svg>
                     </div>
                 </section>
@@ -311,9 +355,12 @@ export default function Home() {
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 max-w-2xl">
                             <Reveal delay="d1">
-                                <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">— Cosa facciamo</p>
-                                <h2 className="font-display mb-4 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-                                    Lavorazioni CNC<br />
+                                <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
+                                    — Cosa facciamo
+                                </p>
+                                <h2 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+                                    Lavorazioni CNC
+                                    <br />
                                     di alta precisione
                                 </h2>
                                 <p className="text-lg leading-relaxed text-slate-500">
@@ -343,21 +390,33 @@ export default function Home() {
                                 <p className="mb-3 text-xs font-bold tracking-widest text-blue-400 uppercase">
                                     La nostra officina
                                 </p>
-                                <h2 className="font-display mb-5 text-4xl font-bold leading-tight text-white md:text-5xl">
-                                    Un'officina moderna,<br />costruita per crescere
+                                <h2 className="font-display mb-5 text-4xl leading-tight font-bold text-white md:text-5xl">
+                                    Un'officina moderna,
+                                    <br />
+                                    costruita per crescere
                                 </h2>
                                 <p className="mb-8 text-lg leading-relaxed text-white/75">
-                                    700 m² a Castelvetro di Modena, con temperatura
-                                    controllata a 20° tutto l'anno, progettata per ospitare
-                                    macchinari CNC di ultima generazione e crescere con le esigenze dei clienti.
+                                    700 m² a Castelvetro di Modena, con temperatura controllata a
+                                    20° tutto l'anno, progettata per ospitare macchinari CNC di
+                                    ultima generazione e crescere con le esigenze dei clienti.
                                 </p>
                                 <Link
                                     to="/azienda"
                                     className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-3.5 font-semibold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/20"
                                 >
                                     Conosci la nostra storia
-                                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    <svg
+                                        className="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M9 5l7 7-7 7"
+                                        />
                                     </svg>
                                 </Link>
                             </Reveal>
@@ -383,14 +442,15 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/50 to-slate-900/20" />
                     <div className="relative z-10 flex h-full items-center px-8 md:px-20">
                         <Reveal delay="d1">
-                            <h2 className="font-display mb-4 max-w-xl text-4xl font-bold leading-tight text-white md:text-5xl">
-                                Standard elevati,<br />
+                            <h2 className="font-display mb-4 max-w-xl text-4xl leading-tight font-bold text-white md:text-5xl">
+                                Standard elevati,
+                                <br />
                                 consegne puntuali.
                             </h2>
                             <p className="max-w-md text-lg leading-relaxed text-white/70">
-                                Siamo una realtà giovane e dinamica con l'ambizione di diventare
-                                il partner di riferimento per la meccanica di precisione in Emilia-Romagna.
-                                Ogni commessa è seguita direttamente dai fondatori.
+                                Siamo una realtà giovane e dinamica con l'ambizione di diventare il
+                                partner di riferimento per la meccanica di precisione in
+                                Emilia-Romagna. Ogni commessa è seguita direttamente dai fondatori.
                             </p>
                         </Reveal>
                     </div>
@@ -399,14 +459,17 @@ export default function Home() {
                 {/* 6 — CTA finale */}
                 <section className="bg-white px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <p className="mb-6 text-xs font-bold tracking-widest text-blue-600 uppercase">— Iniziamo a lavorare insieme</p>
+                        <p className="mb-6 text-xs font-bold tracking-widest text-blue-600 uppercase">
+                            — Iniziamo a lavorare insieme
+                        </p>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
-                            Hai un progetto?<br />
+                            Hai un progetto?
+                            <br />
                             Parliamone subito.
                         </h2>
                         <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-slate-500">
-                            Inviaci il disegno tecnico o descrivi il componente: prepareremo
-                            un preventivo personalizzato in tempi rapidi.
+                            Inviaci il disegno tecnico o descrivi il componente: prepareremo un
+                            preventivo personalizzato in tempi rapidi.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <Link
@@ -414,8 +477,18 @@ export default function Home() {
                                 className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-10 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-lg"
                             >
                                 Richiedi preventivo
-                                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                <svg
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5l7 7-7 7"
+                                    />
                                 </svg>
                             </Link>
                             <Link
@@ -433,7 +506,6 @@ export default function Home() {
                         </div>
                     </Reveal>
                 </section>
-
             </div>
         </>
     );
