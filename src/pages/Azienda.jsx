@@ -258,47 +258,6 @@ export default function Azienda() {
                     </div>
                 </section>
 
-                {/* Headquarters Section */}
-                <section className="px-6 py-24 md:py-32">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="mb-16 text-center">
-                            <Reveal delay="d1">
-                                <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
-                                    La nostra sede
-                                </div>
-                                <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl">
-                                    Struttura e posizione
-                                </h2>
-                            </Reveal>
-                        </div>
-                        <Reveal delay="d2">
-                            <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-xl">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.3297536632717!2d10.947375875886053!3d44.50839869670187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fe054e0bf7e35%3A0x1ca09ac2c8a1feac!2sVia%20M.%20Buonarroti%2C%2022%2F24%2C%2041014%20Castelvetro%20di%20Modena%20MO!5e0!3m2!1sit!2sit!4v1775157069684!5m2!1sit!2sit"
-                                    width="100%"
-                                    height="450"
-                                    style={{ border: 0 }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                    title="Mappa MBM Meccanica"
-                                    className="w-full"
-                                />
-                            </div>
-                        </Reveal>
-                        <Reveal delay="d3" className="mt-8">
-                            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center">
-                                <p className="text-slate-600">
-                                    <strong className="font-bold text-slate-800">700 m²</strong> di
-                                    sede operativa a Castelvetro di Modena. La nostra struttura è
-                                    progettata per accogliere non solo i macchinari attuali, ma
-                                    anche quelli futuri, a dimostrazione del nostro impegno per una
-                                    crescita costante.
-                                </p>
-                            </div>
-                        </Reveal>
-                    </div>
-                </section>
-
                 {/* CTA */}
                 <section className="gradient-bg px-6 py-24 text-center md:py-32">
                     <Reveal>
