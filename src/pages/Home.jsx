@@ -451,6 +451,7 @@ export default function Home() {
                                 Siamo una realtà giovane e dinamica con l'ambizione di diventare il
                                 partner di riferimento per la meccanica di precisione in
                                 Emilia-Romagna. Ogni commessa è seguita direttamente dai fondatori.
+
                             </p>
                         </Reveal>
                     </div>

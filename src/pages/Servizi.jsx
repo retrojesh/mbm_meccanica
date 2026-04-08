@@ -23,6 +23,8 @@ const css = `
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-up { animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes imgFade { from { opacity: 0; } to { opacity: 1; } }
+.img-fade { animation: imgFade 0.35s ease; }
 .d1 { animation-delay: 0.05s; opacity: 0; }
 .d2 { animation-delay: 0.12s; opacity: 0; }
 .d3 { animation-delay: 0.19s; opacity: 0; }
@@ -122,7 +124,7 @@ function Reveal({ children, delay = '', className = '' }) {
 function PezziCarousel() {
     const n = PEZZI.length;
     const [active, setActive] = useState(0);
-    const [offset, setOffset] = useState(0);
+    const stripRef = useRef(null);
     const dragging = useRef(false);
     const startX = useRef(0);
     const timer = useRef(null);
@@ -136,6 +138,15 @@ function PezziCarousel() {
 
     const goTo = (i) => { setActive(((i % n) + n) % n); startTimer(); };
 
+    // Direct DOM manipulation for drag — avoids React batching issues with CSS transitions
+    const applyTransform = (px, animated) => {
+        if (!stripRef.current) return;
+        stripRef.current.style.transition = animated
+            ? 'transform 0.38s cubic-bezier(0.16,1,0.3,1)'
+            : 'none';
+        stripRef.current.style.transform = `translateX(${px}px)`;
+    };
+
     const onPointerDown = (e) => {
         dragging.current = true;
         startX.current = e.clientX;
@@ -145,17 +156,17 @@ function PezziCarousel() {
 
     const onPointerMove = (e) => {
         if (!dragging.current) return;
-        setOffset(e.clientX - startX.current);
+        applyTransform(e.clientX - startX.current, false);
     };
 
     const onPointerUp = (e) => {
         if (!dragging.current) return;
         dragging.current = false;
         const diff = e.clientX - startX.current;
-        if (diff < -50)      setActive(a => (a + 1) % n);
-        else if (diff > 50)  setActive(a => (a - 1 + n) % n);
-        setOffset(0);
-        startTimer();
+        applyTransform(0, true); // smooth snap back
+        if (diff < -50)     setTimeout(() => { setActive(a => (a + 1) % n); startTimer(); }, 380);
+        else if (diff > 50) setTimeout(() => { setActive(a => (a - 1 + n) % n); startTimer(); }, 380);
+        else startTimer();
     };
 
     const prev = (active - 1 + n) % n;
@@ -176,17 +187,14 @@ function PezziCarousel() {
 
                         {/* Carousel */}
                         <div className="min-w-0 flex-1 overflow-hidden">
-                            {/* Images row — draggable */}
                             <div
+                                ref={stripRef}
                                 className="flex h-56 cursor-grab gap-2 select-none sm:h-64 md:h-80 md:gap-3 active:cursor-grabbing"
                                 onPointerDown={onPointerDown}
                                 onPointerMove={onPointerMove}
                                 onPointerUp={onPointerUp}
                                 onPointerCancel={onPointerUp}
-                                style={{
-                                    transform: `translateX(${offset}px)`,
-                                    transition: offset === 0 ? 'transform 0.35s cubic-bezier(0.16,1,0.3,1)' : 'none',
-                                }}
+                                style={{ touchAction: 'none', willChange: 'transform' }}
                             >
                                 {/* Prev — partial */}
                                 <div className="w-20 shrink-0 overflow-hidden rounded-xl sm:w-24 md:w-32">
@@ -198,8 +206,8 @@ function PezziCarousel() {
                                     />
                                 </div>
 
-                                {/* Active — main */}
-                                <div className="flex-1 overflow-hidden rounded-xl">
+                                {/* Active — main, key triggers fade-in on change */}
+                                <div key={active} className="img-fade flex-1 overflow-hidden rounded-xl">
                                     <img
                                         src={PEZZI[active]}
                                         alt={`Pezzo finito MBM Meccanica ${active + 1}`}
