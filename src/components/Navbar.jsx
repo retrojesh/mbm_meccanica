@@ -44,7 +44,7 @@ export default function Navbar() {
                 <div className="flex h-20 items-center justify-between">
                     <Link to="/">
                         <img
-                            src="/src/assets/logo/MBM_logo.png"
+                            src="/src/assets/logo/MBM_Logo.png"
                             alt="M.B.M. Meccanica"
                             className={`h-10 w-auto transition-all duration-300 ${
                                 isDark ? 'brightness-0 invert' : ''
