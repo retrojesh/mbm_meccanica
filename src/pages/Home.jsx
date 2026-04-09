@@ -303,12 +303,6 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />
 
                     <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-                        <div className="fade-in d1 mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-                            <span className="h-2 w-2 animate-pulse rounded-full bg-blue-400" />
-                            <p className="text-xs font-semibold tracking-widest text-blue-300 uppercase">
-                                Castelvetro di Modena · dal 2024
-                            </p>
-                        </div>
                         <h1 className="font-display fade-up d2 mb-6 text-5xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
                             Precisione <br />
                             <span className="gradient-text">che si vede.</span>
