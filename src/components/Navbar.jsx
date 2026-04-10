@@ -57,6 +57,7 @@ export default function Navbar() {
                             { to: '/', label: 'Home' },
                             { to: '/azienda', label: 'Azienda' },
                             { to: '/servizi', label: 'Servizi' },
+                            { to: '/parco-macchine', label: 'Parco Macchine' },
                             { to: '/contattaci', label: 'Contattaci' },
                         ].map(({ to, label }) => (
                             <Link
@@ -112,6 +113,7 @@ export default function Navbar() {
                             { to: '/', label: 'Home' },
                             { to: '/azienda', label: 'Azienda' },
                             { to: '/servizi', label: 'Servizi' },
+                            { to: '/parco-macchine', label: 'Parco Macchine' },
                             { to: '/contattaci', label: 'Contattaci' },
                         ].map(({ to, label }) => (
                             <Link
