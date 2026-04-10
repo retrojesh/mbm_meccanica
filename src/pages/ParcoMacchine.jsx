@@ -344,50 +344,35 @@ export default function ParcoMacchine() {
                             </p>
                         </Reveal>
 
-                        <div className="grid gap-6 md:grid-cols-2">
+                        <div className="divide-y divide-slate-100">
                             {MACCHINE.map((m, i) => (
-                                <Reveal key={m.nome} delay={`d${(i % 2) + 1}`}>
-                                    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                                        <div className="flex h-52 items-center justify-center bg-slate-100 md:h-60">
+                                <Reveal key={m.nome} delay="d1">
+                                    <div className={`flex flex-col md:flex-row ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                                        {/* Foto */}
+                                        <div className="h-64 w-full shrink-0 md:h-auto md:w-1/2 bg-slate-100 flex items-center justify-center">
                                             <div className="flex flex-col items-center gap-2 text-slate-300">
-                                                <svg
-                                                    className="h-10 w-10"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={1}
-                                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                                                    />
+                                                <svg className="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 </svg>
                                                 <span className="text-xs">foto in arrivo</span>
                                             </div>
                                         </div>
 
-                                        <div className="p-6">
-                                            <span className="mb-2 inline-block rounded-full bg-blue-600/10 px-3 py-0.5 text-xs font-semibold tracking-wider text-blue-700 uppercase">
+                                        {/* Specs */}
+                                        <div className="flex flex-1 flex-col justify-center px-8 py-10 md:px-12 md:py-14">
+                                            <span className="mb-3 text-xs font-bold tracking-widest text-blue-600 uppercase">
                                                 {m.cat}
                                             </span>
-                                            <h2 className="font-display mb-0.5 text-2xl font-bold text-slate-900">
+                                            <h2 className="font-display mb-1 text-3xl font-bold text-slate-900">
                                                 {m.nome}
                                             </h2>
-                                            <p className="mb-4 text-sm text-slate-400">{m.brand}</p>
+                                            <p className="mb-8 text-sm text-slate-400">{m.brand}</p>
 
-                                            <div className="divide-y divide-slate-100">
+                                            <div className="grid grid-cols-2 gap-x-8">
                                                 {m.specs.map(s => (
-                                                    <div
-                                                        key={s.label}
-                                                        className="flex items-center justify-between gap-4 py-2"
-                                                    >
-                                                        <span className="text-sm text-slate-500">
-                                                            {s.label}
-                                                        </span>
-                                                        <span className="text-sm font-semibold text-slate-900 tabular-nums">
-                                                            {s.value}
-                                                        </span>
+                                                    <div key={s.label} className="border-b border-slate-100 py-3">
+                                                        <p className="mb-0.5 text-xs text-slate-400">{s.label}</p>
+                                                        <p className="text-sm font-semibold tabular-nums text-slate-900">{s.value}</p>
                                                     </div>
                                                 ))}
                                             </div>
