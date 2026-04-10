@@ -4,6 +4,7 @@ import Azienda from './pages/Azienda';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Servizi from './pages/Servizi';
+import ParcoMacchine from './pages/ParcoMacchine';
 import Contattaci from './pages/Contattaci';
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/azienda" element={<Azienda />} />
                 <Route path="/servizi" element={<Servizi />} />
+                <Route path="/parco-macchine" element={<ParcoMacchine />} />
                 <Route path="/contattaci" element={<Contattaci />} />
             </Routes>
         </BrowserRouter>
