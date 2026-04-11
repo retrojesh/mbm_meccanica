@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import progettazioneImg from '../assets/pages/servizi/progettazione.jpg';
 
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
@@ -135,7 +136,6 @@ function useInView(threshold = 0.15, triggerOnce = false) {
     return [ref, inView];
 }
 
-// Components reveals children with animation on scroll
 function Reveal({ children, anim = 'fade-up', delay = '', className = '', threshold = 0.15 }) {
     const [ref, inView] = useInView(threshold, false);
 
@@ -167,6 +167,7 @@ const SERVIZI = [
             'Qualità costante dal pezzo singolo ai lotti ripetitivi',
         ],
         tag: 'CNC · 5 assi · Tolleranze µm',
+        image: null,
     },
     {
         title: 'Lavorazione su Misura',
@@ -178,6 +179,7 @@ const SERVIZI = [
             'Finiture superficiali, trattamenti termici e controlli dimensionali',
         ],
         tag: 'CAD/CAM · Su commessa · Supporto tecnico',
+        image: progettazioneImg,
     },
     {
         title: 'Prototipazione Rapida',
@@ -189,6 +191,7 @@ const SERVIZI = [
             'Collaborazione con uffici tecnici e startup in tutta Italia',
         ],
         tag: 'Prototipo · Iterazione rapida · R&D',
+        image: null,
     },
     {
         title: 'Ricambistica Industriale',
@@ -200,6 +203,7 @@ const SERVIZI = [
             'Settori: automotive, food & beverage, macchine utensili',
         ],
         tag: 'Reverse engineering · OEM · Manutenzione',
+        image: null,
     },
 ];
 
@@ -253,33 +257,39 @@ function ServiceBlock({ s, reverse }) {
                     animationDelay: '0.2s',
                 }}
             >
-                <div className="image-placeholder relative flex min-h-[360px] flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 shadow-md">
-                    <svg
-                        className="h-20 w-20 text-slate-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={0.8}
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                <div className="relative h-[360px] overflow-hidden rounded-2xl shadow-md">
+                    {s.image ? (
+                        <img
+                            src={s.image}
+                            alt={s.title}
+                            className="absolute inset-0 h-full w-full object-cover"
                         />
-                    </svg>
-                    <p className="mt-4 text-sm font-medium text-slate-400">
-                        Immagine lavorazione CNC
-                    </p>
-                    <p className="mt-1 text-xs text-slate-300">
-                        Fresatura 5 assi · Tornitura di precisione
-                    </p>
+                    ) : (
+                        <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                            <svg
+                                className="h-20 w-20 text-slate-300"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={0.8}
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
+                            </svg>
+                            <p className="mt-4 text-sm font-medium text-slate-400">
+                                Immagine {s.title}
+                            </p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
     );
 }
 
-// Main component
 export default function Servizi() {
     return (
         <>
