@@ -8,7 +8,6 @@ import pezzo3 from '../assets/pages/parco-macchine/pezzi/pezzo-3.webp';
 import pezzo4 from '../assets/pages/parco-macchine/pezzi/pezzo-4.webp';
 import pezzo5 from '../assets/pages/parco-macchine/pezzi/pezzo-5.webp';
 import pezzo6 from '../assets/pages/parco-macchine/pezzi/pezzo-6.webp';
-import pezzo7 from '../assets/pages/parco-macchine/pezzi/pezzo-7.webp';
 import pezzo8 from '../assets/pages/parco-macchine/pezzi/pezzo-8.webp';
 import pezzo9 from '../assets/pages/parco-macchine/pezzi/pezzo-9.webp';
 import pezzo10 from '../assets/pages/parco-macchine/pezzi/pezzo-10.webp';
@@ -47,7 +46,7 @@ const PEZZI = [
     pezzo4,
     pezzo5,
     pezzo6,
-    pezzo7,
+
     pezzo8,
     pezzo9,
     pezzo10,
@@ -142,67 +141,101 @@ function Reveal({ children, delay = '', className = '' }) {
 
 function PezziCarousel() {
     const n = PEZZI.length;
+    // 2 cloni per lato → looping fluido anche tenendo premuto ai bordi
+    const SLIDES = [PEZZI[n - 2], PEZZI[n - 1], ...PEZZI, PEZZI[0], PEZZI[1]];
+    const total = SLIDES.length; // n + 4
+    const INIT = 2;
+
     const [active, setActive] = useState(0);
-    const stripRef = useRef(null);
-    const dragging = useRef(false);
-    const startX = useRef(0);
-    const timer = useRef(null);
+
+    const viRef    = useRef(INIT);
+    const swRef    = useRef(0);       // slideWidth in px (= containerWidth * 0.6)
+    const cwRef    = useRef(0);       // containerWidth in px
+    const containerRef = useRef(null);
+    const stripRef     = useRef(null);
+    const dragging   = useRef(false);
+    const animating  = useRef(false);
+    const startX     = useRef(0);
+    const dragX      = useRef(0);
+    const timer      = useRef(null);
+
+    // Centra la slide vi: (containerWidth - slideWidth) / 2 - vi * slideWidth
+    const tx = (vi, pxOffset = 0) =>
+        (cwRef.current - swRef.current) / 2 - vi * swRef.current + pxOffset;
+
+    const applyPos = (vi, pxOffset = 0, animated = true) => {
+        if (!stripRef.current) return;
+        stripRef.current.style.transition = animated
+            ? 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+            : 'none';
+        stripRef.current.style.transform = `translateX(${tx(vi, pxOffset)}px)`;
+    };
+
+    const wrapAfter = () => {
+        const vi = viRef.current;
+        if (vi <= 1)          { const nv = vi + n; viRef.current = nv; applyPos(nv, 0, false); }
+        else if (vi >= n + 2) { const nv = vi - n; viRef.current = nv; applyPos(nv, 0, false); }
+    };
+
+    const slideTo = (vi, animated = true) => {
+        if (animating.current && animated) return;
+        animating.current = animated;
+        viRef.current = vi;
+        applyPos(vi, 0, animated);
+        setActive(((vi - INIT) % n + n) % n);
+        if (animated) setTimeout(() => { animating.current = false; wrapAfter(); }, 410);
+    };
 
     const startTimer = () => {
         clearInterval(timer.current);
-        timer.current = setInterval(() => setActive(a => (a + 1) % n), 4000);
+        timer.current = setInterval(() => slideTo(viRef.current + 1, true), 4000);
     };
 
+    // Imposta dimensioni in pixel e si aggiorna al resize
     useEffect(() => {
+        const resize = () => {
+            if (!containerRef.current || !stripRef.current) return;
+            const cw = containerRef.current.offsetWidth;
+            cwRef.current = cw;
+            const sw = cw * 0.6;
+            swRef.current = sw;
+            stripRef.current.style.width = `${total * sw}px`;
+            Array.from(stripRef.current.children).forEach(el => {
+                el.style.width = `${sw}px`;
+            });
+            applyPos(viRef.current, 0, false);
+        };
+        resize();
         startTimer();
-        return () => clearInterval(timer.current);
+        window.addEventListener('resize', resize);
+        return () => { clearInterval(timer.current); window.removeEventListener('resize', resize); };
     }, []);
 
-    const goTo = i => {
-        setActive(((i % n) + n) % n);
-        startTimer();
-    };
-
-    const applyTransform = (px, animated) => {
-        if (!stripRef.current) return;
-        stripRef.current.style.transition = animated
-            ? 'transform 0.38s cubic-bezier(0.16,1,0.3,1)'
-            : 'none';
-        stripRef.current.style.transform = `translateX(${px}px)`;
-    };
-
     const onPointerDown = e => {
+        if (animating.current) return;
         dragging.current = true;
+        dragX.current = 0;
         startX.current = e.clientX;
-        e.currentTarget.setPointerCapture(e.pointerId);
         clearInterval(timer.current);
+        e.currentTarget.setPointerCapture(e.pointerId);
+        applyPos(viRef.current, 0, false);
     };
 
     const onPointerMove = e => {
         if (!dragging.current) return;
-        applyTransform(e.clientX - startX.current, false);
+        dragX.current = e.clientX - startX.current;
+        applyPos(viRef.current, dragX.current, false);
     };
 
-    const onPointerUp = e => {
+    const onPointerUp = () => {
         if (!dragging.current) return;
         dragging.current = false;
-        const diff = e.clientX - startX.current;
-        applyTransform(0, true);
-        if (diff < -50)
-            setTimeout(() => {
-                setActive(a => (a + 1) % n);
-                startTimer();
-            }, 380);
-        else if (diff > 50)
-            setTimeout(() => {
-                setActive(a => (a - 1 + n) % n);
-                startTimer();
-            }, 380);
-        else startTimer();
+        const diff = dragX.current;
+        if (diff < -50)     slideTo(viRef.current + 1, true);
+        else if (diff > 50) slideTo(viRef.current - 1, true);
+        else                applyPos(viRef.current, 0, true);
+        startTimer();
     };
-
-    const prev = (active - 1 + n) % n;
-    const next = (active + 1) % n;
 
     return (
         <section className="bg-slate-50 px-6 py-20 md:py-28">
@@ -216,45 +249,27 @@ function PezziCarousel() {
 
                 <Reveal delay="d2">
                     <div className="flex items-start gap-6 md:gap-10">
-                        {/* Carousel */}
-                        <div className="min-w-0 flex-1 overflow-hidden">
+                        <div ref={containerRef} className="min-w-0 flex-1">
                             <div
-                                ref={stripRef}
-                                className="flex h-56 cursor-grab gap-2 select-none active:cursor-grabbing sm:h-64 md:h-80 md:gap-3"
+                                className="h-[330px] w-full cursor-grab overflow-hidden select-none active:cursor-grabbing"
                                 onPointerDown={onPointerDown}
                                 onPointerMove={onPointerMove}
                                 onPointerUp={onPointerUp}
                                 onPointerCancel={onPointerUp}
-                                style={{ touchAction: 'none', willChange: 'transform' }}
+                                style={{ touchAction: 'none' }}
                             >
-                                <div className="w-20 shrink-0 overflow-hidden rounded-xl sm:w-24 md:w-32">
-                                    <img
-                                        src={PEZZI[prev]}
-                                        alt=""
-                                        draggable="false"
-                                        className="h-full w-full object-cover opacity-60"
-                                    />
-                                </div>
-
-                                <div
-                                    key={active}
-                                    className="img-fade flex-1 overflow-hidden rounded-xl"
-                                >
-                                    <img
-                                        src={PEZZI[active]}
-                                        alt={`Pezzo finito MBM Meccanica ${active + 1}`}
-                                        draggable="false"
-                                        className="h-full w-full object-cover"
-                                    />
-                                </div>
-
-                                <div className="w-20 shrink-0 overflow-hidden rounded-xl sm:w-24 md:w-32">
-                                    <img
-                                        src={PEZZI[next]}
-                                        alt=""
-                                        draggable="false"
-                                        className="h-full w-full object-cover opacity-60"
-                                    />
+                                <div ref={stripRef} className="flex h-full">
+                                    {SLIDES.map((src, i) => (
+                                        <div key={i} className="h-full shrink-0 px-3">
+                                            <img
+                                                src={src}
+                                                alt=""
+                                                draggable="false"
+                                                className="h-full w-full rounded-xl object-cover"
+                                                style={src === PEZZI[2] ? { objectPosition: 'center 37%' } : src === PEZZI[4] ? { objectPosition: 'center 85%' } : undefined}
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
@@ -262,7 +277,7 @@ function PezziCarousel() {
                                 {PEZZI.map((_, i) => (
                                     <button
                                         key={i}
-                                        onClick={() => goTo(i)}
+                                        onClick={() => { slideTo(i + INIT, true); startTimer(); }}
                                         className={`rounded-full transition-all duration-300 ${
                                             active === i
                                                 ? 'h-2.5 w-6 bg-blue-600'
@@ -276,15 +291,8 @@ function PezziCarousel() {
                         <div className="hidden w-44 shrink-0 md:block lg:w-52">
                             <ul className="mb-8 space-y-2.5">
                                 {TIPI_PEZZO.map(tipo => (
-                                    <li
-                                        key={tipo}
-                                        className="flex items-center gap-2.5 text-slate-600"
-                                    >
-                                        <svg
-                                            className="h-2.5 w-2.5 shrink-0 text-blue-600"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
+                                    <li key={tipo} className="flex items-center gap-2.5 text-slate-600">
+                                        <svg className="h-2.5 w-2.5 shrink-0 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M8 5l12 7-12 7V5z" />
                                         </svg>
                                         <span className="text-sm">{tipo}</span>
@@ -296,18 +304,8 @@ function PezziCarousel() {
                                 className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-3 text-xs font-bold tracking-wider text-white uppercase transition-all hover:-translate-y-0.5 hover:bg-blue-500"
                             >
                                 Contattaci qui
-                                <svg
-                                    className="h-3.5 w-3.5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2.5}
-                                        d="M9 5l7 7-7 7"
-                                    />
+                                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                                 </svg>
                             </Link>
                         </div>
@@ -346,50 +344,35 @@ export default function ParcoMacchine() {
                             </p>
                         </Reveal>
 
-                        <div className="grid gap-6 md:grid-cols-2">
+                        <div className="divide-y divide-slate-100">
                             {MACCHINE.map((m, i) => (
-                                <Reveal key={m.nome} delay={`d${(i % 2) + 1}`}>
-                                    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                                        <div className="flex h-52 items-center justify-center bg-slate-100 md:h-60">
+                                <Reveal key={m.nome} delay="d1">
+                                    <div className={`flex flex-col md:flex-row ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                                        {/* Foto */}
+                                        <div className="h-64 w-full shrink-0 md:h-auto md:w-1/2 bg-slate-100 flex items-center justify-center">
                                             <div className="flex flex-col items-center gap-2 text-slate-300">
-                                                <svg
-                                                    className="h-10 w-10"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={1}
-                                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                                                    />
+                                                <svg className="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 </svg>
                                                 <span className="text-xs">foto in arrivo</span>
                                             </div>
                                         </div>
 
-                                        <div className="p-6">
-                                            <span className="mb-2 inline-block rounded-full bg-blue-600/10 px-3 py-0.5 text-xs font-semibold tracking-wider text-blue-700 uppercase">
+                                        {/* Specs */}
+                                        <div className="flex flex-1 flex-col justify-center px-8 py-10 md:px-12 md:py-14">
+                                            <span className="mb-3 text-xs font-bold tracking-widest text-blue-600 uppercase">
                                                 {m.cat}
                                             </span>
-                                            <h2 className="font-display mb-0.5 text-2xl font-bold text-slate-900">
+                                            <h2 className="font-display mb-1 text-3xl font-bold text-slate-900">
                                                 {m.nome}
                                             </h2>
-                                            <p className="mb-4 text-sm text-slate-400">{m.brand}</p>
+                                            <p className="mb-8 text-sm text-slate-400">{m.brand}</p>
 
-                                            <div className="divide-y divide-slate-100">
+                                            <div className="grid grid-cols-2 gap-x-8">
                                                 {m.specs.map(s => (
-                                                    <div
-                                                        key={s.label}
-                                                        className="flex items-center justify-between gap-4 py-2"
-                                                    >
-                                                        <span className="text-sm text-slate-500">
-                                                            {s.label}
-                                                        </span>
-                                                        <span className="text-sm font-semibold text-slate-900 tabular-nums">
-                                                            {s.value}
-                                                        </span>
+                                                    <div key={s.label} className="border-b border-slate-100 py-3">
+                                                        <p className="mb-0.5 text-xs text-slate-400">{s.label}</p>
+                                                        <p className="text-sm font-semibold tabular-nums text-slate-900">{s.value}</p>
                                                     </div>
                                                 ))}
                                             </div>
