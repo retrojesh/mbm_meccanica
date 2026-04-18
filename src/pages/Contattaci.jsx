@@ -225,17 +225,6 @@ export default function Contatti() {
                                     />
                                 </div>
                             </Reveal>
-                            <Reveal delay="d3" className="mt-8">
-                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center">
-                                    <p className="text-slate-600">
-                                        <strong className="font-bold text-slate-800">700 m²</strong>{' '}
-                                        di sede operativa a Castelvetro di Modena. La nostra
-                                        struttura è progettata per accogliere non solo i macchinari
-                                        attuali, ma anche quelli futuri, a dimostrazione del nostro
-                                        impegno per una crescita costante.
-                                    </p>
-                                </div>
-                            </Reveal>
                         </div>
                     </div>
                 </section>
@@ -244,7 +233,7 @@ export default function Contatti() {
                 <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-24 text-center md:py-32">
                     <Reveal>
                         <h2 className="mx-auto mb-6 max-w-2xl font-serif text-4xl font-bold text-white md:text-5xl">
-                            Contattaci qui
+                            Mettiamoci in contatto
                         </h2>
                         <p className="mx-auto mb-10 max-w-lg text-lg leading-relaxed text-white/65">
                             Siamo sempre disponibili per rispondere alle tue domande, discutere i
