@@ -118,10 +118,10 @@ export default function Azienda() {
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/90" />
                     <div className="relative z-10 px-6 pt-32 pb-20 md:pt-40 md:pb-28">
                         <h1 className="font-display mb-6 text-5xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
-                            M.B.M. <span className="gradient-text">Meccanica Srl</span>
+                            M.B.M. Meccanica Srl
                         </h1>
                         <p className="mx-auto max-w-2xl text-xl text-white/75 md:text-2xl">
-                            Una nuova realtà nel settore della meccanica di precisione, nata dalla
+                            Una giovane realtà nel settore della meccanica di precisione, nata dalla
                             passione per l'ingegneria e l'innovazione.
                         </p>
                     </div>
@@ -140,8 +140,8 @@ export default function Azienda() {
                             <p className="mb-6 text-lg leading-relaxed text-slate-600">
                                 Siamo <strong>Soufiane</strong>{' '}
                                 <span className="font-normal">e</span> <strong>Yassin Mejri</strong>
-                                , fratelli e fondatori di M.B.M. Meccanica SRL, una nuova realtà nel
-                                settore della meccanica di precisione, nata dalla nostra passione
+                                , fratelli e fondatori di M.B.M. Meccanica SRL, una giovane realtà
+                                nel settore della meccanica industriale, nata dalla nostra passione
                                 per l'ingegneria e l'innovazione. Con esperienze diverse ma
                                 complementari, abbiamo unito le forze per creare un'azienda
                                 dinamica, focalizzata sulla qualità e sulla soddisfazione dei
@@ -150,8 +150,7 @@ export default function Azienda() {
                             <p className="mb-8 leading-relaxed text-slate-600">
                                 Ogni pezzo che realizziamo porta con sé la nostra dedizione alla
                                 precisione e il desiderio di costruire relazioni di fiducia con i
-                                clienti. Crediamo nel nostro legame familiare come motore di una
-                                collaborazione basata su passione e integrità.
+                                clienti.
                             </p>
                         </Reveal>
                         <Reveal delay="d2">
@@ -164,16 +163,7 @@ export default function Azienda() {
                                             "url('https://placehold.co/800x800/1e293b/ffffff?text=Soufiane+%26+Yassin+Mejri')",
                                     }}
                                 >
-                                    <div className="flex h-full w-full items-end bg-gradient-to-t from-slate-900 via-transparent to-transparent p-8">
-                                        <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                                            <p className="font-display text-sm text-white">
-                                                Soufiane & Yassin Mejri
-                                            </p>
-                                            <p className="text-xs text-blue-300">
-                                                Fondatori, MBM Meccanica
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <div className="flex h-full w-full items-end bg-gradient-to-t from-slate-900 via-transparent to-transparent p-8"></div>
                                 </div>
                             </div>
                         </Reveal>
@@ -257,18 +247,17 @@ export default function Azienda() {
                             La nostra promessa
                         </div>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-                            Trasformare idee e necessità in componenti che fanno la differenza.
+                            Trasformare idee e necessità in componenti.
                         </h2>
                         <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-white/80">
                             Ogni progetto è un'opportunità per dimostrare che la precisione, unita
-                            alla passione, può fare la differenza. Siamo pronti a raccogliere le
-                            vostre sfide.
+                            alla passione, può fare la differenza.
                         </p>
                         <a
                             href="/servizi"
                             className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-bold text-slate-800 transition-all hover:-translate-y-0.5 hover:shadow-2xl"
                         >
-                            Scopri i nostri servizi
+                            I nostri servizi
                             <svg
                                 className="h-5 w-5"
                                 fill="none"
