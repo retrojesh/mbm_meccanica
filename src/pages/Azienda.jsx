@@ -100,7 +100,7 @@ export default function Azienda() {
         <>
             <SEO
                 title="Chi Siamo | MBM Meccanica"
-                description="MBM Meccanica: azienda metalmeccanica di precisione a Castelvetro di Modena. Nata dalla passione dei fratelli Soufiane e Yassin Mejri. Qualità, innovazione e affidabilità."
+                description="MBM Meccanica: azienda metalmeccanica a Castelvetro di Modena. Nata dalla passione dei fratelli Soufiane e Yassin Mejri. Qualità, innovazione e affidabilità."
                 keywords="MBM Meccanica, chi siamo MBM Meccanica, azienda metalmeccanica Modena, metalmeccanica precisione Castelvetro di Modena"
             />
             <JsonLd />
@@ -121,8 +121,8 @@ export default function Azienda() {
                             M.B.M. Meccanica Srl
                         </h1>
                         <p className="mx-auto max-w-2xl text-xl text-white/75 md:text-2xl">
-                            Una giovane realtà nel settore della meccanica di precisione, nata dalla
-                            passione per l'ingegneria e l'innovazione.
+                            Una giovane realtà nel settore della metalmeccanica, nata dalla passione
+                            per l'ingegneria e l'innovazione.
                         </p>
                     </div>
                 </section>
