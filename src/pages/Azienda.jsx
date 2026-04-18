@@ -71,7 +71,6 @@ function RevealRow({ children, delay = '', className = '' }) {
     }, []);
     return (
         <div ref={ref} className={className}>
-            {/* divider line expands first */}
             <div
                 className={inView ? `expand-line ${delay}` : ''}
                 style={{
@@ -82,7 +81,6 @@ function RevealRow({ children, delay = '', className = '' }) {
                     transform: inView ? undefined : 'scaleX(0)',
                 }}
             />
-            {/* content slides in slightly after */}
             <div className={inView ? `slide-in ${delay}` : 'opacity-0'}>{children}</div>
         </div>
     );
@@ -133,7 +131,7 @@ export default function Azienda() {
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
                         <Reveal delay="d1">
-                            <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
+                            <div className="mb-6 inline-block px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
                                 Due fratelli, una stessa visione
                             </div>
                             <h2 className="font-display mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
@@ -186,7 +184,7 @@ export default function Azienda() {
                 <section className="px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-2xl">
                         <Reveal delay="d1">
-                            <div className="mb-6 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
+                            <div className="mb-6 inline-block px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
                                 I nostri principi
                             </div>
                             <h2 className="font-display mb-14 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
@@ -255,7 +253,7 @@ export default function Azienda() {
                 {/* CTA */}
                 <section className="gradient-bg px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <div className="mb-6 inline-block rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase backdrop-blur-sm">
+                        <div className="mb-6 px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase">
                             La nostra promessa
                         </div>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
