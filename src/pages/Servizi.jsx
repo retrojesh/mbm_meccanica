@@ -123,38 +123,34 @@ const SERVIZI = [
     },
     {
         title: 'Lavorazione su Misura',
-        short: 'Soluzioni progettate per soddisfare le esigenze specifiche del cliente, con supporto tecnico diretto.',
+        short: 'Soluzioni progettate per soddisfare le esigenze specifiche del cliente.',
         detail: [
-            'Dal disegno tecnico al componente finito senza intermediari',
-            'Simulazione CAD/CAM preventiva per ottimizzare il ciclo',
-            'Supporto diretto con i fondatori: risposte rapide e competenti',
-            'Finiture superficiali, trattamenti termici e controlli dimensionali',
+            'Lavoriamo dal disegno tecnico al componente finito',
+            'Simulazione CAD/CAM preventiva per ottimizzare il ciclo di lavorazioni',
+            'Finiture superficiali, trattamenti termici e controlli frequenti',
         ],
-        tag: 'CAD/CAM · Su commessa · Supporto tecnico',
+        tag: 'CAD/CAM Su commessa · Supporto tecnico',
         image: progettazioneImg,
     },
     {
         title: 'Prototipazione Rapida',
         short: "Ideale per lo sviluppo di nuovi prodotti e l'innovazione industriale.",
         detail: [
-            'Dal file 3D al prototipo fisico in tempi ridottissimi',
+            'Dal file 3D al prototipo fisico in tempi ridotti',
             'Validazione geometrie e test accoppiamenti prima della serie',
-            'Iterazioni rapide nello stesso ciclo produttivo',
-            'Collaborazione con uffici tecnici e startup in tutta Italia',
+            'Collaborazione con uffici tecnici e startup',
         ],
-        tag: 'Prototipo · Iterazione rapida · R&D',
+        tag: 'Prototipo · Iterazione rapida',
         image: null,
     },
     {
         title: 'Ricambistica Industriale',
         short: 'Produzione di componenti per manutenzione e sostituzione in diversi settori.',
         detail: [
-            'Riproduciamo componenti fuori produzione o non più reperibili',
-            'Reverse engineering su pezzi originali anche deteriorati',
             'Lotti piccoli e medi con tempi di consegna certi',
-            'Settori: automotive, food & beverage, macchine utensili',
+            'Settori: packaging, automotive, farmaceutico ed automazione',
         ],
-        tag: 'Reverse engineering · OEM · Manutenzione',
+        tag: 'Reverse engineering · Manutenzione',
         image: null,
     },
 ];
@@ -264,12 +260,12 @@ export default function Servizi() {
                         >
                             Lavorazioni CNC
                             <br />
-                            <span className="gradient-text">di alta precisione</span>
+                            di alta precisione
                         </h1>
                         <div className="fade-up delay-2" style={{ opacity: 0, maxWidth: '32rem' }}>
                             <p className="text-xl leading-relaxed text-slate-500">
                                 Dalla progettazione CAD/CAM al pezzo finito: gestiamo ogni fase con
-                                tecnologia avanzata e controllo qualità rigoroso.
+                                tecnologie avanzate.
                             </p>
                         </div>
                     </div>
@@ -298,8 +294,7 @@ export default function Servizi() {
                             </h2>
                             <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-slate-500">
                                 Scopri il nostro parco macchine: centri di lavoro CNC 5 assi e torni
-                                multi-asse di ultima generazione per garantire precisione su ogni
-                                commessa.
+                                multi-asse per garantire precisione su ogni commessa.
                             </p>
                             <div className="flex flex-wrap justify-center gap-4">
                                 <Link
@@ -320,12 +315,6 @@ export default function Servizi() {
                                             d="M9 5l7 7-7 7"
                                         />
                                     </svg>
-                                </Link>
-                                <Link
-                                    to="/contattaci"
-                                    className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-10 py-4 font-bold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-50"
-                                >
-                                    Richiedi un preventivo
                                 </Link>
                             </div>
                         </Reveal>
