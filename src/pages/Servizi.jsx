@@ -9,59 +9,21 @@ const css = `
 .font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(50px); }
+  from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeUpStrong {
-  from { opacity: 0; transform: translateY(80px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-@keyframes fadeLeft {
-  from { opacity: 0; transform: translateX(-60px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeRight {
-  from { opacity: 0; transform: translateX(60px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-80px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(80px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.85); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-.fade-up        { animation: fadeUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-.fade-up-strong { animation: fadeUpStrong 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-.fade-left      { animation: fadeLeft 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-.fade-right     { animation: fadeRight 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-.scale-in       { animation: scaleIn 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-.slide-left     { animation: slideInLeft 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-.slide-right    { animation: slideInRight 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-.zoom-in        { animation: zoomIn 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-
-.delay-1 { animation-delay: 0.1s; opacity: 0; }
-.delay-2 { animation-delay: 0.2s; opacity: 0; }
-.delay-3 { animation-delay: 0.35s; opacity: 0; }
-.delay-4 { animation-delay: 0.5s; opacity: 0; }
-.delay-5 { animation-delay: 0.7s; opacity: 0; }
+.fade-up  { animation: fadeUp  0.75s cubic-bezier(0.16,1,0.3,1) forwards; }
+.fade-in  { animation: fadeIn  0.6s  ease forwards; }
+.delay-1 { animation-delay: 0.05s; opacity: 0; }
+.delay-2 { animation-delay: 0.15s; opacity: 0; }
+.delay-3 { animation-delay: 0.25s; opacity: 0; }
+.delay-4 { animation-delay: 0.35s; opacity: 0; }
 
 .gradient-text {
   background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #06b6d4 100%);
@@ -102,7 +64,7 @@ const css = `
 `;
 
 // Hook: detects when element enters viewport
-function useInView(threshold = 0.15, triggerOnce = false) {
+function useInView(threshold = 0.15, triggerOnce = true) {
     const ref = useRef(null);
     const [inView, setInView] = useState(false);
 
@@ -136,21 +98,11 @@ function useInView(threshold = 0.15, triggerOnce = false) {
     return [ref, inView];
 }
 
-function Reveal({ children, anim = 'fade-up', delay = '', className = '', threshold = 0.15 }) {
-    const [ref, inView] = useInView(threshold, false);
+function Reveal({ children, delay = '', className = '' }) {
+    const [ref, inView] = useInView(0.15, true);
 
     return (
-        <div
-            ref={ref}
-            className={className}
-            style={{
-                opacity: 0,
-                animation: inView
-                    ? `${anim} 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards`
-                    : 'none',
-                animationDelay: delay ? delay.replace('delay-', '') : '0s',
-            }}
-        >
+        <div ref={ref} className={`${className} ${inView ? `fade-up ${delay}` : 'opacity-0'}`}>
             {children}
         </div>
     );
@@ -208,40 +160,38 @@ const SERVIZI = [
 ];
 
 // Service block with alternating layout
-function ServiceBlock({ s, reverse }) {
-    const [ref, inView] = useInView(0.2, false);
+function ServiceBlock({ s, reverse, index }) {
+    const [ref, inView] = useInView(0.2, true);
+    const delayClass = `delay-${(index % 3) + 1}`;
 
     return (
         <div
             ref={ref}
             className="grid items-center gap-12 border-b border-slate-100 py-20 last:border-none last:pb-4 md:grid-cols-2 md:gap-20 md:py-28"
         >
-            <div
-                className={`${reverse ? 'md:order-2' : ''} ${inView ? (reverse ? 'slide-right' : 'slide-left') : ''}`}
-                style={{
-                    opacity: 0,
-                    animationDelay: '0.1s',
-                }}
-            >
+            <div className={`${reverse ? 'md:order-2' : ''}`}>
                 <div className="mb-5">
-                    <span className="inline-block rounded-full bg-blue-50 px-3 py-1.5 text-xs font-bold tracking-widest text-blue-600 uppercase">
+                    <span
+                        className={`inline-block px-3 py-1.5 text-xs font-bold tracking-widest text-blue-600 uppercase ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
+                    >
                         {s.tag}
                     </span>
                 </div>
-                <h3 className="font-display mb-5 text-3xl leading-tight font-bold text-slate-900 transition-colors duration-300 hover:text-blue-600 md:text-4xl">
+                <h3
+                    className={`font-display mb-5 text-3xl leading-tight font-bold text-slate-900 md:text-4xl ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
+                >
                     {s.title}
                 </h3>
-                <p className="mb-8 text-lg leading-relaxed text-slate-500">{s.short}</p>
+                <p
+                    className={`mb-8 text-lg leading-relaxed text-slate-500 ${inView ? `fade-up delay-2` : 'opacity-0'}`}
+                >
+                    {s.short}
+                </p>
                 <ul className="space-y-4">
                     {s.detail.map((d, i) => (
                         <li
                             key={i}
-                            className="flex items-start gap-3 text-base leading-relaxed text-slate-600"
-                            style={{
-                                opacity: inView ? 1 : 0,
-                                transform: inView ? 'translateX(0)' : 'translateX(-20px)',
-                                transition: `opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) ${0.2 + i * 0.1}s, transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) ${0.2 + i * 0.1}s`,
-                            }}
+                            className={`flex items-start gap-3 text-base leading-relaxed text-slate-600 ${inView ? `fade-up delay-${Math.min(i + 2, 4)}` : 'opacity-0'}`}
                         >
                             <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-500" />
                             {d}
@@ -250,14 +200,10 @@ function ServiceBlock({ s, reverse }) {
                 </ul>
             </div>
 
-            <div
-                className={`${reverse ? 'md:order-1' : ''} ${inView ? (reverse ? 'slide-left' : 'slide-right') : ''}`}
-                style={{
-                    opacity: 0,
-                    animationDelay: '0.2s',
-                }}
-            >
-                <div className="relative h-[360px] overflow-hidden rounded-2xl shadow-md">
+            <div className={`${reverse ? 'md:order-1' : ''}`}>
+                <div
+                    className={`relative h-[360px] overflow-hidden rounded-2xl shadow-md ${inView ? `fade-up delay-2` : 'opacity-0'}`}
+                >
                     {s.image ? (
                         <img
                             src={s.image}
@@ -309,15 +255,18 @@ export default function Servizi() {
                     <div className="relative mx-auto max-w-5xl">
                         <div className="fade-up delay-1" style={{ opacity: 0 }}>
                             <p className="mb-4 text-sm font-bold tracking-widest text-blue-600 uppercase">
-                                — LE NOSTRE COMPETENZE
+                                LE NOSTRE COMPETENZE
                             </p>
                         </div>
-                        <h1 className="font-display mb-6 text-5xl leading-tight font-bold md:text-6xl lg:text-7xl">
+                        <h1
+                            className="font-display fade-up mb-6 text-5xl leading-tight font-bold delay-1 md:text-6xl lg:text-7xl"
+                            style={{ opacity: 0 }}
+                        >
                             Lavorazioni CNC
                             <br />
                             <span className="gradient-text">di alta precisione</span>
                         </h1>
-                        <div className="fade-up delay-3" style={{ opacity: 0, maxWidth: '32rem' }}>
+                        <div className="fade-up delay-2" style={{ opacity: 0, maxWidth: '32rem' }}>
                             <p className="text-xl leading-relaxed text-slate-500">
                                 Dalla progettazione CAD/CAM al pezzo finito: gestiamo ogni fase con
                                 tecnologia avanzata e controllo qualità rigoroso.
@@ -329,7 +278,7 @@ export default function Servizi() {
                 {/* Services */}
                 <section className="px-6">
                     <div className="mx-auto max-w-5xl">
-                        <Reveal anim="fade-up" delay="delay-1">
+                        <Reveal delay="delay-1">
                             <p className="mb-3 text-sm font-bold tracking-widest text-blue-600 uppercase">
                                 — COSA OFFRIAMO
                             </p>
@@ -339,7 +288,7 @@ export default function Servizi() {
                         </Reveal>
 
                         {SERVIZI.map((s, i) => (
-                            <ServiceBlock key={s.title} s={s} reverse={i % 2 !== 0} />
+                            <ServiceBlock key={s.title} s={s} reverse={i % 2 !== 0} index={i} />
                         ))}
                     </div>
                 </section>
@@ -347,9 +296,9 @@ export default function Servizi() {
                 {/* CTA */}
                 <section className="border-t border-slate-200 bg-white px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-3xl text-center">
-                        <div className="fade-up delay-1" style={{ opacity: 0 }}>
+                        <Reveal delay="delay-1">
                             <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                — La tecnologia dietro ogni lavorazione
+                                La tecnologia dietro ogni lavorazione
                             </p>
                             <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                                 Vuoi sapere
@@ -388,7 +337,7 @@ export default function Servizi() {
                                     Richiedi un preventivo
                                 </Link>
                             </div>
-                        </div>
+                        </Reveal>
                     </div>
                 </section>
             </div>

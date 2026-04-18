@@ -218,7 +218,7 @@ function SettoriCarousel() {
             <div className="mb-16">
                 <Reveal delay="d1">
                     <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                        — Settori di applicazione
+                        Settori di applicazione
                     </p>
                     <h2 className="font-display text-4xl font-bold md:text-5xl">
                         Dove lavora la nostra precisione
@@ -249,7 +249,6 @@ function SettoriCarousel() {
                         ))}
                     </div>
 
-                    {/* Contenuto attivo */}
                     <div className="md:col-span-3">
                         <div
                             className="flex h-64 flex-col justify-center rounded-2xl border border-slate-100 bg-white p-10 shadow-sm transition-opacity duration-200"
@@ -290,7 +289,7 @@ export default function Home() {
             <style>{css}</style>
 
             <div className="font-body bg-white text-slate-800">
-                {/* 1 — Hero */}
+                {/* Hero */}
                 <section className="relative h-svh w-full overflow-hidden">
                     <video
                         className="absolute inset-0 h-full w-full object-cover"
@@ -344,13 +343,13 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* 2 — Servizi */}
+                {/* Servizi */}
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 max-w-2xl">
                             <Reveal delay="d1">
                                 <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                    — Cosa facciamo
+                                    Cosa facciamo
                                 </p>
                                 <h2 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
                                     Lavorazioni CNC
@@ -370,7 +369,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* 3 — Officina / foto */}
+                {/* Officina / foto */}
                 <section className="relative overflow-hidden">
                     <img
                         src={officina}
@@ -418,12 +417,12 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* 4 — Settori */}
+                {/* Settori */}
                 <section className="bg-slate-50 px-6 py-32 md:py-40">
                     <SettoriCarousel />
                 </section>
 
-                {/* 5 — Video lavorazione */}
+                {/* Video lavorazione */}
                 <section className="relative h-[60vh] w-full overflow-hidden">
                     <video
                         className="absolute inset-0 h-full w-full object-cover"
@@ -450,11 +449,11 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* 6 — CTA finale */}
+                {/* CTA */}
                 <section className="bg-white px-6 py-24 text-center md:py-32">
                     <Reveal>
                         <p className="mb-6 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                            — Iniziamo a lavorare insieme
+                            Iniziamo a lavorare insieme
                         </p>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                             Hai un progetto?
