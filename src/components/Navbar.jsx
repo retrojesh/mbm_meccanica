@@ -11,6 +11,13 @@ export default function Navbar() {
 
     const isDark = isHome && !scrolled;
 
+    const isActive = path => {
+        if (path === '/') {
+            return location.pathname === '/';
+        }
+        return location.pathname === path;
+    };
+
     useEffect(() => {
         const handleScroll = () => {
             const currentY = window.scrollY;
@@ -32,6 +39,14 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const navLinks = [
+        { to: '/', label: 'Home' },
+        { to: '/azienda', label: 'Azienda' },
+        { to: '/servizi', label: 'Servizi' },
+        { to: '/parco-macchine', label: 'Parco Macchine' },
+        { to: '/contattaci', label: 'Contattaci' },
+    ];
+
     return (
         <nav
             className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'} ${
@@ -52,29 +67,34 @@ export default function Navbar() {
                         />
                     </Link>
 
+                    {/* Menu Desktop */}
                     <div className="hidden gap-10 md:flex">
-                        {[
-                            { to: '/', label: 'Home' },
-                            { to: '/azienda', label: 'Azienda' },
-                            { to: '/servizi', label: 'Servizi' },
-                            { to: '/parco-macchine', label: 'Parco Macchine' },
-                            { to: '/contattaci', label: 'Contattaci' },
-                        ].map(({ to, label }) => (
-                            <Link
-                                key={to}
-                                to={to}
-                                className={`font-medium transition-colors duration-200 ${
-                                    isDark
-                                        ? 'text-white hover:text-blue-300'
-                                        : 'text-slate-700 hover:text-blue-600'
-                                }`}
-                            >
-                                {label}
-                            </Link>
-                        ))}
+                        {navLinks.map(({ to, label }) => {
+                            const active = isActive(to);
+                            return (
+                                <Link
+                                    key={to}
+                                    to={to}
+                                    className={`relative font-medium transition-colors duration-200 ${
+                                        isDark
+                                            ? `text-white hover:text-blue-300 ${active ? 'text-blue-300' : ''}`
+                                            : `text-slate-700 hover:text-blue-600 ${active ? 'text-blue-600' : ''}`
+                                    }`}
+                                >
+                                    {label}
+                                    {active && (
+                                        <span
+                                            className={`absolute right-0 -bottom-1 left-0 h-0.5 rounded-full ${
+                                                isDark ? 'bg-blue-300' : 'bg-blue-600'
+                                            }`}
+                                        />
+                                    )}
+                                </Link>
+                            );
+                        })}
                     </div>
 
-                    {/* Hamburger Menù*/}
+                    {/* Hamburger Menu */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="md:hidden"
@@ -107,24 +127,26 @@ export default function Navbar() {
                     </button>
                 </div>
 
+                {/* Menu Mobile */}
                 {isOpen && (
                     <div className="space-y-1 rounded-xl border border-slate-100 bg-white/95 px-4 py-4 shadow-lg backdrop-blur-md md:hidden">
-                        {[
-                            { to: '/', label: 'Home' },
-                            { to: '/azienda', label: 'Azienda' },
-                            { to: '/servizi', label: 'Servizi' },
-                            { to: '/parco-macchine', label: 'Parco Macchine' },
-                            { to: '/contattaci', label: 'Contattaci' },
-                        ].map(({ to, label }) => (
-                            <Link
-                                key={to}
-                                to={to}
-                                onClick={() => setIsOpen(false)}
-                                className="block rounded-lg px-3 py-2.5 font-medium text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
-                            >
-                                {label}
-                            </Link>
-                        ))}
+                        {navLinks.map(({ to, label }) => {
+                            const active = isActive(to);
+                            return (
+                                <Link
+                                    key={to}
+                                    to={to}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`block rounded-lg px-3 py-2.5 font-medium transition-colors ${
+                                        active
+                                            ? 'bg-blue-50 text-blue-600'
+                                            : 'text-slate-700 hover:bg-blue-50 hover:text-blue-600'
+                                    }`}
+                                >
+                                    {label}
+                                </Link>
+                            );
+                        })}
                     </div>
                 )}
             </div>
