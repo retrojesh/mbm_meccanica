@@ -167,7 +167,7 @@ const SETTORI = [
     },
     {
         num: '02',
-        title: 'Motorsport',
+        title: 'Automotive',
         desc: 'Particolari ultraleggeri e ad altissima resistenza per auto ad alte prestazioni in edizioni limitate, dove ogni grammo e ogni decimo contano.',
         icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
         color: 'text-red-600',
@@ -304,11 +304,11 @@ export default function Home() {
                     <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
                         <h1 className="font-display fade-up d2 mb-6 text-5xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
                             Precisione <br />
-                            <span className="gradient-text">che si vede.</span>
+                            <span>che si vede.</span>
                         </h1>
                         <p className="fade-up d3 mx-auto mb-10 max-w-xl text-lg text-white/75 md:text-xl">
                             Tornitura e fresatura CNC di alta precisione per il settore packaging,
-                            motorsport e meccanica di precisione.
+                            automotive, farmaceutico ed automazione.
                         </p>
                         <div className="fade-up d4 flex flex-wrap justify-center gap-4">
                             <Link
@@ -389,9 +389,8 @@ export default function Home() {
                                     costruita per crescere
                                 </h2>
                                 <p className="mb-8 text-lg leading-relaxed text-white/75">
-                                    700 m² a Castelvetro di Modena, con temperatura controllata a
-                                    20° tutto l'anno, progettata per ospitare macchinari CNC di
-                                    ultima generazione e crescere con le esigenze dei clienti.
+                                    Pensata per ospitare macchinari CNC di ultima generazione e
+                                    crescere con le esigenze dei clienti.
                                 </p>
                                 <Link
                                     to="/azienda"
@@ -442,8 +441,8 @@ export default function Home() {
                             </h2>
                             <p className="max-w-md text-lg leading-relaxed text-white/70">
                                 Siamo una realtà giovane e dinamica con l'ambizione di diventare il
-                                partner di riferimento per la meccanica di precisione in
-                                Emilia-Romagna. Ogni commessa è seguita direttamente dai fondatori.
+                                partner di riferimento per la meccanica industriale in
+                                Emilia-Romagna.
                             </p>
                         </Reveal>
                     </div>
@@ -453,12 +452,11 @@ export default function Home() {
                 <section className="bg-white px-6 py-24 text-center md:py-32">
                     <Reveal>
                         <p className="mb-6 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                            Iniziamo a lavorare insieme
+                            Lavoriamo insieme
                         </p>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                             Hai un progetto?
                             <br />
-                            Parliamone subito.
                         </h2>
                         <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-slate-500">
                             Inviaci il disegno tecnico o descrivi il componente: prepareremo un
