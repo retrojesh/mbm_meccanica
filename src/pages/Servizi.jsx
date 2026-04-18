@@ -278,15 +278,6 @@ export default function Servizi() {
                 {/* Services */}
                 <section className="px-6">
                     <div className="mx-auto max-w-5xl">
-                        <Reveal delay="delay-1">
-                            <p className="mb-3 text-sm font-bold tracking-widest text-blue-600 uppercase">
-                                — COSA OFFRIAMO
-                            </p>
-                            <h2 className="font-display mb-12 text-4xl font-bold text-slate-900 md:text-5xl">
-                                I nostri servizi
-                            </h2>
-                        </Reveal>
-
                         {SERVIZI.map((s, i) => (
                             <ServiceBlock key={s.title} s={s} reverse={i % 2 !== 0} index={i} />
                         ))}
