@@ -364,7 +364,7 @@ export default function ParcoMacchine() {
                             <h1 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
                                 Tecnologia CNC
                                 <br />
-                                <span className="gradient-text">al servizio della precisione</span>
+                                <span> al servizio della precisione </span>
                             </h1>
                             <p className="mb-16 max-w-2xl text-lg leading-relaxed text-slate-500">
                                 Quattro centri di lavoro CNC per tornitura e fresatura multi-asse,
