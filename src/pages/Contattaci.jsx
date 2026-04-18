@@ -148,7 +148,7 @@ export default function Contatti() {
                             <div className="space-y-4">
                                 <Reveal delay="d1">
                                     <p className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                        — Contattaci
+                                        Contattaci
                                     </p>
                                 </Reveal>
                                 {INFO.map((item, i) => (
@@ -160,7 +160,7 @@ export default function Contatti() {
                             <div className="space-y-4">
                                 <Reveal delay="d1">
                                     <p className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                        — Orari di apertura
+                                        Orari di apertura
                                     </p>
                                 </Reveal>
 
@@ -203,7 +203,7 @@ export default function Contatti() {
                         <div className="mt-16">
                             <Reveal delay="d1">
                                 <div className="mb-8 text-center">
-                                    <div className="mb-4 inline-block rounded-lg bg-blue-600/10 px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
+                                    <div className="mb-4 inline-block px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
                                         Dove trovarci
                                     </div>
                                     <h2 className="font-display text-3xl font-bold text-slate-900 md:text-4xl">
