@@ -244,11 +244,7 @@ export default function Contatti() {
                 <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-24 text-center md:py-32">
                     <Reveal>
                         <h2 className="mx-auto mb-6 max-w-2xl font-serif text-4xl font-bold text-white md:text-5xl">
-                            Hai un progetto?
-                            <br />
-                            <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-                                Scrivici subito.
-                            </span>
+                            Contattaci qui
                         </h2>
                         <p className="mx-auto mb-10 max-w-lg text-lg leading-relaxed text-white/65">
                             Siamo sempre disponibili per rispondere alle tue domande, discutere i
