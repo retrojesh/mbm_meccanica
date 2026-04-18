@@ -75,20 +75,18 @@ export default function Navbar() {
                                 <Link
                                     key={to}
                                     to={to}
-                                    className={`relative font-medium transition-colors duration-200 ${
+                                    className={`group relative font-medium transition-colors duration-200 ${
                                         isDark
                                             ? `text-white hover:text-blue-300 ${active ? 'text-blue-300' : ''}`
                                             : `text-slate-700 hover:text-blue-600 ${active ? 'text-blue-600' : ''}`
                                     }`}
                                 >
                                     {label}
-                                    {active && (
-                                        <span
-                                            className={`absolute right-0 -bottom-1 left-0 h-0.5 rounded-full ${
-                                                isDark ? 'bg-blue-300' : 'bg-blue-600'
-                                            }`}
-                                        />
-                                    )}
+                                    <span
+                                        className={`absolute right-0 -bottom-1 left-0 h-0.5 rounded-full transition-all duration-200 ${
+                                            active || 'scale-x-0 group-hover:scale-x-100'
+                                        } ${isDark ? 'bg-blue-300' : 'bg-blue-600'}`}
+                                    />
                                 </Link>
                             );
                         })}
