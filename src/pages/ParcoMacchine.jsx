@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import '../styles/global.css';
 
 import pezzo1 from '../assets/pages/parco-macchine/pezzi/pezzo-1.webp';
 import pezzo2 from '../assets/pages/parco-macchine/pezzi/pezzo-2.webp';
@@ -12,32 +13,6 @@ import pezzo8 from '../assets/pages/parco-macchine/pezzi/pezzo-8.webp';
 import pezzo9 from '../assets/pages/parco-macchine/pezzi/pezzo-9.webp';
 import pezzo10 from '../assets/pages/parco-macchine/pezzi/pezzo-10.webp';
 import pezzo11 from '../assets/pages/parco-macchine/pezzi/pezzo-11.webp';
-
-const css = `
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-.font-display { font-family: 'DM Serif Display', Georgia, serif; }
-.font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-up { animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-@keyframes imgFade { from { opacity: 0; } to { opacity: 1; } }
-.img-fade { animation: imgFade 0.35s ease; }
-.d1 { animation-delay: 0.05s; opacity: 0; }
-.d2 { animation-delay: 0.12s; opacity: 0; }
-.d3 { animation-delay: 0.19s; opacity: 0; }
-.d4 { animation-delay: 0.26s; opacity: 0; }
-.gradient-text {
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.gradient-bg {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-}
-`;
 
 const PEZZI = [pezzo1, pezzo2, pezzo3, pezzo4, pezzo5, pezzo6, pezzo8, pezzo9, pezzo10, pezzo11];
 
@@ -352,7 +327,6 @@ export default function ParcoMacchine() {
                 description="Fresatura CNC e tornitura CNC di alta precisione con progettazione CAD/CAM. MBM Meccanica realizza componenti per automotive, motorsport e packaging a Castelvetro di Modena. Conto terzi e su commessa."
                 keywords="fresatura CNC Modena, tornitura CNC Modena, fresatura CNC Castelvetro, tornitura CNC Castelvetro, lavorazioni CNC Emilia Romagna, CAD CAM Modena, fresatura di precisione, tornitura di precisione, lavorazioni meccaniche conto terzi, officina CNC Modena, componenti meccanici motorsport, lavorazioni settore packaging, prototipazione meccanica Modena, fresatura 5 assi Modena"
             />
-            <style>{css}</style>
 
             <div className="font-body bg-white text-slate-800">
                 <section className="mt-20 px-6 pt-20 pb-24 md:pt-28 md:pb-32">

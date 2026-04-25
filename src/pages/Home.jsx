@@ -3,49 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
 import officina from '../assets/pages/azienda/photos/officina.jpg';
-
-const css = `
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-.font-display { font-family: 'DM Serif Display', Georgia, serif; }
-.font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.fade-up  { animation: fadeUp  0.75s cubic-bezier(0.16,1,0.3,1) forwards; }
-.fade-in  { animation: fadeIn  0.6s  ease forwards; }
-.d1 { animation-delay: 0.05s; opacity: 0; }
-.d2 { animation-delay: 0.15s; opacity: 0; }
-.d3 { animation-delay: 0.25s; opacity: 0; }
-.d4 { animation-delay: 0.35s; opacity: 0; }
-
-.gradient-text {
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.card-hover {
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
-}
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12);
-}
-.hero-scroll-arrow {
-  animation: heroArrow 2s ease-in-out infinite;
-}
-@keyframes heroArrow {
-  0%, 100% { transform: translateY(0);   opacity: 1; }
-  50%       { transform: translateY(8px); opacity: 0.5; }
-}
-`;
+import '../styles/global.css';
 
 function Reveal({ children, delay = '', className = '' }) {
     const ref = useRef(null);
@@ -286,7 +244,6 @@ export default function Home() {
                 keywords="MBM Meccanica, metalmeccanica Castelvetro di Modena, metalmeccanica Modena, officina meccanica Modena, lavorazioni meccaniche di precisione, lavorazioni conto terzi Modena, lavorazioni su commessa Modena, officina meccanica Emilia Romagna, componenti meccanici automotive, lavorazioni settore alimentare, componenti Formula 1, metalmeccanica Emilia Romagna"
             />
             <JsonLd />
-            <style>{css}</style>
 
             <div className="font-body bg-white text-slate-800">
                 {/* Hero */}
