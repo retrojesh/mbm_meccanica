@@ -29,7 +29,7 @@ function App() {
                 <Route path="/servizi" element={<Servizi />} />
                 <Route path="/parco-macchine" element={<ParcoMacchine />} />
                 <Route path="/contattaci" element={<Contattaci />} />
-                <Route path="/privacy" element={<PrivacyPage />} /> {/* ← nuova rotta */}
+                <Route path="/privacy" element={<PrivacyPage />} />
             </Routes>
             <PrivacyBanner />
         </BrowserRouter>
