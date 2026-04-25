@@ -1,67 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import '../styles/global.css';
 import progettazioneImg from '../assets/pages/servizi/progettazione.jpg';
-
-const css = `
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-.font-display { font-family: 'DM Serif Display', Georgia, serif; }
-.font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.fade-up  { animation: fadeUp  0.75s cubic-bezier(0.16,1,0.3,1) forwards; }
-.fade-in  { animation: fadeIn  0.6s  ease forwards; }
-.delay-1 { animation-delay: 0.05s; opacity: 0; }
-.delay-2 { animation-delay: 0.15s; opacity: 0; }
-.delay-3 { animation-delay: 0.25s; opacity: 0; }
-.delay-4 { animation-delay: 0.35s; opacity: 0; }
-
-.gradient-text {
-  background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  background-size: 200% 200%;
-  animation: gradientShift 3s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.service-card {
-  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.2);
-}
-
-.image-placeholder {
-  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-.image-placeholder:hover {
-  transform: scale(1.02);
-}
-
-.hover-lift {
-  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-.hover-lift:hover {
-  transform: translateY(-4px);
-}
-`;
 
 // Hook: detects when element enters viewport
 function useInView(threshold = 0.15, triggerOnce = true) {
@@ -240,7 +181,6 @@ export default function Servizi() {
                 description="Fresatura CNC e tornitura CNC di alta precisione con progettazione CAD/CAM. MBM Meccanica realizza componenti per automotive, motorsport e packaging. Preventivi personalizzati."
                 keywords="fresatura CNC Modena, tornitura CNC Modena, lavorazioni CNC Emilia Romagna, CAD CAM Modena, fresatura di precisione, tornitura di precisione, officina CNC Modena, componenti meccanici motorsport, prototipazione meccanica Modena, fresatura 5 assi Modena"
             />
-            <style>{css}</style>
 
             <div className="font-body min-h-screen bg-white text-slate-800">
                 {/* Hero */}

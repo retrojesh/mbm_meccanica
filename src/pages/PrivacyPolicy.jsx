@@ -1,23 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-
-const css = `
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-.font-display { font-family: 'DM Serif Display', Georgia, serif; }
-.font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.fade-up { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.d1 { animation-delay: 0.05s; opacity: 0; }
-.d2 { animation-delay: 0.15s; opacity: 0; }
-.d3 { animation-delay: 0.25s; opacity: 0; }
-.d4 { animation-delay: 0.35s; opacity: 0; }
-`;
+import '../styles/global.css';
 
 function Reveal({ children, delay = '', className = '' }) {
     const ref = useRef(null);
@@ -52,7 +36,6 @@ export default function PrivacyPage() {
                 description="Informativa sulla privacy del sito MBM Meccanica. Nessuna raccolta di dati personali, solo cookie tecnici e mappa Google Maps."
                 keywords="privacy policy MBM Meccanica, trattamento dati, cookie"
             />
-            <style>{css}</style>
 
             <div className="font-body min-h-screen bg-white text-slate-800">
                 {/* Hero */}

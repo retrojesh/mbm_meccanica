@@ -2,43 +2,7 @@ import officina from '../assets/pages/azienda/photos/officina.jpg';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
 import { useEffect, useRef, useState } from 'react';
-
-const font = `@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-.font-display { font-family: 'DM Serif Display', Georgia, serif; }
-.font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(-24px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes expandLine {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-.fade-up { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.scale-in { animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.slide-in { animation: slideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.expand-line { animation: expandLine 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: left; transform: scaleX(0); }
-.d1 { animation-delay: 0.1s; opacity: 0; }
-.d2 { animation-delay: 0.2s; opacity: 0; }
-.d3 { animation-delay: 0.3s; opacity: 0; }
-.d4 { animation-delay: 0.4s; opacity: 0; }
-.gradient-text {
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.gradient-bg {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-}`;
+import '../styles/global.css';
 
 function Reveal({ children, delay = '', className = '' }) {
     const ref = useRef(null);
@@ -54,34 +18,6 @@ function Reveal({ children, delay = '', className = '' }) {
     return (
         <div ref={ref} className={`${inView ? `fade-up ${delay}` : 'opacity-0'} ${className}`}>
             {children}
-        </div>
-    );
-}
-
-function RevealRow({ children, delay = '', className = '' }) {
-    const ref = useRef(null);
-    const [inView, setInView] = useState(false);
-    useEffect(() => {
-        const obs = new IntersectionObserver(
-            ([e]) => e.isIntersecting && setInView(true) && obs.disconnect(),
-            { threshold: 0.1 }
-        );
-        if (ref.current) obs.observe(ref.current);
-        return () => obs.disconnect();
-    }, []);
-    return (
-        <div ref={ref} className={className}>
-            <div
-                className={inView ? `expand-line ${delay}` : ''}
-                style={{
-                    height: '1px',
-                    background: '#e2e8f0',
-                    marginBottom: '2.75rem',
-                    transformOrigin: 'left',
-                    transform: inView ? undefined : 'scaleX(0)',
-                }}
-            />
-            <div className={inView ? `slide-in ${delay}` : 'opacity-0'}>{children}</div>
         </div>
     );
 }
@@ -106,8 +42,6 @@ export default function Azienda() {
             <JsonLd />
 
             <div className="font-body min-h-screen bg-white text-slate-800">
-                <style>{font}</style>
-
                 {/* Hero Section */}
                 <section className="relative mt-20 flex h-[calc(100vh-80px)] items-center justify-center overflow-hidden text-center">
                     <img
