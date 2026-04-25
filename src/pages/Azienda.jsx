@@ -58,34 +58,6 @@ function Reveal({ children, delay = '', className = '' }) {
     );
 }
 
-function RevealRow({ children, delay = '', className = '' }) {
-    const ref = useRef(null);
-    const [inView, setInView] = useState(false);
-    useEffect(() => {
-        const obs = new IntersectionObserver(
-            ([e]) => e.isIntersecting && setInView(true) && obs.disconnect(),
-            { threshold: 0.1 }
-        );
-        if (ref.current) obs.observe(ref.current);
-        return () => obs.disconnect();
-    }, []);
-    return (
-        <div ref={ref} className={className}>
-            <div
-                className={inView ? `expand-line ${delay}` : ''}
-                style={{
-                    height: '1px',
-                    background: '#e2e8f0',
-                    marginBottom: '2.75rem',
-                    transformOrigin: 'left',
-                    transform: inView ? undefined : 'scaleX(0)',
-                }}
-            />
-            <div className={inView ? `slide-in ${delay}` : 'opacity-0'}>{children}</div>
-        </div>
-    );
-}
-
 export default function Azienda() {
     const [activeIndex, setActiveIndex] = useState(0);
 
