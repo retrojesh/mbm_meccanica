@@ -33,7 +33,6 @@ const MACCHINE = [
     {
         cat: 'Tornitura',
         nome: 'DMG CTX 410',
-        brand: 'Gildemeister',
         lavorazione: 'Tornitura di alberi, flange e collari con asse Y per fresature fuori centro.',
         video: '/video/macchine/ctx-410.mp4',
         specs: [
@@ -48,7 +47,6 @@ const MACCHINE = [
     {
         cat: 'Tornitura',
         nome: 'DMG Mori NLX 2000Y/500',
-        brand: 'DMG Mori',
         lavorazione: 'Tornitura di alta precisione con torretta motorizzata e asse Y per lavorazioni complete in un solo serraggio.',
         video: '/video/macchine/nlx-2000y.mp4',
         specs: [
@@ -63,7 +61,6 @@ const MACCHINE = [
     {
         cat: 'Fresatura 5 assi',
         nome: 'Sigma Flexy',
-        brand: 'Sigma',
         lavorazione: 'Fresatura su pezzi lunghi e complessi con testa orientabile a 5 assi simultanei.',
         video: '/video/macchine/sigma-flexy.mp4',
         specs: [
@@ -78,7 +75,6 @@ const MACCHINE = [
     {
         cat: 'Fresatura 3 assi',
         nome: 'G.F. HSM 800',
-        brand: 'Georg Fischer',
         lavorazione: 'Fresatura ad alta velocità per stampi, particolari di precisione e superfici complesse.',
         video: '/video/macchine/gf-hsm-800.mp4',
         specs: [
@@ -107,6 +103,38 @@ function Reveal({ children, delay = '', className = '' }) {
         <div ref={ref} className={`${inView ? `fade-up ${delay}` : 'opacity-0'} ${className}`}>
             {children}
         </div>
+    );
+}
+
+// Video che si carica e parte solo quando entra in viewport, e si mette
+// in pausa quando esce. Rispetta prefers-reduced-motion (resta fermo).
+function MachineVideo({ src }) {
+    const ref = useRef(null);
+    useEffect(() => {
+        const video = ref.current;
+        if (!video) return;
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) return;
+        const obs = new IntersectionObserver(
+            ([e]) => {
+                if (e.isIntersecting) video.play().catch(() => {});
+                else video.pause();
+            },
+            { threshold: 0.25 }
+        );
+        obs.observe(video);
+        return () => obs.disconnect();
+    }, []);
+    return (
+        <video
+            ref={ref}
+            src={src}
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 h-full w-full object-cover"
+        />
     );
 }
 
@@ -241,6 +269,7 @@ function PezziCarousel() {
                                 onPointerMove={onPointerMove}
                                 onPointerUp={onPointerUp}
                                 onPointerCancel={onPointerUp}
+         
                                 style={{ touchAction: 'none' }}
                             >
                                 <div ref={stripRef} className="flex h-full">
@@ -354,21 +383,14 @@ export default function ParcoMacchine() {
                             </p>
                         </Reveal>
 
-                        <div className="divide-y divide-slate-100">
+                        <div className="space-y-8 md:space-y-10">
                             {MACCHINE.map((m) => (
                                 <Reveal key={m.nome} delay="d1">
                                     {/* Card — video con overlay cinematografico */}
                                     <div className="relative w-full overflow-hidden rounded-xl" style={{ aspectRatio: '16/9' }}>
                                         {/* Video / placeholder */}
                                         {m.video ? (
-                                            <video
-                                                src={m.video}
-                                                autoPlay
-                                                muted
-                                                loop
-                                                playsInline
-                                                className="absolute inset-0 h-full w-full object-cover"
-                                            />
+                                            <MachineVideo src={m.video} />
                                         ) : (
                                             <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
                                                 <div className="flex flex-col items-center gap-2 text-slate-600">
@@ -388,10 +410,9 @@ export default function ParcoMacchine() {
                                             <span className="mb-2 block text-xs font-bold tracking-widest text-blue-400 uppercase">
                                                 {m.cat}
                                             </span>
-                                            <h2 className="font-display mb-0.5 text-2xl font-bold text-white md:text-4xl">
+                                            <h2 className="font-display mb-4 text-2xl font-bold text-white md:text-4xl">
                                                 {m.nome}
                                             </h2>
-                                            <p className="mb-4 text-sm text-slate-400">{m.brand}</p>
                                             {m.lavorazione && (
                                                 <p className="mb-5 max-w-xl text-sm leading-relaxed text-slate-300">
                                                     {m.lavorazione}
