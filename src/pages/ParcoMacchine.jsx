@@ -34,6 +34,8 @@ const MACCHINE = [
         cat: 'Tornitura',
         nome: 'DMG CTX 410',
         brand: 'Gildemeister',
+        lavorazione: 'Tornitura di alberi, flange e collari con asse Y per fresature fuori centro.',
+        video: '/video/macchine/ctx-410.mp4',
         specs: [
             { label: 'Ø tornitura max', value: '320 mm' },
             { label: 'Lunghezza max', value: '600 mm' },
@@ -47,6 +49,8 @@ const MACCHINE = [
         cat: 'Tornitura',
         nome: 'DMG Mori NLX 2000Y/500',
         brand: 'DMG Mori',
+        lavorazione: 'Tornitura di alta precisione con torretta motorizzata e asse Y per lavorazioni complete in un solo serraggio.',
+        video: '/video/macchine/nlx-2000y.mp4',
         specs: [
             { label: 'Ø tornitura max', value: '275 mm' },
             { label: 'Lunghezza max', value: '510 mm' },
@@ -60,6 +64,8 @@ const MACCHINE = [
         cat: 'Fresatura 5 assi',
         nome: 'Sigma Flexy',
         brand: 'Sigma',
+        lavorazione: 'Fresatura su pezzi lunghi e complessi con testa orientabile a 5 assi simultanei.',
+        video: '/video/macchine/sigma-flexy.mp4',
         specs: [
             { label: 'Lunghezza max X', value: '2.200 mm' },
             { label: 'Lunghezza max Y', value: '700 mm' },
@@ -73,6 +79,8 @@ const MACCHINE = [
         cat: 'Fresatura 3 assi',
         nome: 'G.F. HSM 800',
         brand: 'Georg Fischer',
+        lavorazione: 'Fresatura ad alta velocità per stampi, particolari di precisione e superfici complesse.',
+        video: '/video/macchine/gf-hsm-800.mp4',
         specs: [
             { label: 'Lunghezza max X', value: '1.000 mm' },
             { label: 'Lunghezza max Y', value: '700 mm' },
@@ -347,51 +355,58 @@ export default function ParcoMacchine() {
                         </Reveal>
 
                         <div className="divide-y divide-slate-100">
-                            {MACCHINE.map((m, i) => (
+                            {MACCHINE.map((m) => (
                                 <Reveal key={m.nome} delay="d1">
-                                    <div
-                                        className={`flex flex-col md:flex-row ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
-                                    >
-                                        {/* Foto */}
-                                        <div className="flex h-64 w-full shrink-0 items-center justify-center bg-slate-100 md:h-auto md:w-1/2">
-                                            <div className="flex flex-col items-center gap-2 text-slate-300">
-                                                <svg
-                                                    className="h-10 w-10"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={1}
-                                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                                                    />
-                                                </svg>
-                                                <span className="text-xs">foto in arrivo</span>
+                                    {/* Card — video con overlay cinematografico */}
+                                    <div className="relative w-full overflow-hidden rounded-xl" style={{ aspectRatio: '16/9' }}>
+                                        {/* Video / placeholder */}
+                                        {m.video ? (
+                                            <video
+                                                src={m.video}
+                                                autoPlay
+                                                muted
+                                                loop
+                                                playsInline
+                                                className="absolute inset-0 h-full w-full object-cover"
+                                            />
+                                        ) : (
+                                            <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
+                                                <div className="flex flex-col items-center gap-2 text-slate-600">
+                                                    <svg className="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    </svg>
+                                                    <span className="text-xs">video in arrivo</span>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
 
-                                        {/* Specs */}
-                                        <div className="flex flex-1 flex-col justify-center px-8 py-10 md:px-12 md:py-14">
-                                            <span className="mb-3 text-xs font-bold tracking-widest text-blue-600 uppercase">
+                                        {/* Gradiente overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+
+                                        {/* Contenuto sovrapposto */}
+                                        <div className="absolute inset-x-0 bottom-0 p-6 md:p-10">
+                                            <span className="mb-2 block text-xs font-bold tracking-widest text-blue-400 uppercase">
                                                 {m.cat}
                                             </span>
-                                            <h2 className="font-display mb-1 text-3xl font-bold text-slate-900">
+                                            <h2 className="font-display mb-0.5 text-2xl font-bold text-white md:text-4xl">
                                                 {m.nome}
                                             </h2>
-                                            <p className="mb-8 text-sm text-slate-400">{m.brand}</p>
+                                            <p className="mb-4 text-sm text-slate-400">{m.brand}</p>
+                                            {m.lavorazione && (
+                                                <p className="mb-5 max-w-xl text-sm leading-relaxed text-slate-300">
+                                                    {m.lavorazione}
+                                                </p>
+                                            )}
 
-                                            <div className="grid grid-cols-2 gap-x-8">
+                                            {/* Dati tecnici come pillole */}
+                                            <div className="flex flex-wrap gap-2">
                                                 {m.specs.map(s => (
                                                     <div
                                                         key={s.label}
-                                                        className="border-b border-slate-100 py-3"
+                                                        className="rounded-lg bg-white/10 px-3 py-2 backdrop-blur-sm"
                                                     >
-                                                        <p className="mb-0.5 text-xs text-slate-400">
-                                                            {s.label}
-                                                        </p>
-                                                        <p className="text-sm font-semibold text-slate-900 tabular-nums">
+                                                        <p className="text-[10px] text-slate-400">{s.label}</p>
+                                                        <p className="text-xs font-semibold text-white tabular-nums">
                                                             {s.value}
                                                         </p>
                                                     </div>
