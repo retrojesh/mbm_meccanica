@@ -48,7 +48,7 @@ const MACCHINE = [
         cat: 'Tornitura',
         nome: 'DMG Mori NLX 2000Y/500',
         lavorazione: 'Tornitura di alta precisione con torretta motorizzata e asse Y per lavorazioni complete in un solo serraggio.',
-        video: '/video/macchine/nlx-2000y.mp4',
+        video: '/video/macchine/dmg-mori.mp4',
         specs: [
             { label: 'Ø tornitura max', value: '275 mm' },
             { label: 'Lunghezza max', value: '510 mm' },
