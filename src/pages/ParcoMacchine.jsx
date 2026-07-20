@@ -207,7 +207,9 @@ function PezziCarousel() {
             if (!containerRef.current || !stripRef.current) return;
             const cw = containerRef.current.offsetWidth;
             cwRef.current = cw;
-            const sw = cw * 0.6;
+            // Su mobile slide più larghe (foto orizzontali meno ritagliate); su desktop resta 60%
+            const frac = window.innerWidth < 768 ? 0.85 : 0.6;
+            const sw = cw * frac;
             swRef.current = sw;
             stripRef.current.style.width = `${total * sw}px`;
             Array.from(stripRef.current.children).forEach(el => {
@@ -264,7 +266,7 @@ function PezziCarousel() {
                     <div className="flex items-start gap-6 md:gap-10">
                         <div ref={containerRef} className="min-w-0 flex-1">
                             <div
-                                className="h-[330px] w-full cursor-grab overflow-hidden select-none active:cursor-grabbing"
+                                className="h-[240px] w-full cursor-grab overflow-hidden select-none active:cursor-grabbing md:h-[330px]"
                                 onPointerDown={onPointerDown}
                                 onPointerMove={onPointerMove}
                                 onPointerUp={onPointerUp}
@@ -278,7 +280,7 @@ function PezziCarousel() {
                                             <img
                                                 src={src}
                                                 alt=""
-                                                draggable="false"
+                                                draggable="false"   
                                                 className="h-full w-full rounded-xl object-cover"
                                                 style={
                                                     src === PEZZI[2]
@@ -386,9 +388,10 @@ export default function ParcoMacchine() {
                         <div className="space-y-8 md:space-y-10">
                             {MACCHINE.map((m) => (
                                 <Reveal key={m.nome} delay="d1">
-                                    {/* Card — video con overlay cinematografico */}
-                                    <div className="relative w-full overflow-hidden rounded-xl" style={{ aspectRatio: '16/9' }}>
-                                        {/* Video / placeholder */}
+                                    {/* Card — mobile: impilata (video sopra, testo sotto). desktop: overlay cinematografico */}
+                                    <div className="overflow-hidden rounded-xl bg-slate-900 md:relative md:aspect-video">
+                                        {/* Video: blocco 16/9 su mobile, riempie la card su desktop */}
+                                        <div className="relative aspect-video md:absolute md:inset-0 md:aspect-auto">
                                         {m.video ? (
                                             <MachineVideo src={m.video} />
                                         ) : (
@@ -401,12 +404,13 @@ export default function ParcoMacchine() {
                                                 </div>
                                             </div>
                                         )}
+                                        </div>
 
-                                        {/* Gradiente overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                                        {/* Gradiente overlay — solo su desktop (dove il testo va sopra al video) */}
+                                        <div className="absolute inset-0 hidden bg-gradient-to-t from-black/85 via-black/20 to-transparent md:block" />
 
-                                        {/* Contenuto sovrapposto */}
-                                        <div className="absolute inset-x-0 bottom-0 p-6 md:p-10">
+                                        {/* Contenuto: sotto il video su mobile, sovrapposto su desktop */}
+                                        <div className="p-6 md:absolute md:inset-x-0 md:bottom-0 md:p-10">
                                             <span className="mb-2 block text-xs font-bold tracking-widest text-blue-400 uppercase">
                                                 {m.cat}
                                             </span>
