@@ -45,9 +45,7 @@ export default function PrivacyPage() {
 
                     <div className="relative mx-auto max-w-4xl text-center">
                         <div className="fade-up d1">
-                            <p className="mb-4 text-sm font-bold tracking-widest text-blue-600 uppercase">
-                                Trasparenza e conformità
-                            </p>
+                            <p className="eyebrow mb-4 text-blue-600">Trasparenza e conformità</p>
                         </div>
                         <h1 className="font-display fade-up d2 mb-6 text-5xl leading-tight font-bold md:text-6xl lg:text-7xl">
                             Privacy Policy

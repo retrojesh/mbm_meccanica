@@ -36,8 +36,8 @@ export default function Azienda() {
         <>
             <SEO
                 title="Chi Siamo | MBM Meccanica"
-                description="MBM Meccanica: azienda metalmeccanica a Castelvetro di Modena. Nata dalla passione dei fratelli Soufiane e Yassin Mejri. Qualità, innovazione e affidabilità."
-                keywords="MBM Meccanica, chi siamo MBM Meccanica, azienda metalmeccanica Modena, metalmeccanica precisione Castelvetro di Modena"
+                description="MBM Meccanica: azienda metalmeccanica con sede legale a Vignola e officina a Castelvetro di Modena. Nata dalla passione dei fratelli Soufiane e Yassin Mejri. Qualità, innovazione e affidabilità."
+                keywords="MBM Meccanica, chi siamo MBM Meccanica, azienda metalmeccanica Vignola, azienda metalmeccanica Modena, metalmeccanica precisione Castelvetro di Modena"
             />
             <JsonLd />
 
@@ -55,8 +55,9 @@ export default function Azienda() {
                             M.B.M. Meccanica Srl
                         </h1>
                         <p className="mx-auto max-w-2xl text-xl text-white/75 md:text-2xl">
-                            Una giovane realtà nel settore della metalmeccanica, nata dalla passione
-                            per l'ingegneria e l'innovazione.
+                            Una giovane realtà nel settore della metalmeccanica, con sede legale a
+                            Vignola e officina a Castelvetro di Modena, nata dalla passione per
+                            l'ingegneria e l'innovazione.
                         </p>
                     </div>
                 </section>
@@ -65,9 +66,6 @@ export default function Azienda() {
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
                         <Reveal delay="d1">
-                            <div className="mb-6 inline-block px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
-                                Due fratelli, una stessa visione
-                            </div>
                             <h2 className="font-display mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
                                 Soufiane <span className="font-normal">e</span> Yassin Mejri
                             </h2>
@@ -82,9 +80,8 @@ export default function Azienda() {
                                 clienti.
                             </p>
                             <p className="mb-8 leading-relaxed text-slate-600">
-                                Ogni pezzo che realizziamo porta con sé la nostra dedizione alla
-                                precisione e il desiderio di costruire relazioni di fiducia con i
-                                clienti.
+                                Cerchiamo di fare bene ogni pezzo che passa dalle nostre macchine, e
+                                di costruire un rapporto di fiducia con chi ce lo affida.
                             </p>
                         </Reveal>
                         <Reveal delay="d2">
@@ -108,9 +105,7 @@ export default function Azienda() {
                 <section className="px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-2xl">
                         <Reveal delay="d1">
-                            <div className="mb-6 inline-block px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
-                                I nostri principi
-                            </div>
+                            <div className="eyebrow mb-6 text-blue-700">I nostri principi</div>
                             <h2 className="font-display mb-14 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
                                 Valori che guidano il nostro lavoro
                             </h2>
@@ -122,11 +117,11 @@ export default function Azienda() {
                                 {[
                                     {
                                         title: 'Precisione',
-                                        desc: 'Ogni dettaglio conta. Lavoriamo con tolleranze micrometriche per garantire componenti perfetti.',
+                                        desc: 'Ogni dettaglio conta. Lavoriamo con tolleranze micrometriche e controlliamo ogni pezzo prima della consegna.',
                                     },
                                     {
                                         title: 'Innovazione',
-                                        desc: "Sempre al passo con le tecnologie più avanzate per offrire soluzioni all'avanguardia.",
+                                        desc: 'Aggiorniamo macchinari e metodi di lavoro per affrontare lavorazioni sempre più complesse.',
                                     },
                                     {
                                         title: 'Affidabilità',
@@ -177,15 +172,13 @@ export default function Azienda() {
                 {/* CTA */}
                 <section className="gradient-bg px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <div className="mb-6 px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase">
-                            La nostra promessa
-                        </div>
+                        <div className="eyebrow mb-6 text-white">La nostra promessa</div>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
                             Trasformare idee e necessità in componenti.
                         </h2>
                         <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-white/80">
-                            Ogni progetto è un'opportunità per dimostrare che la precisione, unita
-                            alla passione, può fare la differenza.
+                            Raccontaci il tuo progetto: troviamo insieme il modo migliore per
+                            realizzarlo.
                         </p>
                         <a
                             href="/servizi"

@@ -125,8 +125,8 @@ const SETTORI = [
     },
     {
         num: '02',
-        title: 'Automotive',
-        desc: 'Particolari ultraleggeri e ad altissima resistenza per auto ad alte prestazioni in edizioni limitate, dove ogni grammo e ogni decimo contano.',
+        title: 'Motorsport',
+        desc: 'Particolari ultraleggeri e ad alta resistenza per auto da competizione in edizioni limitate, dove ogni grammo e ogni decimo contano.',
         icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
         color: 'text-red-600',
         accent: 'bg-red-500',
@@ -175,9 +175,7 @@ function SettoriCarousel() {
         <div className="mx-auto max-w-6xl">
             <div className="mb-16">
                 <Reveal delay="d1">
-                    <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                        Settori di applicazione
-                    </p>
+                    <p className="eyebrow mb-4 text-blue-600">Settori di applicazione</p>
                     <h2 className="font-display text-4xl font-bold md:text-5xl">
                         Dove lavora la nostra precisione
                     </h2>
@@ -239,9 +237,9 @@ export default function Home() {
     return (
         <>
             <SEO
-                title="Lavorazioni CNC di Precisione a Castelvetro di Modena"
-                description="MBM Meccanica: fresatura CNC e tornitura CNC a Castelvetro di Modena. Lavorazioni di precisione per automotive, Formula 1 e settore alimentare. Conto terzi e su commessa con progettazione CAD/CAM."
-                keywords="MBM Meccanica, metalmeccanica Castelvetro di Modena, metalmeccanica Modena, officina meccanica Modena, lavorazioni meccaniche di precisione, lavorazioni conto terzi Modena, lavorazioni su commessa Modena, officina meccanica Emilia Romagna, componenti meccanici automotive, lavorazioni settore alimentare, componenti Formula 1, metalmeccanica Emilia Romagna"
+                title="Lavorazioni CNC di Precisione tra Vignola e Modena"
+                description="MBM Meccanica: azienda metalmeccanica con sede legale a Vignola e officina a Castelvetro di Modena. Fresatura CNC e tornitura CNC di precisione per automotive, Formula 1 e settore alimentare. Conto terzi e su commessa con progettazione CAD/CAM."
+                keywords="MBM Meccanica, azienda metalmeccanica Vignola, metalmeccanica Vignola, officina meccanica Vignola, metalmeccanica Castelvetro di Modena, metalmeccanica Modena, officina meccanica Modena, lavorazioni meccaniche di precisione, lavorazioni conto terzi Modena, lavorazioni su commessa Modena, officina meccanica Emilia Romagna, componenti meccanici automotive, lavorazioni settore alimentare, componenti Formula 1, metalmeccanica Emilia Romagna"
             />
             <JsonLd />
 
@@ -305,9 +303,7 @@ export default function Home() {
                     <div className="mx-auto max-w-6xl">
                         <div className="mb-16 max-w-2xl">
                             <Reveal delay="d1">
-                                <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                    Cosa facciamo
-                                </p>
+                                <p className="eyebrow mb-4 text-blue-600">Cosa facciamo</p>
                                 <h2 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
                                     Lavorazioni CNC
                                     <br />
@@ -337,17 +333,15 @@ export default function Home() {
                     <div className="absolute inset-0 flex items-center px-8 md:px-20">
                         <div className="max-w-lg">
                             <Reveal delay="d1">
-                                <p className="mb-3 text-xs font-bold tracking-widest text-blue-400 uppercase">
-                                    La nostra officina
-                                </p>
+                                <p className="eyebrow mb-3 text-blue-400">La nostra officina</p>
                                 <h2 className="font-display mb-5 text-4xl leading-tight font-bold text-white md:text-5xl">
                                     Un'officina moderna,
                                     <br />
                                     costruita per crescere
                                 </h2>
                                 <p className="mb-8 text-lg leading-relaxed text-white/75">
-                                    Pensata per ospitare macchinari CNC di ultima generazione e
-                                    crescere con le esigenze dei clienti.
+                                    Pensata per ospitare i nostri centri di lavoro CNC e crescere
+                                    man mano che arrivano nuove commesse.
                                 </p>
                                 <Link
                                     to="/azienda"
@@ -397,9 +391,8 @@ export default function Home() {
                                 consegne puntuali.
                             </h2>
                             <p className="max-w-md text-lg leading-relaxed text-white/70">
-                                Siamo una realtà giovane e dinamica con l'ambizione di diventare il
-                                partner di riferimento per la meccanica industriale in
-                                Emilia-Romagna.
+                                Siamo un'officina giovane, ancora in crescita, e lavoriamo per
+                                costruire rapporti di fiducia con le aziende della zona.
                             </p>
                         </Reveal>
                     </div>
@@ -408,9 +401,7 @@ export default function Home() {
                 {/* CTA */}
                 <section className="bg-white px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <p className="mb-6 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                            Lavoriamo insieme
-                        </p>
+                        <p className="eyebrow mb-6 text-blue-600">Lavoriamo insieme</p>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                             Hai un progetto?
                             <br />

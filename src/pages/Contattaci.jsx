@@ -147,9 +147,7 @@ export default function Contatti() {
                             {/* Left column */}
                             <div className="space-y-4">
                                 <Reveal delay="d1">
-                                    <p className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                        Contattaci
-                                    </p>
+                                    <p className="eyebrow mb-8 text-blue-600">Contattaci</p>
                                 </Reveal>
                                 {INFO.map((item, i) => (
                                     <ContactCard key={item.label} item={item} delay={`d${i + 1}`} />
@@ -159,9 +157,7 @@ export default function Contatti() {
                             {/* Right column */}
                             <div className="space-y-4">
                                 <Reveal delay="d1">
-                                    <p className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                        Orari di apertura
-                                    </p>
+                                    <p className="eyebrow mb-8 text-blue-600">Orari di apertura</p>
                                 </Reveal>
 
                                 <Reveal delay="d2">
@@ -203,9 +199,7 @@ export default function Contatti() {
                         <div className="mt-16">
                             <Reveal delay="d1">
                                 <div className="mb-8 text-center">
-                                    <div className="mb-4 inline-block px-4 py-2 text-xs font-semibold tracking-wider text-blue-700 uppercase">
-                                        Dove trovarci
-                                    </div>
+                                    <div className="eyebrow mb-4 text-blue-700">Dove trovarci</div>
                                     <h2 className="font-display text-3xl font-bold text-slate-900 md:text-4xl">
                                         La nostra sede
                                     </h2>
@@ -232,7 +226,7 @@ export default function Contatti() {
                 {/* CTA Section */}
                 <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <h2 className="mx-auto mb-6 max-w-2xl font-serif text-4xl font-bold text-white md:text-5xl">
+                        <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-white md:text-5xl">
                             Mettiamoci in contatto
                         </h2>
                         <p className="mx-auto mb-10 max-w-lg text-lg leading-relaxed text-white/65">
