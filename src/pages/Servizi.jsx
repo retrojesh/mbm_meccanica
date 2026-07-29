@@ -109,7 +109,7 @@ function ServiceBlock({ s, reverse, index }) {
             <div className={`${reverse ? 'md:order-2' : ''}`}>
                 <div className="mb-5">
                     <span
-                        className={`inline-block px-3 py-1.5 text-xs font-bold tracking-widest text-blue-600 uppercase ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
+                        className={`eyebrow text-blue-600 ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
                     >
                         {s.tag}
                     </span>
@@ -190,9 +190,7 @@ export default function Servizi() {
 
                     <div className="relative mx-auto max-w-5xl">
                         <div className="fade-up delay-1" style={{ opacity: 0 }}>
-                            <p className="mb-4 text-sm font-bold tracking-widest text-blue-600 uppercase">
-                                LE NOSTRE COMPETENZE
-                            </p>
+                            <p className="eyebrow mb-4 text-blue-600">Le nostre competenze</p>
                         </div>
                         <h1
                             className="font-display fade-up mb-6 text-5xl leading-tight font-bold delay-1 md:text-6xl lg:text-7xl"
@@ -224,7 +222,7 @@ export default function Servizi() {
                 <section className="border-t border-slate-200 bg-white px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-3xl text-center">
                         <Reveal delay="delay-1">
-                            <p className="mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase">
+                            <p className="eyebrow mb-4 text-blue-600">
                                 La tecnologia dietro ogni lavorazione
                             </p>
                             <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">

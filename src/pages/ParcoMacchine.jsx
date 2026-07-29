@@ -47,7 +47,8 @@ const MACCHINE = [
     {
         cat: 'Tornitura',
         nome: 'DMG Mori NLX 2000Y/500',
-        lavorazione: 'Tornitura di alta precisione con torretta motorizzata e asse Y per lavorazioni complete in un solo serraggio.',
+        lavorazione:
+            'Tornitura di alta precisione con torretta motorizzata e asse Y per lavorazioni complete in un solo serraggio.',
         video: '/video/macchine/dmg-mori.mp4',
         specs: [
             { label: 'Ø tornitura max', value: '275 mm' },
@@ -61,7 +62,8 @@ const MACCHINE = [
     {
         cat: 'Fresatura 5 assi',
         nome: 'Sigma Flexy',
-        lavorazione: 'Fresatura su pezzi lunghi e complessi con testa orientabile a 5 assi simultanei.',
+        lavorazione:
+            'Fresatura su pezzi lunghi e complessi con testa orientabile a 5 assi simultanei.',
         video: '/video/macchine/sigma-flexy.mp4',
         specs: [
             { label: 'Lunghezza max X', value: '2.200 mm' },
@@ -75,7 +77,8 @@ const MACCHINE = [
     {
         cat: 'Fresatura 3 assi',
         nome: 'G.F. HSM 800',
-        lavorazione: 'Fresatura ad alta velocità per stampi, particolari di precisione e superfici complesse.',
+        lavorazione:
+            'Fresatura ad alta velocità per stampi, particolari di precisione e superfici complesse.',
         video: '/video/macchine/gf-hsm-800.mp4',
         specs: [
             { label: 'Lunghezza max X', value: '1.000 mm' },
@@ -271,7 +274,6 @@ function PezziCarousel() {
                                 onPointerMove={onPointerMove}
                                 onPointerUp={onPointerUp}
                                 onPointerCancel={onPointerUp}
-         
                                 style={{ touchAction: 'none' }}
                             >
                                 <div ref={stripRef} className="flex h-full">
@@ -279,8 +281,8 @@ function PezziCarousel() {
                                         <div key={i} className="h-full shrink-0 px-3">
                                             <img
                                                 src={src}
-                                                alt=""
-                                                draggable="false"   
+                                                alt={`Componente meccanico di precisione realizzato da MBM Meccanica - lavorazione CNC ${(i % PEZZI.length) + 1}`}
+                                                draggable="false"
                                                 className="h-full w-full rounded-xl object-cover"
                                                 style={
                                                     src === PEZZI[2]
@@ -371,9 +373,7 @@ export default function ParcoMacchine() {
                 <section className="mt-20 px-6 pt-20 pb-24 md:pt-28 md:pb-32">
                     <div className="mx-auto max-w-6xl">
                         <Reveal delay="d1">
-                            <p className="mb-3 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                                Parco macchine
-                            </p>
+                            <p className="eyebrow mb-3 text-blue-600">Parco macchine</p>
                             <h1 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
                                 Tecnologia CNC
                                 <br />
@@ -386,24 +386,36 @@ export default function ParcoMacchine() {
                         </Reveal>
 
                         <div className="space-y-8 md:space-y-10">
-                            {MACCHINE.map((m) => (
+                            {MACCHINE.map(m => (
                                 <Reveal key={m.nome} delay="d1">
                                     {/* Card — mobile: impilata (video sopra, testo sotto). desktop: overlay cinematografico */}
                                     <div className="overflow-hidden rounded-xl bg-slate-900 md:relative md:aspect-video">
                                         {/* Video: blocco 16/9 su mobile, riempie la card su desktop */}
                                         <div className="relative aspect-video md:absolute md:inset-0 md:aspect-auto">
-                                        {m.video ? (
-                                            <MachineVideo src={m.video} />
-                                        ) : (
-                                            <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
-                                                <div className="flex flex-col items-center gap-2 text-slate-600">
-                                                    <svg className="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                    </svg>
-                                                    <span className="text-xs">video in arrivo</span>
+                                            {m.video ? (
+                                                <MachineVideo src={m.video} />
+                                            ) : (
+                                                <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
+                                                    <div className="flex flex-col items-center gap-2 text-slate-600">
+                                                        <svg
+                                                            className="h-10 w-10"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                strokeWidth={1}
+                                                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                                                            />
+                                                        </svg>
+                                                        <span className="text-xs">
+                                                            video in arrivo
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
+                                            )}
                                         </div>
 
                                         {/* Gradiente overlay — solo su desktop (dove il testo va sopra al video) */}
@@ -411,7 +423,7 @@ export default function ParcoMacchine() {
 
                                         {/* Contenuto: sotto il video su mobile, sovrapposto su desktop */}
                                         <div className="p-6 md:absolute md:inset-x-0 md:bottom-0 md:p-10">
-                                            <span className="mb-2 block text-xs font-bold tracking-widest text-blue-400 uppercase">
+                                            <span className="eyebrow mb-2 text-blue-400">
                                                 {m.cat}
                                             </span>
                                             <h2 className="font-display mb-4 text-2xl font-bold text-white md:text-4xl">
@@ -430,7 +442,9 @@ export default function ParcoMacchine() {
                                                         key={s.label}
                                                         className="rounded-lg bg-white/10 px-3 py-2 backdrop-blur-sm"
                                                     >
-                                                        <p className="text-[10px] text-slate-400">{s.label}</p>
+                                                        <p className="text-[10px] text-slate-400">
+                                                            {s.label}
+                                                        </p>
                                                         <p className="text-xs font-semibold text-white tabular-nums">
                                                             {s.value}
                                                         </p>

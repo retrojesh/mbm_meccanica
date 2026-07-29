@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-// TODO: change to the actual domain when the site goes live
-const BASE_URL = 'https://www.mbmmeccanica.it';
+const BASE_URL = 'https://www.mbmmeccanica.com';
 
 export default function SEO({ title, description, keywords }) {
     const { pathname } = useLocation();

@@ -4,18 +4,34 @@ const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ManufacturingBusiness',
     name: 'MBM Meccanica',
-    url: 'https://www.mbmmeccanica.it', // TODO: change to the actual domain when the site goes live
-    logo: 'https://www.mbmmeccanica.it/favicon.svg', // TODO: change to the actual domain and replace favicon.svg with the real company logo
+    legalName: 'M.B.M. Meccanica Srl',
+    url: 'https://www.mbmmeccanica.com',
+    logo: 'https://www.mbmmeccanica.com/favicon.svg', // TODO: replace favicon.svg with the real company logo once available
     description:
-        'MBM Meccanica è un officina metalmeccanica specializzata in fresatura CNC e tornitura CNC a Castelvetro di Modena. Lavoriamo su commessa e conto terzi per il settore automotive, alimentare e motorsport, inclusa la Formula 1.',
+        'MBM Meccanica è un officina metalmeccanica con sede legale a Vignola e sede operativa a Castelvetro di Modena, specializzata in fresatura CNC e tornitura CNC. Lavoriamo su commessa e conto terzi per il settore automotive, alimentare e motorsport, inclusa la Formula 1.',
     address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Via M. Buonarroti 22/24',
         addressLocality: 'Castelvetro di Modena',
         addressRegion: 'MO',
         postalCode: '41014',
         addressCountry: 'IT',
     },
+    location: {
+        '@type': 'Place',
+        name: 'Sede operativa - Officina MBM Meccanica',
+        address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Via M. Buonarroti 22/24',
+            addressLocality: 'Castelvetro di Modena',
+            addressRegion: 'MO',
+            postalCode: '41014',
+            addressCountry: 'IT',
+        },
+    },
     areaServed: [
+        { '@type': 'City', name: 'Vignola' },
+        { '@type': 'City', name: 'Castelvetro di Modena' },
         { '@type': 'City', name: 'Modena' },
         { '@type': 'State', name: 'Emilia-Romagna' },
         { '@type': 'Country', name: 'Italia' },
