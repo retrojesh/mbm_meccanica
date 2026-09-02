@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
-import officina from '../assets/pages/azienda/photos/officina.jpg';
+import officina from '../assets/pages/azienda/photos/officina.webp';
 import '../styles/global.css';
 
 function Reveal({ children, delay = '', className = '' }) {
@@ -237,9 +237,9 @@ export default function Home() {
     return (
         <>
             <SEO
-                title="Lavorazioni CNC di Precisione tra Vignola e Modena"
-                description="MBM Meccanica: azienda metalmeccanica con sede legale a Vignola e officina a Castelvetro di Modena. Fresatura CNC e tornitura CNC di precisione per automotive, Formula 1 e settore alimentare. Conto terzi e su commessa con progettazione CAD/CAM."
-                keywords="MBM Meccanica, azienda metalmeccanica Vignola, metalmeccanica Vignola, officina meccanica Vignola, metalmeccanica Castelvetro di Modena, metalmeccanica Modena, officina meccanica Modena, lavorazioni meccaniche di precisione, lavorazioni conto terzi Modena, lavorazioni su commessa Modena, officina meccanica Emilia Romagna, componenti meccanici automotive, lavorazioni settore alimentare, componenti Formula 1, metalmeccanica Emilia Romagna"
+                title="MBM Meccanica | Lavorazioni CNC"
+                appendBrand={false}
+                description="Officina metalmeccanica tra Vignola e Castelvetro di Modena: fresatura e tornitura CNC di precisione per automotive, Formula 1 e alimentare. Conto terzi."
             />
             <JsonLd />
 

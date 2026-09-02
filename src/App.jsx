@@ -8,6 +8,7 @@ import ParcoMacchine from './pages/ParcoMacchine';
 import Contattaci from './pages/Contattaci';
 import PrivacyBanner from './components/PrivacyBanner';
 import PrivacyPage from './pages/PrivacyPolicy.jsx';
+import NotFound from './pages/NotFound.jsx';
 import './App.css';
 
 function ScrollToTop() {
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/parco-macchine" element={<ParcoMacchine />} />
                 <Route path="/contattaci" element={<Contattaci />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
             <PrivacyBanner />
         </BrowserRouter>

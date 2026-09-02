@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo/MBM_Logo.webp';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +60,7 @@ export default function Navbar() {
                 <div className="flex h-20 items-center justify-between">
                     <Link to="/">
                         <img
-                            src="/src/assets/logo/MBM_Logo.png"
+                            src={logo}
                             alt="M.B.M. Meccanica"
                             className={`h-10 w-auto transition-all duration-300 ${
                                 isDark ? 'brightness-0 invert' : ''

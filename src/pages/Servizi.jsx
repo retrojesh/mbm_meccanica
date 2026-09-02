@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import '../styles/global.css';
-import progettazioneImg from '../assets/pages/servizi/progettazione.jpg';
+import progettazioneImg from '../assets/pages/servizi/progettazione.webp';
 
 // Hook: detects when element enters viewport
 function useInView(threshold = 0.15, triggerOnce = true) {
@@ -177,9 +177,8 @@ export default function Servizi() {
     return (
         <>
             <SEO
-                title="Servizi di Lavorazione CNC di Alta Precisione | MBM Meccanica"
-                description="Fresatura CNC e tornitura CNC di alta precisione con progettazione CAD/CAM. MBM Meccanica realizza componenti per automotive, motorsport e packaging. Preventivi personalizzati."
-                keywords="fresatura CNC Modena, tornitura CNC Modena, lavorazioni CNC Emilia Romagna, CAD CAM Modena, fresatura di precisione, tornitura di precisione, officina CNC Modena, componenti meccanici motorsport, prototipazione meccanica Modena, fresatura 5 assi Modena"
+                title="Servizi di Lavorazione CNC di Precisione"
+                description="Fresatura e tornitura CNC ad alta precisione con progettazione CAD/CAM. Componenti per automotive, motorsport e packaging. Preventivi personalizzati."
             />
 
             <div className="font-body min-h-screen bg-white text-slate-800">

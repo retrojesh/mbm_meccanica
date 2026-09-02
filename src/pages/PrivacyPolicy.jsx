@@ -32,9 +32,8 @@ export default function PrivacyPage() {
     return (
         <>
             <SEO
-                title="Privacy Policy | MBM Meccanica"
+                title="Privacy Policy"
                 description="Informativa sulla privacy del sito MBM Meccanica. Nessuna raccolta di dati personali, solo cookie tecnici e mappa Google Maps."
-                keywords="privacy policy MBM Meccanica, trattamento dati, cookie"
             />
 
             <div className="font-body min-h-screen bg-white text-slate-800">

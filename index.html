@@ -1,13 +1,49 @@
 <!doctype html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/assets/logo/MBM_Logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MBM Meccanica</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/webp" href="src/assets/logo/MBM_Logo.webp" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!--
+      Fallback statico. Gli scraper social (WhatsApp, Facebook, LinkedIn) non
+      eseguono JavaScript e quindi non vedono i tag iniettati da react-helmet-async:
+      leggono solo questo HTML. I tag qui sotto valgono per tutte le rotte;
+      Google, che esegue JS, usa invece quelli per-pagina di src/components/SEO.jsx.
+    -->
+        <title>MBM Meccanica | Lavorazioni CNC</title>
+        <meta
+            name="description"
+            content="Officina metalmeccanica tra Vignola e Castelvetro di Modena: fresatura e tornitura CNC di precisione per automotive, Formula 1 e alimentare. Conto terzi."
+        />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="MBM Meccanica" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:title" content="MBM Meccanica | Lavorazioni CNC" />
+        <meta
+            property="og:description"
+            content="Officina metalmeccanica tra Vignola e Castelvetro di Modena: fresatura e tornitura CNC di precisione per automotive, Formula 1 e alimentare. Conto terzi."
+        />
+        <meta property="og:url" content="https://www.mbmmeccanica.com/" />
+        <meta property="og:image" content="https://www.mbmmeccanica.com/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+            property="og:image:alt"
+            content="MBM Meccanica - lavorazioni CNC di precisione, flangia in alluminio lavorata a Castelvetro di Modena"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="MBM Meccanica | Lavorazioni CNC" />
+        <meta
+            name="twitter:description"
+            content="Officina metalmeccanica tra Vignola e Castelvetro di Modena: fresatura e tornitura CNC di precisione per automotive, Formula 1 e alimentare. Conto terzi."
+        />
+        <meta name="twitter:image" content="https://www.mbmmeccanica.com/og-image.jpg" />
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </body>
 </html>

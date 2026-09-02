@@ -364,9 +364,8 @@ export default function ParcoMacchine() {
     return (
         <>
             <SEO
-                title="Parco Macchine | Fresatura CNC e Tornitura CNC"
-                description="Fresatura CNC e tornitura CNC di alta precisione con progettazione CAD/CAM. MBM Meccanica realizza componenti per automotive, motorsport e packaging a Castelvetro di Modena. Conto terzi e su commessa."
-                keywords="fresatura CNC Modena, tornitura CNC Modena, fresatura CNC Castelvetro, tornitura CNC Castelvetro, lavorazioni CNC Emilia Romagna, CAD CAM Modena, fresatura di precisione, tornitura di precisione, lavorazioni meccaniche conto terzi, officina CNC Modena, componenti meccanici motorsport, lavorazioni settore packaging, prototipazione meccanica Modena, fresatura 5 assi Modena"
+                title="Parco Macchine | Fresatura e Tornitura CNC"
+                description="Fresatura e tornitura CNC ad alta precisione con progettazione CAD/CAM a Castelvetro di Modena. Componenti per automotive, motorsport e packaging."
             />
 
             <div className="font-body bg-white text-slate-800">

@@ -134,20 +134,33 @@ export default function Contatti() {
     return (
         <>
             <SEO
-                title="Contatti | MBM Meccanica"
+                title="Contatti"
                 description="Contatta MBM Meccanica a Castelvetro di Modena. Richiedi un preventivo per lavorazioni CNC di precisione: tornitura, fresatura e conto terzi."
-                keywords="contatti MBM Meccanica, preventivo lavorazioni CNC Modena, meccanica precisione Castelvetro, WhatsApp MBM Meccanica"
             />
             <JsonLd />
 
             <div className="min-h-screen bg-white font-sans text-slate-800">
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-5xl">
+                        <div className="mx-auto mb-16 max-w-3xl text-center">
+                            <Reveal>
+                                <h1 className="font-display mb-6 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
+                                    Richiedi un preventivo per le tue lavorazioni CNC
+                                </h1>
+                            </Reveal>
+                            <Reveal delay="d1">
+                                <p className="mx-auto max-w-2xl text-xl leading-relaxed text-slate-500">
+                                    Scrivici su WhatsApp o via email: ti rispondiamo con tempi e
+                                    costi per fresatura, tornitura e progettazione CAD/CAM.
+                                </p>
+                            </Reveal>
+                        </div>
+
                         <div className="grid gap-8 md:grid-cols-2">
                             {/* Left column */}
                             <div className="space-y-4">
                                 <Reveal delay="d1">
-                                    <p className="eyebrow mb-8 text-blue-600">Contattaci</p>
+                                    <p className="eyebrow mb-8 text-blue-600">Recapiti</p>
                                 </Reveal>
                                 {INFO.map((item, i) => (
                                     <ContactCard key={item.label} item={item} delay={`d${i + 1}`} />

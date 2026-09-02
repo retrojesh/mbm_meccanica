@@ -1,4 +1,4 @@
-import officina from '../assets/pages/azienda/photos/officina.jpg';
+import officina from '../assets/pages/azienda/photos/officina.webp';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
 import { useEffect, useRef, useState } from 'react';
@@ -35,9 +35,8 @@ export default function Azienda() {
     return (
         <>
             <SEO
-                title="Chi Siamo | MBM Meccanica"
-                description="MBM Meccanica: azienda metalmeccanica con sede legale a Vignola e officina a Castelvetro di Modena. Nata dalla passione dei fratelli Soufiane e Yassin Mejri. Qualità, innovazione e affidabilità."
-                keywords="MBM Meccanica, chi siamo MBM Meccanica, azienda metalmeccanica Vignola, azienda metalmeccanica Modena, metalmeccanica precisione Castelvetro di Modena"
+                title="Chi Siamo"
+                description="MBM Meccanica: officina metalmeccanica tra Vignola e Castelvetro di Modena, nata dalla passione dei fratelli Mejri. Qualità, innovazione e affidabilità."
             />
             <JsonLd />
 

@@ -2,10 +2,44 @@
   command = "npm run build"
   publish = "dist"
 
+# Rotte reali dell'app: servite dalla SPA con status 200.
+# Vanno tenute allineate a <Routes> in src/App.jsx e a public/sitemap.xml.
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/azienda"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/servizi"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/parco-macchine"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contattaci"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/index.html"
+  status = 200
+
+# Qualsiasi altro URL: la SPA mostra la pagina 404 e il server risponde 404 reale.
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 404
 
 [[headers]]
   for = "/*"

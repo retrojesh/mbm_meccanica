@@ -1,12 +1,17 @@
 import { Helmet } from 'react-helmet-async';
+import logo from '../assets/logo/MBM_Logo.webp';
+
+const BASE_URL = 'https://www.mbmmeccanica.com';
 
 const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ManufacturingBusiness',
     name: 'MBM Meccanica',
     legalName: 'M.B.M. Meccanica Srl',
-    url: 'https://www.mbmmeccanica.com',
-    logo: 'https://www.mbmmeccanica.com/favicon.svg', // TODO: replace favicon.svg with the real company logo once available
+    url: BASE_URL,
+    // Vite riscrive l'import in un path con hash: resta sempre allineato al file deployato.
+    logo: `${BASE_URL}${logo}`,
+    image: `${BASE_URL}/og-image.jpg`,
     description:
         'MBM Meccanica è un officina metalmeccanica con sede legale a Vignola e sede operativa a Castelvetro di Modena, specializzata in fresatura CNC e tornitura CNC. Lavoriamo su commessa e conto terzi per il settore automotive, alimentare e motorsport, inclusa la Formula 1.',
     address: {
