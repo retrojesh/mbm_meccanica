@@ -1,4 +1,3 @@
-import officina from '../assets/pages/azienda/photos/officina.webp';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
 import { useEffect, useRef, useState } from 'react';
@@ -43,10 +42,13 @@ export default function Azienda() {
             <div className="font-body min-h-screen bg-white text-slate-800">
                 {/* Hero Section */}
                 <section className="relative mt-20 flex h-[calc(100vh-80px)] items-center justify-center overflow-hidden text-center">
-                    <img
-                        src={officina}
-                        alt="Officina MBM Meccanica"
+                    <video
                         className="absolute inset-0 h-full w-full object-cover object-center"
+                        src="/video/hero-azienda.mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/90" />
                     <div className="relative z-10 px-6 pt-32 pb-20 md:pt-40 md:pb-28">
