@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import InViewVideo from '../components/InViewVideo';
 import '../styles/global.css';
 
 import pezzo1 from '../assets/pages/parco-macchine/pezzi/pezzo-1.webp';
@@ -106,38 +107,6 @@ function Reveal({ children, delay = '', className = '' }) {
         <div ref={ref} className={`${inView ? `fade-up ${delay}` : 'opacity-0'} ${className}`}>
             {children}
         </div>
-    );
-}
-
-// Video che si carica e parte solo quando entra in viewport, e si mette
-// in pausa quando esce. Rispetta prefers-reduced-motion (resta fermo).
-function MachineVideo({ src }) {
-    const ref = useRef(null);
-    useEffect(() => {
-        const video = ref.current;
-        if (!video) return;
-        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduce) return;
-        const obs = new IntersectionObserver(
-            ([e]) => {
-                if (e.isIntersecting) video.play().catch(() => {});
-                else video.pause();
-            },
-            { threshold: 0.25 }
-        );
-        obs.observe(video);
-        return () => obs.disconnect();
-    }, []);
-    return (
-        <video
-            ref={ref}
-            src={src}
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="absolute inset-0 h-full w-full object-cover"
-        />
     );
 }
 
@@ -365,14 +334,13 @@ export default function ParcoMacchine() {
         <>
             <SEO
                 title="Parco Macchine | Fresatura e Tornitura CNC"
-                description="Fresatura e tornitura CNC ad alta precisione con progettazione CAD/CAM a Castelvetro di Modena. Componenti per automotive, motorsport e packaging."
+                description="Fresatura e tornitura CNC ad alta precisione con progettazione CAD/CAM a Castelvetro di Modena. Componenti per automotive, packaging e meccanica industriale."
             />
 
             <div className="font-body bg-white text-slate-800">
                 <section className="mt-20 px-6 pt-20 pb-24 md:pt-28 md:pb-32">
                     <div className="mx-auto max-w-6xl">
                         <Reveal delay="d1">
-                            <p className="eyebrow mb-3 text-blue-600">Parco macchine</p>
                             <h1 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
                                 Tecnologia CNC
                                 <br />
@@ -392,7 +360,10 @@ export default function ParcoMacchine() {
                                         {/* Video: blocco 16/9 su mobile, riempie la card su desktop */}
                                         <div className="relative aspect-video md:absolute md:inset-0 md:aspect-auto">
                                             {m.video ? (
-                                                <MachineVideo src={m.video} />
+                                                <InViewVideo
+                                                    src={m.video}
+                                                    className="absolute inset-0 h-full w-full object-cover"
+                                                />
                                             ) : (
                                                 <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
                                                     <div className="flex flex-col items-center gap-2 text-slate-600">

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
+import InViewVideo from '../components/InViewVideo';
 import officina from '../assets/pages/azienda/photos/officina.webp';
 import '../styles/global.css';
 
@@ -125,14 +126,6 @@ const SETTORI = [
     },
     {
         num: '02',
-        title: 'Motorsport',
-        desc: 'Particolari ultraleggeri e ad alta resistenza per auto da competizione in edizioni limitate, dove ogni grammo e ogni decimo contano.',
-        icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
-        color: 'text-red-600',
-        accent: 'bg-red-500',
-    },
-    {
-        num: '03',
         title: 'Packaging',
         desc: 'Componenti per macchine confezionatrici e linee di produzione, inclusa ricambistica e prototipazione per il settore packaging.',
         icon: 'M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5',
@@ -140,7 +133,7 @@ const SETTORI = [
         accent: 'bg-green-500',
     },
     {
-        num: '04',
+        num: '03',
         title: 'Meccanica industriale',
         desc: 'Pezzi di ricambio, prototipi e piccole serie per macchine utensili, impianti e attrezzature industriali.',
         icon: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z',
@@ -239,20 +232,18 @@ export default function Home() {
             <SEO
                 title="MBM Meccanica | Lavorazioni CNC"
                 appendBrand={false}
-                description="Officina metalmeccanica tra Vignola e Castelvetro di Modena: fresatura e tornitura CNC di precisione per automotive, Formula 1 e alimentare. Conto terzi."
+                description="Officina metalmeccanica tra Vignola e Castelvetro di Modena: fresatura e tornitura CNC di precisione per automotive, packaging e meccanica industriale. Conto terzi."
             />
             <JsonLd />
 
             <div className="font-body bg-white text-slate-800">
                 {/* Hero */}
                 <section className="relative h-svh w-full overflow-hidden">
-                    <video
+                    <InViewVideo
                         className="absolute inset-0 h-full w-full object-cover"
                         src="/video/hero.mp4"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
+                        poster="/video/hero-poster.webp"
+                        preload="auto"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />
 
@@ -262,8 +253,8 @@ export default function Home() {
                             <span>che si vede.</span>
                         </h1>
                         <p className="fade-up d3 mx-auto mb-10 max-w-xl text-lg text-white/75 md:text-xl">
-                            Tornitura e fresatura CNC di alta precisione per il settore packaging,
-                            automotive, farmaceutico ed automazione.
+                            Tornitura e fresatura CNC di alta precisione per i settori automotive,
+                            packaging e meccanica industriale.
                         </p>
                         <div className="fade-up d4 flex flex-wrap justify-center gap-4">
                             <Link
@@ -327,6 +318,8 @@ export default function Home() {
                     <img
                         src={officina}
                         alt="Officina MBM Meccanica"
+                        loading="lazy"
+                        decoding="async"
                         className="h-[520px] w-full object-cover object-center md:h-[640px]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-transparent" />
@@ -372,21 +365,18 @@ export default function Home() {
                     <SettoriCarousel />
                 </section>
 
-                {/* Video lavorazione */}
+                {/* Video getto acqua */}
                 <section className="relative h-[60vh] w-full overflow-hidden">
-                    <video
+                    <InViewVideo
                         className="absolute inset-0 h-full w-full object-cover"
-                        src="/video/lavorazione.mp4"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
+                        src="/video/getto-acqua.mp4"
+                        poster="/video/getto-acqua-poster.webp"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/50 to-slate-900/20" />
                     <div className="relative z-10 flex h-full items-center px-8 md:px-20">
                         <Reveal delay="d1">
                             <h2 className="font-display mb-4 max-w-xl text-4xl leading-tight font-bold text-white md:text-5xl">
-                                Standard elevati,
+                                Standard alto e
                                 <br />
                                 consegne puntuali.
                             </h2>

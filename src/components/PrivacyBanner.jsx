@@ -1,28 +1,32 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { setConsent, useConsent } from '../utils/consent';
 
+// Banner del consenso: compare finché il visitatore non sceglie.
+// "Accetta" abilita i contenuti di terze parti (Google Maps), "Rifiuta" no.
+// La scelta si può cambiare dalla pagina Privacy.
 export default function PrivacyBanner() {
+    const consent = useConsent();
     const [isVisible, setIsVisible] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
 
     useEffect(() => {
-        const bannerClosed = localStorage.getItem('privacyBannerClosed');
-        if (!bannerClosed) {
-            // Piccolo ritardo per effetto più scenografico
-            setTimeout(() => setIsVisible(true), 200);
-        }
-    }, []);
+        if (consent !== null) return;
+        // Piccolo ritardo per effetto più scenografico
+        const t = setTimeout(() => setIsVisible(true), 200);
+        return () => clearTimeout(t);
+    }, [consent]);
 
-    const handleClose = () => {
+    const choose = value => {
         setIsClosing(true);
         setTimeout(() => {
             setIsVisible(false);
             setIsClosing(false);
-            localStorage.setItem('privacyBannerClosed', 'true');
+            setConsent(value);
         }, 500);
     };
 
-    if (!isVisible) return null;
+    if (!isVisible || (consent !== null && !isClosing)) return null;
 
     return (
         <div
@@ -52,21 +56,36 @@ export default function PrivacyBanner() {
                             </svg>
                         </div>
                         <p className="text-center text-sm sm:text-left">
-                            Questo sito non raccoglie dati personali.
+                            Questo sito non usa cookie di profilazione né strumenti di tracciamento.
+                            Con il tuo consenso mostriamo la mappa di Google Maps, che può
+                            installare cookie di terze parti. Puoi cambiare scelta in qualsiasi
+                            momento dalla{' '}
                             <Link
                                 to="/privacy"
-                                className="ml-1 font-medium text-blue-300 underline transition-colors hover:text-blue-200"
+                                className="font-medium text-blue-300 underline transition-colors hover:text-blue-200"
                             >
-                                Leggi la privacy policy
+                                Privacy e cookie policy
                             </Link>
+                            .
                         </p>
                     </div>
-                    <button
-                        onClick={handleClose}
-                        className="cursor-pointer rounded-full border border-white/20 bg-white/10 px-6 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20 active:scale-95"
-                    >
-                        Chiudi
-                    </button>
+                    {/* Stessa evidenza per i due bottoni: rifiutare deve essere facile quanto accettare. */}
+                    <div className="flex shrink-0 gap-3">
+                        <button
+                            type="button"
+                            onClick={() => choose('rejected')}
+                            className="cursor-pointer rounded-full border border-white/20 bg-white/10 px-6 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20 active:scale-95"
+                        >
+                            Rifiuta
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => choose('accepted')}
+                            className="cursor-pointer rounded-full border border-white/20 bg-white/10 px-6 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20 active:scale-95"
+                        >
+                            Accetta
+                        </button>
+                    </div>
                 </div>
             </div>
 

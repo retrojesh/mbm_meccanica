@@ -1,6 +1,64 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
+import { useConsent } from '../utils/consent';
+
+// Google Maps viene caricato solo con il consenso del visitatore:
+// finché non lo dà, nessun dato (IP, cookie) viene inviato a Google.
+const MAP_EMBED_URL =
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.3297536632717!2d10.947375875886053!3d44.50839869670187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fe054e0bf7e35%3A0x1ca09ac2c8a1feac!2sVia%20M.%20Buonarroti%2C%2022%2F24%2C%2041014%20Castelvetro%20di%20Modena%20MO!5e0!3m2!1sit!2sit!4v1775157069684!5m2!1sit!2sit';
+const MAP_LINK = 'https://maps.google.com/?q=Via+M.+Buonarroti+22/24,+Castelvetro+di+Modena';
+
+// Con il consenso dato dal banner la mappa compare subito; altrimenti
+// il visitatore può caricarla con un click (vale solo per questa visita).
+function MapEmbed() {
+    const consent = useConsent();
+    const [loaded, setLoaded] = useState(false);
+    if (loaded || consent === 'accepted') {
+        return (
+            <iframe
+                src={MAP_EMBED_URL}
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                title="Mappa MBM Meccanica"
+                className="w-full"
+            />
+        );
+    }
+    return (
+        <div className="flex h-[450px] w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-slate-50 to-slate-100 px-6 text-center">
+            <p className="font-display text-xl font-semibold text-slate-800">
+                Via M. Buonarroti 22/24, Castelvetro di Modena (MO)
+            </p>
+            <p className="max-w-md text-sm leading-relaxed text-slate-500">
+                Caricando la mappa, Google potrebbe raccogliere alcuni dati di navigazione.{' '}
+                <Link to="/privacy" className="text-blue-600 underline hover:text-blue-700">
+                    Privacy e cookie policy
+                </Link>
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+                <button
+                    type="button"
+                    onClick={() => setLoaded(true)}
+                    className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                    Mostra la mappa
+                </button>
+                <a
+                    href={MAP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400"
+                >
+                    Apri in Google Maps
+                </a>
+            </div>
+        </div>
+    );
+}
 
 const INFO = [
     {
@@ -18,7 +76,7 @@ const INFO = [
     {
         label: 'Sede',
         value: 'Via M. Buonarroti 22/24\nCastelvetro di Modena (MO)\n41014',
-        href: 'https://maps.google.com/?q=Via+M.+Buonarroti+22/24,+Castelvetro+di+Modena',
+        href: MAP_LINK,
         color: 'blue',
     },
 ];
@@ -220,16 +278,7 @@ export default function Contatti() {
                             </Reveal>
                             <Reveal delay="d2">
                                 <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-xl">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.3297536632717!2d10.947375875886053!3d44.50839869670187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fe054e0bf7e35%3A0x1ca09ac2c8a1feac!2sVia%20M.%20Buonarroti%2C%2022%2F24%2C%2041014%20Castelvetro%20di%20Modena%20MO!5e0!3m2!1sit!2sit!4v1775157069684!5m2!1sit!2sit"
-                                        width="100%"
-                                        height="450"
-                                        style={{ border: 0 }}
-                                        allowFullScreen
-                                        loading="lazy"
-                                        title="Mappa MBM Meccanica"
-                                        className="w-full"
-                                    />
+                                    <MapEmbed />
                                 </div>
                             </Reveal>
                         </div>

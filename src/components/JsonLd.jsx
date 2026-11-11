@@ -12,8 +12,19 @@ const jsonLd = {
     // Vite riscrive l'import in un path con hash: resta sempre allineato al file deployato.
     logo: `${BASE_URL}${logo}`,
     image: `${BASE_URL}/og-image.jpg`,
+    // Contatti e orari: tenerli allineati a src/pages/Contattaci.jsx.
+    email: 'info@mbmmeccanica.com',
+    telephone: '+39 324 098 7230',
+    openingHoursSpecification: [
+        {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            opens: '07:00',
+            closes: '20:00',
+        },
+    ],
     description:
-        'MBM Meccanica è un officina metalmeccanica con sede legale a Vignola e sede operativa a Castelvetro di Modena, specializzata in fresatura CNC e tornitura CNC. Lavoriamo su commessa e conto terzi per il settore automotive, alimentare e motorsport, inclusa la Formula 1.',
+        "MBM Meccanica è un'officina metalmeccanica con sede legale a Vignola e sede operativa a Castelvetro di Modena, specializzata in fresatura CNC e tornitura CNC. Lavoriamo su commessa e conto terzi per i settori automotive, packaging e meccanica industriale.",
     address: {
         '@type': 'PostalAddress',
         streetAddress: 'Via M. Buonarroti 22/24',
@@ -47,8 +58,8 @@ const jsonLd = {
         'Progettazione CAD/CAM',
         'Lavorazioni meccaniche di precisione',
         'Componentistica automotive',
-        'Componentistica Formula 1',
-        'Lavorazioni settore alimentare',
+        'Componentistica packaging',
+        'Meccanica industriale',
         'Lavorazioni conto terzi',
         'Lavorazioni su commessa',
     ],

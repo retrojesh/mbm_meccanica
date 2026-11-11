@@ -89,7 +89,7 @@ const SERVIZI = [
         short: 'Produzione di componenti per manutenzione e sostituzione in diversi settori.',
         detail: [
             'Lotti piccoli e medi con tempi di consegna certi',
-            'Settori: packaging, automotive, farmaceutico ed automazione',
+            'Settori: automotive, packaging e meccanica industriale',
         ],
         tag: 'Reverse engineering · Manutenzione',
         image: null,
@@ -145,6 +145,8 @@ function ServiceBlock({ s, reverse, index }) {
                         <img
                             src={s.image}
                             alt={s.title}
+                            loading="lazy"
+                            decoding="async"
                             className="absolute inset-0 h-full w-full object-cover"
                         />
                     ) : (
@@ -178,7 +180,7 @@ export default function Servizi() {
         <>
             <SEO
                 title="Servizi di Lavorazione CNC di Precisione"
-                description="Fresatura e tornitura CNC ad alta precisione con progettazione CAD/CAM. Componenti per automotive, motorsport e packaging. Preventivi personalizzati."
+                description="Fresatura e tornitura CNC ad alta precisione con progettazione CAD/CAM. Componenti per automotive, packaging e meccanica industriale. Preventivi personalizzati."
             />
 
             <div className="font-body min-h-screen bg-white text-slate-800">
