@@ -1,0 +1,38 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+# Una nuova push sulla stessa PR annulla il controllo precedente ancora in corso.
+concurrency:
+    group: ci-${{ github.ref }}
+    cancel-in-progress: true
+
+permissions:
+    contents: read
+
+jobs:
+    lint-build:
+        name: Lint, formattazione e build
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+
+            - run: npm ci
+
+            - name: Lint
+              run: npm run lint
+
+            - name: Formattazione (Prettier)
+              run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}"
+
+            - name: Build
+              run: npm run build
