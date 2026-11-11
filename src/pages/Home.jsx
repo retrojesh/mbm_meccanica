@@ -386,7 +386,7 @@ export default function Home() {
                     <div className="relative z-10 flex h-full items-center px-8 md:px-20">
                         <Reveal delay="d1">
                             <h2 className="font-display mb-4 max-w-xl text-4xl leading-tight font-bold text-white md:text-5xl">
-                                Standard elevati,
+                                Standard alto e
                                 <br />
                                 consegne puntuali.
                             </h2>
