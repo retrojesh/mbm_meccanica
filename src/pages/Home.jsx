@@ -372,11 +372,11 @@ export default function Home() {
                     <SettoriCarousel />
                 </section>
 
-                {/* Video lavorazione */}
+                {/* Video getto acqua */}
                 <section className="relative h-[60vh] w-full overflow-hidden">
                     <video
                         className="absolute inset-0 h-full w-full object-cover"
-                        src="/video/lavorazione.mp4"
+                        src="/video/getto-acqua.mp4"
                         autoPlay
                         muted
                         loop
