@@ -320,12 +320,12 @@ export default function ParcoMacchine() {
                 <section className="px-6 pt-32 pb-16 md:pt-40 md:pb-24">
                     <div className="mx-auto max-w-6xl">
                         <Reveal delay="d1">
-                            <h1 className="font-display mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
+                            <h1 className="font-display mb-4 text-center text-4xl font-bold md:text-5xl lg:text-6xl">
                                 Tecnologia CNC
                                 <br />
-                                <span> al servizio della precisione </span>
+                                <span>al servizio della precisione</span>
                             </h1>
-                            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-slate-500 md:mb-12">
+                            <p className="mx-auto mb-10 max-w-2xl text-center text-lg leading-relaxed text-slate-500 md:mb-12">
                                 Quattro centri di lavoro CNC per tornitura e fresatura multi-asse,
                                 tutti equipaggiati con software CAD/CAM e post processor dedicato.
                             </p>

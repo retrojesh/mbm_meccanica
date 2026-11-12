@@ -197,23 +197,20 @@ export default function Servizi() {
 
             <div className="font-body min-h-screen bg-white text-slate-800">
                 {/* Hero */}
-                <section className="relative overflow-hidden px-6 pt-32 pb-6 md:pt-40 md:pb-8">
+                <section className="relative overflow-hidden px-6 pt-24 md:pt-28">
                     <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-blue-100 opacity-20 blur-3xl filter"></div>
                     <div className="absolute bottom-0 left-0 -z-10 h-96 w-96 rounded-full bg-cyan-100 opacity-20 blur-3xl filter"></div>
 
-                    <div className="relative mx-auto max-w-5xl xl:max-w-7xl">
-                        <div className="fade-up delay-1" style={{ opacity: 0 }}>
-                            <p className="eyebrow mb-4 text-blue-600">Le nostre competenze</p>
-                        </div>
+                    <div className="relative mx-auto max-w-5xl text-center xl:max-w-7xl">
                         <h1
-                            className="font-display fade-up mb-6 text-5xl font-bold delay-1 md:text-6xl lg:text-7xl"
+                            className="font-display fade-up mb-4 text-4xl font-bold delay-1 md:text-5xl lg:text-6xl"
                             style={{ opacity: 0 }}
                         >
                             Lavorazioni CNC
                             <br />
                             di alta precisione
                         </h1>
-                        <div className="fade-up delay-2" style={{ opacity: 0, maxWidth: '32rem' }}>
+                        <div className="fade-up mx-auto max-w-lg delay-2" style={{ opacity: 0 }}>
                             <p className="text-xl leading-relaxed text-slate-500">
                                 Dalla progettazione CAD/CAM al pezzo finito: gestiamo ogni fase con
                                 tecnologie avanzate.
