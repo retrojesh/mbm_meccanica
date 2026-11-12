@@ -51,7 +51,7 @@ export default function Azienda() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/90" />
                     <div className="relative z-10 px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-                        <h1 className="font-display mb-6 text-5xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
+                        <h1 className="font-display mb-6 text-5xl font-bold text-white md:text-7xl lg:text-8xl">
                             M.B.M. Meccanica Srl
                         </h1>
                         <p className="mx-auto max-w-2xl text-xl text-white/75 md:text-2xl">
@@ -66,7 +66,7 @@ export default function Azienda() {
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:max-w-7xl xl:gap-24 2xl:gap-32">
                         <Reveal delay="d1">
-                            <h2 className="font-display mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+                            <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
                                 Soufiane e Yassine Mejri
                             </h2>
                             <p className="mb-6 text-lg leading-relaxed text-slate-600">
@@ -108,7 +108,7 @@ export default function Azienda() {
                     <div className="mx-auto max-w-2xl">
                         <Reveal delay="d1">
                             <div className="eyebrow mb-6 text-blue-700">I nostri principi</div>
-                            <h2 className="font-display mb-14 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
+                            <h2 className="font-display mb-14 text-4xl font-bold text-slate-900 md:text-5xl">
                                 Valori che guidano il nostro lavoro
                             </h2>
                         </Reveal>
@@ -141,7 +141,7 @@ export default function Azienda() {
                                     >
                                         <div className="py-10">
                                             <div className="flex items-baseline justify-between gap-12">
-                                                <h3 className="shrink-0 text-xl font-medium text-slate-900">
+                                                <h3 className="font-display shrink-0 text-xl font-medium text-slate-900">
                                                     {v.title}
                                                 </h3>
                                                 <p className="max-w-xs text-right text-base leading-relaxed text-slate-500">

@@ -1,15 +1,17 @@
-/* Font */
+/* Font: titoli in Helvetica (Arimo, stesse proporzioni, dove Helvetica non è installata), testi in Source Sans 3 */
 .font-display {
-    font-family: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arimo, Arial, sans-serif;
+    /* Interlinea unica e compatta per tutti i titoli */
+    line-height: 1.1;
 }
 
 .font-body {
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
 }
 
 /* Section kickers (small label above a heading) */
 .eyebrow {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.04em;

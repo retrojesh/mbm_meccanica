@@ -205,7 +205,7 @@ export default function Contatti() {
                     <div className="mx-auto max-w-5xl">
                         <div className="mx-auto mb-16 max-w-3xl text-center">
                             <Reveal>
-                                <h1 className="font-display mb-6 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
+                                <h1 className="font-display mb-6 text-4xl font-bold text-slate-900 md:text-5xl">
                                     Richiedi un preventivo per le tue lavorazioni
                                 </h1>
                             </Reveal>

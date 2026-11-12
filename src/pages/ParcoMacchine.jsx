@@ -341,7 +341,7 @@ export default function ParcoMacchine() {
                 <section className="mt-20 px-6 pt-20 pb-24 md:pt-28 md:pb-32">
                     <div className="mx-auto max-w-6xl">
                         <Reveal delay="d1">
-                            <h1 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+                            <h1 className="font-display mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
                                 Tecnologia CNC
                                 <br />
                                 <span> al servizio della precisione </span>

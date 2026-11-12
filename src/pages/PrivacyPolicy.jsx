@@ -50,7 +50,7 @@ function Section({ id, num, title, children }) {
 }
 
 function H3({ children }) {
-    return <h3 className="pt-2 font-semibold text-slate-800">{children}</h3>;
+    return <h3 className="font-display pt-2 font-semibold text-slate-800">{children}</h3>;
 }
 
 function ExtLink({ href, children }) {
@@ -134,7 +134,7 @@ export default function PrivacyPage() {
                         <div className="fade-up d1">
                             <p className="eyebrow mb-4 text-blue-600">Trasparenza e conformità</p>
                         </div>
-                        <h1 className="font-display fade-up d2 mb-6 text-5xl leading-tight font-bold md:text-6xl lg:text-7xl">
+                        <h1 className="font-display fade-up d2 mb-6 text-5xl font-bold md:text-6xl lg:text-7xl">
                             Privacy e Cookie Policy
                         </h1>
                         <div className="fade-up d3">

@@ -1,14 +1,18 @@
 @import 'tailwindcss';
 
+/* Font di default del sito (anche per menu, footer e classe font-sans) */
+@theme {
+    --font-sans: 'Source Sans 3', system-ui, sans-serif;
+}
+
 :root {
     --bg: #fff;
     --text: #6b6375;
     --border: #e5e4e7;
 
     font:
-        18px/145% system-ui,
-        'Segoe UI',
-        Roboto,
+        18px/145% 'Source Sans 3',
+        system-ui,
         sans-serif;
     color: var(--text);
     background: var(--bg);
