@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import InViewVideo from '../components/InViewVideo';
 import '../styles/global.css';
@@ -228,10 +227,9 @@ function PezziCarousel() {
         <section className="bg-slate-50 px-6 py-20 md:py-28">
             <div className="mx-auto max-w-6xl">
                 <Reveal delay="d1">
-                    <h2 className="font-display mb-2 text-3xl font-bold text-slate-900 md:text-4xl">
+                    <h2 className="font-display mb-12 text-3xl font-bold text-slate-900 md:text-4xl">
                         Alcuni dei nostri prodotti finiti
                     </h2>
-                    <div className="mb-12 h-px bg-blue-600" />
                 </Reveal>
 
                 <Reveal delay="d2">
@@ -285,7 +283,7 @@ function PezziCarousel() {
                         </div>
 
                         <div className="hidden w-44 shrink-0 md:block lg:w-52">
-                            <ul className="mb-8 space-y-2.5">
+                            <ul className="space-y-2.5">
                                 {TIPI_PEZZO.map(tipo => (
                                     <li
                                         key={tipo}
@@ -302,25 +300,6 @@ function PezziCarousel() {
                                     </li>
                                 ))}
                             </ul>
-                            <Link
-                                to="/contattaci"
-                                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-3 text-xs font-bold tracking-wider text-white uppercase transition-all hover:-translate-y-0.5 hover:bg-blue-500"
-                            >
-                                Contattaci qui
-                                <svg
-                                    className="h-3.5 w-3.5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2.5}
-                                        d="M9 5l7 7-7 7"
-                                    />
-                                </svg>
-                            </Link>
                         </div>
                     </div>
                 </Reveal>
