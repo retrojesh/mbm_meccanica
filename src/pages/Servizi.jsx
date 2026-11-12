@@ -108,10 +108,11 @@ function ServiceBlock({ s, reverse, index }) {
     return (
         <div
             ref={ref}
-            className="grid items-center gap-12 border-b border-slate-100 py-20 last:border-none last:pb-4 md:grid-cols-2 md:gap-20 md:py-28"
+            className="grid items-center gap-12 py-20 md:grid-cols-2 md:items-stretch md:gap-20 md:py-28 lg:gap-24 xl:gap-32"
         >
-            <div className={`${reverse ? 'md:order-2' : ''}`}>
-                <div className="mb-5">
+            {/* Desktop: testo e card alti uguali (cima e fondo allineati) */}
+            <div className={`md:flex md:flex-col md:justify-center ${reverse ? 'md:order-2' : ''}`}>
+                <div className="mb-5 leading-none">
                     <span
                         className={`eyebrow text-blue-600 ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
                     >
@@ -119,12 +120,12 @@ function ServiceBlock({ s, reverse, index }) {
                     </span>
                 </div>
                 <h3
-                    className={`font-display mb-5 text-3xl font-bold text-slate-900 md:text-4xl ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
+                    className={`font-display mb-5 text-3xl font-bold text-slate-900 md:text-4xl xl:text-5xl ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
                 >
                     {s.title}
                 </h3>
                 <p
-                    className={`mb-8 text-lg leading-relaxed text-slate-500 ${inView ? `fade-up delay-2` : 'opacity-0'}`}
+                    className={`mb-8 text-lg leading-relaxed text-slate-500 xl:text-xl ${inView ? `fade-up delay-2` : 'opacity-0'}`}
                 >
                     {s.short}
                 </p>
@@ -132,7 +133,7 @@ function ServiceBlock({ s, reverse, index }) {
                     {s.detail.map((d, i) => (
                         <li
                             key={i}
-                            className={`flex items-start gap-3 text-base leading-relaxed text-slate-600 ${inView ? `fade-up delay-${Math.min(i + 2, 4)}` : 'opacity-0'}`}
+                            className={`flex items-start gap-3 text-base leading-relaxed text-slate-600 xl:text-lg ${inView ? `fade-up delay-${Math.min(i + 2, 4)}` : 'opacity-0'}`}
                         >
                             <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-500" />
                             {d}
@@ -143,7 +144,7 @@ function ServiceBlock({ s, reverse, index }) {
 
             <div className={`${reverse ? 'md:order-1' : ''}`}>
                 <div
-                    className={`relative h-[360px] overflow-hidden rounded-2xl shadow-md ${inView ? `fade-up delay-2` : 'opacity-0'}`}
+                    className={`relative h-[360px] overflow-hidden rounded-2xl shadow-md md:h-full md:min-h-[320px] xl:min-h-[420px] ${inView ? `fade-up delay-2` : 'opacity-0'}`}
                 >
                     {s.video ? (
                         <InViewVideo
@@ -199,7 +200,7 @@ export default function Servizi() {
                     <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-blue-100 opacity-20 blur-3xl filter"></div>
                     <div className="absolute bottom-0 left-0 -z-10 h-96 w-96 rounded-full bg-cyan-100 opacity-20 blur-3xl filter"></div>
 
-                    <div className="relative mx-auto max-w-5xl">
+                    <div className="relative mx-auto max-w-5xl xl:max-w-7xl">
                         <div className="fade-up delay-1" style={{ opacity: 0 }}>
                             <p className="eyebrow mb-4 text-blue-600">Le nostre competenze</p>
                         </div>
@@ -222,7 +223,7 @@ export default function Servizi() {
 
                 {/* Services */}
                 <section className="px-6">
-                    <div className="mx-auto max-w-5xl">
+                    <div className="mx-auto max-w-5xl xl:max-w-7xl">
                         {SERVIZI.map((s, i) => (
                             <ServiceBlock key={s.title} s={s} reverse={i % 2 !== 0} index={i} />
                         ))}
