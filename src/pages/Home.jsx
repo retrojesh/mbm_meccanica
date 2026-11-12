@@ -250,7 +250,7 @@ export default function Home() {
                     <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
                         <h1 className="font-display fade-up d2 mb-6 text-5xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
                             Precisione <br />
-                            <span>che si vede.</span>
+                            <span>che si vede</span>
                         </h1>
                         <p className="fade-up d3 mx-auto mb-10 max-w-xl text-lg text-white/75 md:text-xl">
                             Tornitura e fresatura CNC di alta precisione per i settori automotive,
