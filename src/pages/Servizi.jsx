@@ -108,7 +108,7 @@ function ServiceBlock({ s, reverse, index }) {
     return (
         <div
             ref={ref}
-            className="grid items-center gap-12 py-20 md:grid-cols-2 md:items-stretch md:gap-20 md:py-28 lg:gap-24 xl:gap-32"
+            className="grid items-center gap-10 py-10 md:grid-cols-2 md:items-stretch md:gap-20 md:py-14 lg:gap-24 xl:gap-32"
         >
             {/* Desktop: testo e card alti uguali (cima e fondo allineati) */}
             <div className={`md:flex md:flex-col md:justify-center ${reverse ? 'md:order-2' : ''}`}>
@@ -197,7 +197,7 @@ export default function Servizi() {
 
             <div className="font-body min-h-screen bg-white text-slate-800">
                 {/* Hero */}
-                <section className="relative overflow-hidden px-6 pt-36 pb-20 md:pt-48 md:pb-24">
+                <section className="relative overflow-hidden px-6 pt-32 pb-6 md:pt-40 md:pb-8">
                     <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-blue-100 opacity-20 blur-3xl filter"></div>
                     <div className="absolute bottom-0 left-0 -z-10 h-96 w-96 rounded-full bg-cyan-100 opacity-20 blur-3xl filter"></div>
 
@@ -232,7 +232,7 @@ export default function Servizi() {
                 </section>
 
                 {/* CTA */}
-                <section className="bg-blue-50 px-6 py-20 md:py-28">
+                <section className="bg-blue-50 px-6 py-16 md:py-24">
                     <div className="mx-auto max-w-3xl text-center">
                         <Reveal delay="delay-1">
                             <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">

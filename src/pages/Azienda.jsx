@@ -63,7 +63,7 @@ export default function Azienda() {
                 </section>
 
                 {/* Founders' section*/}
-                <section className="px-6 py-24 md:py-32">
+                <section className="px-6 py-16 md:py-24">
                     <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:max-w-7xl xl:gap-24 2xl:gap-32">
                         <Reveal delay="d1">
                             <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
@@ -104,11 +104,11 @@ export default function Azienda() {
                 </section>
 
                 {/* Company values section */}
-                <section className="px-6 py-20 md:py-28">
+                <section className="px-6 py-16 md:py-24">
                     <div className="mx-auto max-w-2xl">
                         <Reveal delay="d1">
                             <div className="eyebrow mb-6 text-blue-700">I nostri principi</div>
-                            <h2 className="font-display mb-14 text-4xl font-bold text-slate-900 md:text-5xl">
+                            <h2 className="font-display mb-10 text-4xl font-bold text-slate-900 md:text-5xl">
                                 Valori che guidano il nostro lavoro
                             </h2>
                         </Reveal>
@@ -139,7 +139,7 @@ export default function Azienda() {
                                             transform: `translateX(${(i - activeIndex) * 20}px)`,
                                         }}
                                     >
-                                        <div className="py-10">
+                                        <div className="py-7">
                                             <div className="flex items-baseline justify-between gap-12">
                                                 <h3 className="font-display shrink-0 text-xl font-medium text-slate-900">
                                                     {v.title}
@@ -172,7 +172,7 @@ export default function Azienda() {
                 </section>
 
                 {/* CTA */}
-                <section className="gradient-bg px-6 py-24 text-center md:py-32">
+                <section className="gradient-bg px-6 py-16 text-center md:py-24">
                     <Reveal>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
                             Trasformare idee e necessità in componenti.
