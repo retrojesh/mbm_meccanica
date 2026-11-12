@@ -390,7 +390,6 @@ export default function Home() {
                 {/* CTA */}
                 <section className="bg-blue-50 px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <p className="eyebrow mb-6 text-blue-600">Lavoriamo insieme</p>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                             Hai un progetto?
                             <br />
