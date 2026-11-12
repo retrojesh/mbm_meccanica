@@ -119,7 +119,7 @@ function ServiceBlock({ s, reverse, index }) {
                     </span>
                 </div>
                 <h3
-                    className={`font-display mb-5 text-3xl leading-tight font-bold text-slate-900 md:text-4xl ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
+                    className={`font-display mb-5 text-3xl font-bold text-slate-900 md:text-4xl ${inView ? `fade-up ${delayClass}` : 'opacity-0'}`}
                 >
                     {s.title}
                 </h3>
@@ -204,7 +204,7 @@ export default function Servizi() {
                             <p className="eyebrow mb-4 text-blue-600">Le nostre competenze</p>
                         </div>
                         <h1
-                            className="font-display fade-up mb-6 text-5xl leading-tight font-bold delay-1 md:text-6xl lg:text-7xl"
+                            className="font-display fade-up mb-6 text-5xl font-bold delay-1 md:text-6xl lg:text-7xl"
                             style={{ opacity: 0 }}
                         >
                             Lavorazioni CNC

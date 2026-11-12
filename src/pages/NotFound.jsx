@@ -34,7 +34,7 @@ export default function NotFound() {
                             </p>
                         </div>
 
-                        <h1 className="font-display fade-up d2 mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+                        <h1 className="font-display fade-up d2 mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
                             Pagina non trovata
                         </h1>
 

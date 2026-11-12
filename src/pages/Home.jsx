@@ -248,7 +248,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />
 
                     <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-                        <h1 className="font-display fade-up d2 mb-6 text-5xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
+                        <h1 className="font-display fade-up d2 mb-6 text-5xl font-bold text-white md:text-7xl lg:text-8xl">
                             Precisione <br />
                             <span>che si vede</span>
                         </h1>
@@ -295,7 +295,7 @@ export default function Home() {
                         <div className="mb-16 max-w-2xl">
                             <Reveal delay="d1">
                                 <p className="eyebrow mb-4 text-blue-600">Cosa facciamo</p>
-                                <h2 className="font-display mb-4 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+                                <h2 className="font-display mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
                                     Lavorazioni CNC
                                     <br />
                                     di alta precisione
@@ -326,7 +326,7 @@ export default function Home() {
                     <div className="absolute inset-0 flex items-center justify-end px-8 md:px-20">
                         <div className="max-w-lg">
                             <Reveal delay="d1">
-                                <h2 className="font-display mb-5 text-4xl leading-tight font-bold text-white md:text-5xl">
+                                <h2 className="font-display mb-5 text-4xl font-bold text-white md:text-5xl">
                                     Un'officina moderna,
                                     <br />
                                     costruita per crescere
@@ -374,7 +374,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/50 to-slate-900/20" />
                     <div className="relative z-10 flex h-full items-center px-8 md:px-20">
                         <Reveal delay="d1">
-                            <h2 className="font-display mb-4 max-w-xl text-4xl leading-tight font-bold text-white md:text-5xl">
+                            <h2 className="font-display mb-4 max-w-xl text-4xl font-bold text-white md:text-5xl">
                                 Standard alto e
                                 <br />
                                 consegne puntuali.
