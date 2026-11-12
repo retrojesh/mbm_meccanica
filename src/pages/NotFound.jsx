@@ -19,7 +19,7 @@ export default function NotFound() {
             />
 
             <main className="font-body flex min-h-screen items-center bg-white text-slate-800">
-                <section className="relative w-full overflow-hidden px-6 pt-36 pb-24 md:pt-44 md:pb-28">
+                <section className="relative w-full overflow-hidden px-6 pt-32 pb-16 md:pt-40 md:pb-24">
                     <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-blue-100 opacity-20 blur-3xl filter" />
                     <div className="absolute bottom-0 left-0 -z-10 h-96 w-96 rounded-full bg-cyan-100 opacity-20 blur-3xl filter" />
 

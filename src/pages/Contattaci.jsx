@@ -219,7 +219,7 @@ export default function Contatti() {
             <JsonLd />
 
             <div className="min-h-screen bg-white font-sans text-slate-800">
-                <section className="px-6 py-24 md:py-32">
+                <section className="px-6 pt-32 pb-16 md:pt-40 md:pb-24">
                     <div className="mx-auto max-w-5xl">
                         <div className="mx-auto mb-10 max-w-3xl text-center">
                             <Reveal>
@@ -266,7 +266,7 @@ export default function Contatti() {
                         </div>
 
                         {/* Map Section */}
-                        <div className="mt-24">
+                        <div className="mt-16 md:mt-20">
                             <Reveal delay="d1">
                                 <div className="mb-8 text-center">
                                     <h2 className="font-display text-3xl font-bold text-slate-900 md:text-4xl">
@@ -284,7 +284,7 @@ export default function Contatti() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-24 text-center md:py-32">
+                <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-16 text-center md:py-24">
                     <Reveal>
                         <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-white md:text-5xl">
                             Mettiamoci in contatto

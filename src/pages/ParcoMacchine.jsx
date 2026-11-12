@@ -224,10 +224,10 @@ function PezziCarousel() {
     };
 
     return (
-        <section className="bg-blue-50 px-6 py-20 md:py-28">
+        <section className="bg-blue-50 px-6 py-16 md:py-24">
             <div className="mx-auto max-w-6xl">
                 <Reveal delay="d1">
-                    <h2 className="font-display mb-12 text-3xl font-bold text-slate-900 md:text-4xl">
+                    <h2 className="font-display mb-10 text-3xl font-bold text-slate-900 md:text-4xl">
                         Alcuni dei nostri prodotti finiti
                     </h2>
                 </Reveal>
@@ -317,7 +317,7 @@ export default function ParcoMacchine() {
             />
 
             <div className="font-body bg-white text-slate-800">
-                <section className="mt-20 px-6 pt-20 pb-24 md:pt-28 md:pb-32">
+                <section className="px-6 pt-32 pb-16 md:pt-40 md:pb-24">
                     <div className="mx-auto max-w-6xl">
                         <Reveal delay="d1">
                             <h1 className="font-display mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
@@ -325,7 +325,7 @@ export default function ParcoMacchine() {
                                 <br />
                                 <span> al servizio della precisione </span>
                             </h1>
-                            <p className="mb-16 max-w-2xl text-lg leading-relaxed text-slate-500">
+                            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-slate-500 md:mb-12">
                                 Quattro centri di lavoro CNC per tornitura e fresatura multi-asse,
                                 tutti equipaggiati con software CAD/CAM e post processor dedicato.
                             </p>

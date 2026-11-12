@@ -166,7 +166,7 @@ function SettoriCarousel() {
 
     return (
         <div className="mx-auto max-w-6xl">
-            <div className="mb-16">
+            <div className="mb-10 md:mb-12">
                 <Reveal delay="d1">
                     <p className="eyebrow mb-4 text-blue-600">Settori di applicazione</p>
                     <h2 className="font-display text-4xl font-bold md:text-5xl">
@@ -290,9 +290,9 @@ export default function Home() {
                 </section>
 
                 {/* Servizi */}
-                <section className="px-6 py-24 md:py-32">
+                <section className="px-6 py-16 md:py-24">
                     <div className="mx-auto max-w-6xl">
-                        <div className="mb-16 max-w-2xl">
+                        <div className="mb-10 max-w-2xl md:mb-12">
                             <Reveal delay="d1">
                                 <p className="eyebrow mb-4 text-blue-600">Cosa facciamo</p>
                                 <h2 className="font-display mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
@@ -360,7 +360,7 @@ export default function Home() {
                 </section>
 
                 {/* Settori */}
-                <section className="bg-slate-50 px-6 py-32 md:py-40">
+                <section className="bg-slate-50 px-6 py-16 md:py-24">
                     <SettoriCarousel />
                 </section>
 
@@ -388,7 +388,7 @@ export default function Home() {
                 </section>
 
                 {/* CTA */}
-                <section className="bg-blue-50 px-6 py-24 text-center md:py-32">
+                <section className="bg-blue-50 px-6 py-16 text-center md:py-24">
                     <Reveal>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                             Hai un progetto?

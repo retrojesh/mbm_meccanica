@@ -126,7 +126,7 @@ export default function PrivacyPage() {
 
             <div className="font-body min-h-screen bg-white text-slate-800">
                 {/* Hero */}
-                <section className="relative overflow-hidden px-6 pt-36 pb-20 md:pt-48 md:pb-24">
+                <section className="relative overflow-hidden px-6 pt-32 pb-10 md:pt-40 md:pb-12">
                     <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-blue-100 opacity-20 blur-3xl filter" />
                     <div className="absolute bottom-0 left-0 -z-10 h-96 w-96 rounded-full bg-cyan-100 opacity-20 blur-3xl filter" />
 
@@ -147,7 +147,7 @@ export default function PrivacyPage() {
                 </section>
 
                 {/* Contenuto */}
-                <section className="px-6 pb-24 md:pb-32">
+                <section className="px-6 pb-16 md:pb-24">
                     <div className="mx-auto max-w-3xl space-y-8">
                         {/* Premessa e indice */}
                         <Reveal delay="d1">
