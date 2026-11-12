@@ -64,20 +64,20 @@ export default function Azienda() {
 
                 {/* Founders' section*/}
                 <section className="px-6 py-24 md:py-32">
-                    <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
+                    <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:max-w-7xl xl:gap-24 2xl:gap-32">
                         <Reveal delay="d1">
                             <h2 className="font-display mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
-                                Soufiane <span className="font-normal">e</span> Yassin Mejri
+                                Soufiane <span className="font-normal">e</span> Yassine Mejri
                             </h2>
                             <p className="mb-6 text-lg leading-relaxed text-slate-600">
                                 Siamo <strong>Soufiane</strong>{' '}
-                                <span className="font-normal">e</span> <strong>Yassin Mejri</strong>
-                                , fratelli e fondatori di M.B.M. Meccanica SRL, una giovane realtà
-                                nel settore della meccanica industriale, nata dalla nostra passione
-                                per l'ingegneria e l'innovazione. Con esperienze diverse ma
-                                complementari, abbiamo unito le forze per creare un'azienda
-                                dinamica, focalizzata sulla qualità e sulla soddisfazione dei
-                                clienti.
+                                <span className="font-normal">e</span>{' '}
+                                <strong>Yassine Mejri</strong>, fratelli e fondatori di M.B.M.
+                                Meccanica SRL, una giovane realtà nel settore della meccanica
+                                industriale, nata dalla nostra passione per l'ingegneria e
+                                l'innovazione. Con esperienze diverse ma complementari, abbiamo
+                                unito le forze per creare un'azienda dinamica, focalizzata sulla
+                                qualità e sulla soddisfazione dei clienti.
                             </p>
                             <p className="mb-8 leading-relaxed text-slate-600">
                                 Cerchiamo di fare bene ogni pezzo che passa dalle nostre macchine, e
@@ -86,15 +86,17 @@ export default function Azienda() {
                         </Reveal>
                         <Reveal delay="d2">
                             <div className="relative">
-                                <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 opacity-20 blur-2xl" />
-                                <div
-                                    className="relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 bg-cover bg-center shadow-2xl"
-                                    style={{
-                                        backgroundImage:
-                                            "url('https://placehold.co/800x800/1e293b/ffffff?text=Soufiane+%26+Yassin+Mejri')",
-                                    }}
-                                >
-                                    <div className="flex h-full w-full items-end bg-gradient-to-t from-slate-900 via-transparent to-transparent p-8"></div>
+                                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-800 shadow-[0_4px_20px_rgba(15,23,42,0.08)] lg:aspect-square">
+                                    <img
+                                        src="/img/chi-siamo.webp"
+                                        alt="Soufiane e Yassine Mejri, fondatori di M.B.M. Meccanica, nell'officina di Castelvetro di Modena"
+                                        width={1600}
+                                        height={1066}
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="absolute inset-0 h-full w-full object-cover object-[14%_50%] lg:object-[38%_50%]"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
                                 </div>
                             </div>
                         </Reveal>
