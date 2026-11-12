@@ -68,7 +68,12 @@ function ExtLink({ href, children }) {
 
 function Mail() {
     return (
-        <a href="mailto:info@mbmmeccanica.com" className="text-blue-600 underline">
+        <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@mbmmeccanica.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline"
+        >
             info@mbmmeccanica.com
         </a>
     );

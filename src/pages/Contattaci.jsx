@@ -9,6 +9,8 @@ import { useConsent } from '../utils/consent';
 const MAP_EMBED_URL =
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.3297536632717!2d10.947375875886053!3d44.50839869670187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fe054e0bf7e35%3A0x1ca09ac2c8a1feac!2sVia%20M.%20Buonarroti%2C%2022%2F24%2C%2041014%20Castelvetro%20di%20Modena%20MO!5e0!3m2!1sit!2sit!4v1775157069684!5m2!1sit!2sit';
 const MAP_LINK = 'https://maps.google.com/?q=Via+M.+Buonarroti+22/24,+Castelvetro+di+Modena';
+// Apre la composizione di Gmail in una nuova scheda invece del client di posta predefinito.
+const GMAIL_COMPOSE_LINK = 'https://mail.google.com/mail/?view=cm&fs=1&to=info@mbmmeccanica.com';
 
 // Con il consenso dato dal banner la mappa compare subito; altrimenti
 // il visitatore può caricarla con un click (vale solo per questa visita).
@@ -70,11 +72,12 @@ const INFO = [
     {
         label: 'Email',
         value: 'info@mbmmeccanica.com',
-        href: 'mailto:info@mbmmeccanica.com',
+        href: GMAIL_COMPOSE_LINK,
         color: 'blue',
     },
     {
-        label: 'Sede',
+        label: 'Sede legale',
+        icon: 'sede',
         value: 'Via M. Buonarroti 22/24\nCastelvetro di Modena (MO)\n41014',
         href: MAP_LINK,
         color: 'blue',
@@ -173,7 +176,7 @@ const ContactCard = ({ item, delay }) => {
                 className="group flex items-start gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
                 <span className={colorClasses[item.color]}>
-                    <Icon type={item.label.toLowerCase()} />
+                    <Icon type={item.icon ?? item.label.toLowerCase()} />
                 </span>
                 <div>
                     <p className="mb-1 text-xs font-semibold tracking-wider text-slate-400 uppercase">
@@ -203,14 +206,8 @@ export default function Contatti() {
                         <div className="mx-auto mb-16 max-w-3xl text-center">
                             <Reveal>
                                 <h1 className="font-display mb-6 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
-                                    Richiedi un preventivo per le tue lavorazioni CNC
+                                    Richiedi un preventivo per le tue lavorazioni
                                 </h1>
-                            </Reveal>
-                            <Reveal delay="d1">
-                                <p className="mx-auto max-w-2xl text-xl leading-relaxed text-slate-500">
-                                    Scrivici su WhatsApp o via email: ti rispondiamo con tempi e
-                                    costi per fresatura, tornitura e progettazione CAD/CAM.
-                                </p>
                             </Reveal>
                         </div>
 
@@ -250,17 +247,6 @@ export default function Contatti() {
                                                 </li>
                                             ))}
                                         </ul>
-                                    </div>
-                                </Reveal>
-
-                                <Reveal delay="d3">
-                                    <div className="rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4">
-                                        <p className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
-                                            P.IVA
-                                        </p>
-                                        <p className="mt-1 font-medium text-slate-700">
-                                            04125990368
-                                        </p>
                                     </div>
                                 </Reveal>
                             </div>
@@ -306,7 +292,9 @@ export default function Contatti() {
                                 <Icon type="whatsapp" /> Scrivici su WhatsApp
                             </a>
                             <a
-                                href="mailto:info@mbmmeccanica.com"
+                                href={GMAIL_COMPOSE_LINK}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-lg sm:w-auto"
                             >
                                 <Icon type="email" /> Invia una email

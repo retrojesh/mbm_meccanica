@@ -7,6 +7,7 @@ import Servizi from './pages/Servizi';
 import ParcoMacchine from './pages/ParcoMacchine';
 import Contattaci from './pages/Contattaci';
 import PrivacyBanner from './components/PrivacyBanner';
+import Footer from './components/Footer';
 import PrivacyPage from './pages/PrivacyPolicy.jsx';
 import NotFound from './pages/NotFound.jsx';
 import './App.css';
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer />
             <PrivacyBanner />
         </BrowserRouter>
     );
