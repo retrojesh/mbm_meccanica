@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import JsonLd from '../components/JsonLd';
 import InViewVideo from '../components/InViewVideo';
-import officina from '../assets/pages/azienda/photos/officina.webp';
+import officina from '../assets/pages/home/officina.webp';
 import '../styles/global.css';
 
 function Reveal({ children, delay = '', className = '' }) {
@@ -317,16 +317,15 @@ export default function Home() {
                 <section className="relative overflow-hidden">
                     <img
                         src={officina}
-                        alt="Officina MBM Meccanica"
+                        alt="Officina MBM Meccanica con i centri di lavoro CNC"
                         loading="lazy"
                         decoding="async"
                         className="h-[520px] w-full object-cover object-center md:h-[640px]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-transparent" />
-                    <div className="absolute inset-0 flex items-center px-8 md:px-20">
+                    <div className="absolute inset-0 bg-slate-900/70 md:bg-transparent md:bg-gradient-to-l md:from-slate-900/90 md:via-slate-900/60 md:to-transparent" />
+                    <div className="absolute inset-0 flex items-center justify-end px-8 md:px-20">
                         <div className="max-w-lg">
                             <Reveal delay="d1">
-                                <p className="eyebrow mb-3 text-blue-400">La nostra officina</p>
                                 <h2 className="font-display mb-5 text-4xl leading-tight font-bold text-white md:text-5xl">
                                     Un'officina moderna,
                                     <br />
