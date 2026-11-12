@@ -62,32 +62,36 @@ function MapEmbed() {
     );
 }
 
+// Griglia 2×2 su desktop: WhatsApp | Orari, Email | Sede.
+// Su mobile restano impilate nell'ordine dell'array.
 const INFO = [
     {
         label: 'WhatsApp',
         value: '+39 324 098 7230',
         href: 'https://wa.me/393240987230',
         color: 'green',
+        placement: 'md:col-start-1 md:row-start-1',
     },
     {
         label: 'Email',
         value: 'info@mbmmeccanica.com',
         href: GMAIL_COMPOSE_LINK,
         color: 'blue',
+        placement: 'md:col-start-1 md:row-start-2',
     },
     {
         label: 'Sede legale',
         icon: 'sede',
-        value: 'Via M. Buonarroti 22/24\nCastelvetro di Modena (MO)\n41014',
+        value: 'Via M. Buonarroti 22/24\n41014 Castelvetro di Modena (MO)',
         href: MAP_LINK,
         color: 'blue',
+        placement: 'md:col-start-2 md:row-start-2',
     },
 ];
 
 const ORARI = [
-    { giorno: 'Lunedì – Venerdì', ore: '07:00 – 20:00', aperto: true },
-    { giorno: 'Sabato', ore: 'Chiuso', aperto: false },
-    { giorno: 'Domenica', ore: 'Chiuso', aperto: false },
+    { giorno: 'Lun – Ven', ore: '07:00 – 20:00', aperto: true },
+    { giorno: 'Sab – Dom', ore: 'Chiuso', aperto: false },
 ];
 
 const ANIMATIONS = {
@@ -157,28 +161,42 @@ const Icon = ({ type }) => {
                 />
             </svg>
         ),
+        orari: (
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+            </svg>
+        ),
     };
     return icons[type];
 };
 
-const ContactCard = ({ item, delay }) => {
-    const colorClasses = {
-        green: 'text-green-600',
-        blue: 'text-blue-600',
-    };
+// Contenuto centrato in verticale: icona e testi allineati allo stesso modo in tutte le card
+const CARD_BASE =
+    'flex h-full items-center gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm';
+const ICON_BOX = 'flex h-12 w-12 shrink-0 items-center justify-center rounded-xl';
+const ICON_COLORS = {
+    green: 'bg-green-50 text-green-600',
+    blue: 'bg-blue-50 text-blue-600',
+};
 
+const ContactCard = ({ item, delay }) => {
     return (
-        <Reveal delay={delay}>
+        <Reveal delay={delay} className={item.placement}>
             <a
                 href={item.href}
                 target={item.href.startsWith('http') ? '_blank' : undefined}
                 rel="noopener noreferrer"
-                className="group flex items-start gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className={`group ${CARD_BASE} transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
             >
-                <span className={colorClasses[item.color]}>
+                <span className={`${ICON_BOX} ${ICON_COLORS[item.color]}`}>
                     <Icon type={item.icon ?? item.label.toLowerCase()} />
                 </span>
-                <div>
+                <div className="min-w-0">
                     <p className="mb-1 text-xs font-semibold tracking-wider text-slate-400 uppercase">
                         {item.label}
                     </p>
@@ -203,7 +221,7 @@ export default function Contatti() {
             <div className="min-h-screen bg-white font-sans text-slate-800">
                 <section className="px-6 py-24 md:py-32">
                     <div className="mx-auto max-w-5xl">
-                        <div className="mx-auto mb-16 max-w-3xl text-center">
+                        <div className="mx-auto mb-10 max-w-3xl text-center">
                             <Reveal>
                                 <h1 className="font-display mb-6 text-4xl font-bold text-slate-900 md:text-5xl">
                                     Richiedi un preventivo per le tue lavorazioni
@@ -211,36 +229,31 @@ export default function Contatti() {
                             </Reveal>
                         </div>
 
-                        <div className="grid gap-8 md:grid-cols-2">
-                            {/* Left column */}
-                            <div className="space-y-4">
-                                <Reveal delay="d1">
-                                    <p className="eyebrow mb-8 text-blue-600">Recapiti</p>
-                                </Reveal>
-                                {INFO.map((item, i) => (
-                                    <ContactCard key={item.label} item={item} delay={`d${i + 1}`} />
-                                ))}
-                            </div>
+                        {/* 4 card uguali: righe della stessa altezza (auto-rows-fr) */}
+                        <div className="grid gap-4 md:auto-rows-fr md:grid-cols-2">
+                            {INFO.map((item, i) => (
+                                <ContactCard key={item.label} item={item} delay={`d${i + 1}`} />
+                            ))}
 
-                            {/* Right column */}
-                            <div className="space-y-4">
-                                <Reveal delay="d1">
-                                    <p className="eyebrow mb-8 text-blue-600">Orari di apertura</p>
-                                </Reveal>
-
-                                <Reveal delay="d2">
-                                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                                        <ul className="divide-y divide-slate-100">
+                            <Reveal delay="d4" className="md:col-start-2 md:row-start-1">
+                                <div className={CARD_BASE}>
+                                    <span className={`${ICON_BOX} ${ICON_COLORS.blue}`}>
+                                        <Icon type="orari" />
+                                    </span>
+                                    <div className="min-w-0">
+                                        <p className="mb-1 text-xs font-semibold tracking-wider text-slate-400 uppercase">
+                                            Orari di apertura
+                                        </p>
+                                        {/* Giorni e orari in due colonne allineate */}
+                                        <ul className="grid grid-cols-[auto_auto] justify-start gap-x-6">
                                             {ORARI.map(({ giorno, ore, aperto }) => (
                                                 <li
                                                     key={giorno}
-                                                    className="flex items-center justify-between py-4 first:pt-0 last:pb-0"
+                                                    className="col-span-2 grid grid-cols-subgrid text-base font-medium"
                                                 >
-                                                    <span className="text-sm font-medium text-slate-700">
-                                                        {giorno}
-                                                    </span>
+                                                    <span className="text-slate-800">{giorno}</span>
                                                     <span
-                                                        className={`text-sm font-semibold ${aperto ? 'text-slate-800' : 'text-slate-400'}`}
+                                                        className={`tabular-nums ${aperto ? 'text-slate-800' : 'text-slate-400'}`}
                                                     >
                                                         {ore}
                                                     </span>
@@ -248,12 +261,12 @@ export default function Contatti() {
                                             ))}
                                         </ul>
                                     </div>
-                                </Reveal>
-                            </div>
+                                </div>
+                            </Reveal>
                         </div>
 
                         {/* Map Section */}
-                        <div className="mt-16">
+                        <div className="mt-24">
                             <Reveal delay="d1">
                                 <div className="mb-8 text-center">
                                     <div className="eyebrow mb-4 text-blue-700">Dove trovarci</div>
