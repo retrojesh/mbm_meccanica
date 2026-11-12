@@ -203,14 +203,8 @@ export default function Contatti() {
                         <div className="mx-auto mb-16 max-w-3xl text-center">
                             <Reveal>
                                 <h1 className="font-display mb-6 text-4xl leading-tight font-bold text-slate-900 md:text-5xl">
-                                    Richiedi un preventivo per le tue lavorazioni CNC
+                                    Richiedi un preventivo per le tue lavorazioni
                                 </h1>
-                            </Reveal>
-                            <Reveal delay="d1">
-                                <p className="mx-auto max-w-2xl text-xl leading-relaxed text-slate-500">
-                                    Scrivici su WhatsApp o via email: ti rispondiamo con tempi e
-                                    costi per fresatura, tornitura e progettazione CAD/CAM.
-                                </p>
                             </Reveal>
                         </div>
 
@@ -250,17 +244,6 @@ export default function Contatti() {
                                                 </li>
                                             ))}
                                         </ul>
-                                    </div>
-                                </Reveal>
-
-                                <Reveal delay="d3">
-                                    <div className="rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4">
-                                        <p className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
-                                            P.IVA
-                                        </p>
-                                        <p className="mt-1 font-medium text-slate-700">
-                                            04125990368
-                                        </p>
                                     </div>
                                 </Reveal>
                             </div>
