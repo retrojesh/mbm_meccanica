@@ -67,7 +67,7 @@ export default function Azienda() {
                     <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:max-w-7xl xl:gap-24 2xl:gap-32">
                         <Reveal delay="d1">
                             <h2 className="font-display mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
-                                Soufiane <span className="font-normal">e</span> Yassine Mejri
+                                Soufiane e Yassine Mejri
                             </h2>
                             <p className="mb-6 text-lg leading-relaxed text-slate-600">
                                 Siamo <strong>Soufiane</strong>{' '}
