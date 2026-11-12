@@ -200,7 +200,7 @@ function SettoriCarousel() {
 
                     <div className="md:col-span-3">
                         <div
-                            className="flex h-64 flex-col justify-center rounded-2xl border border-slate-100 bg-white p-10 shadow-sm transition-opacity duration-200"
+                            className="flex h-64 flex-col justify-center rounded-2xl border border-slate-200 bg-white p-10 shadow-sm transition-opacity duration-200"
                             style={{ opacity: animating ? 0 : 1 }}
                         >
                             <h3 className="font-display mb-4 text-3xl font-bold text-slate-900">
