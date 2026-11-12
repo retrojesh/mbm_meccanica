@@ -392,7 +392,7 @@ export default function ParcoMacchine() {
                                         <div className="absolute inset-0 hidden bg-gradient-to-t from-black/85 via-black/20 to-transparent md:block" />
 
                                         {/* Contenuto: sotto il video su mobile, sovrapposto su desktop */}
-                                        <div className="p-6 md:absolute md:inset-x-0 md:bottom-0 md:p-10">
+                                        <div className="p-6 md:absolute md:inset-x-0 md:bottom-0 md:px-10 md:pt-10 md:pb-6">
                                             <span className="eyebrow mb-2 text-blue-400">
                                                 {m.cat}
                                             </span>
@@ -405,13 +405,10 @@ export default function ParcoMacchine() {
                                                 </p>
                                             )}
 
-                                            {/* Dati tecnici come pillole */}
-                                            <div className="flex flex-wrap gap-2">
+                                            {/* Dati tecnici */}
+                                            <div className="flex flex-wrap gap-x-6 gap-y-3">
                                                 {m.specs.map(s => (
-                                                    <div
-                                                        key={s.label}
-                                                        className="rounded-lg bg-white/10 px-3 py-2 backdrop-blur-sm"
-                                                    >
+                                                    <div key={s.label}>
                                                         <p className="text-[10px] text-slate-400">
                                                             {s.label}
                                                         </p>
