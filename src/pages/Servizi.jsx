@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import InViewVideo from '../components/InViewVideo';
 import '../styles/global.css';
-import progettazioneImg from '../assets/pages/servizi/progettazione.webp';
+import cad3dImg from '../assets/pages/servizi/cad3d.webp';
 
 // Hook: detects when element enters viewport
 function useInView(threshold = 0.15, triggerOnce = true) {
@@ -73,7 +73,7 @@ const SERVIZI = [
             'Finiture superficiali, trattamenti termici e controlli frequenti',
         ],
         tag: 'CAD/CAM Su commessa · Supporto tecnico',
-        image: progettazioneImg,
+        image: cad3dImg,
     },
     {
         title: 'Prototipazione Rapida',
