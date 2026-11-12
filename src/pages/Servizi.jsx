@@ -85,6 +85,7 @@ const SERVIZI = [
         ],
         tag: 'Prototipo · Iterazione rapida',
         image: null,
+        video: { src: '/video/misurazione.mp4', poster: '/video/misurazione-poster.webp' },
     },
     {
         title: 'Ricambistica Industriale',
