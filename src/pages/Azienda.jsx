@@ -172,18 +172,18 @@ export default function Azienda() {
                 </section>
 
                 {/* CTA */}
-                <section className="gradient-bg px-6 py-16 text-center md:py-24">
+                <section className="bg-blue-50 px-6 py-16 text-center md:py-24">
                     <Reveal>
-                        <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+                        <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                             Trasformare idee e necessità in componenti.
                         </h2>
-                        <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-white/80">
+                        <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-slate-500">
                             Raccontaci il tuo progetto: troviamo insieme il modo migliore per
                             realizzarlo.
                         </p>
                         <a
                             href="/servizi"
-                            className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-bold text-slate-800 transition-all hover:-translate-y-0.5 hover:shadow-2xl"
+                            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-10 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-lg"
                         >
                             I nostri servizi
                             <svg

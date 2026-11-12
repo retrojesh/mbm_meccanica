@@ -284,12 +284,12 @@ export default function Contatti() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-16 text-center md:py-24">
+                <section className="bg-blue-50 px-6 py-16 text-center md:py-24">
                     <Reveal>
-                        <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-white md:text-5xl">
+                        <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-slate-800 md:text-5xl">
                             Mettiamoci in contatto
                         </h2>
-                        <p className="mx-auto mb-10 max-w-lg text-lg leading-relaxed text-white/65">
+                        <p className="mx-auto mb-10 max-w-lg text-lg leading-relaxed text-slate-500">
                             Siamo sempre disponibili per rispondere alle tue domande, discutere i
                             tuoi progetti o fornirti un preventivo personalizzato. Non esitare a
                             metterti in contatto con noi!
