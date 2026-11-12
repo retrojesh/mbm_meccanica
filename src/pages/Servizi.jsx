@@ -235,9 +235,6 @@ export default function Servizi() {
                 <section className="bg-blue-50 px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-3xl text-center">
                         <Reveal delay="delay-1">
-                            <p className="eyebrow mb-4 text-blue-600">
-                                La tecnologia dietro ogni lavorazione
-                            </p>
                             <h2 className="font-display mx-auto mb-6 max-w-2xl text-4xl font-bold text-slate-800 md:text-5xl lg:text-6xl">
                                 Vuoi sapere
                                 <br />

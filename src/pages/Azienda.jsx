@@ -174,7 +174,6 @@ export default function Azienda() {
                 {/* CTA */}
                 <section className="gradient-bg px-6 py-24 text-center md:py-32">
                     <Reveal>
-                        <div className="eyebrow mb-6 text-white">La nostra promessa</div>
                         <h2 className="font-display mx-auto mb-6 max-w-3xl text-4xl font-bold text-white md:text-5xl lg:text-6xl">
                             Trasformare idee e necessità in componenti.
                         </h2>

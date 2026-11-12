@@ -269,7 +269,6 @@ export default function Contatti() {
                         <div className="mt-24">
                             <Reveal delay="d1">
                                 <div className="mb-8 text-center">
-                                    <div className="eyebrow mb-4 text-blue-700">Dove trovarci</div>
                                     <h2 className="font-display text-3xl font-bold text-slate-900 md:text-4xl">
                                         La nostra sede
                                     </h2>
