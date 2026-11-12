@@ -62,6 +62,7 @@ const SERVIZI = [
         ],
         tag: 'CNC · 5 assi · Tolleranze µm',
         image: null,
+        video: { src: '/video/fresata.mp4', poster: '/video/fresata-poster.webp' },
     },
     {
         title: 'Progettazione su Misura',
