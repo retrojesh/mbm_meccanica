@@ -224,7 +224,7 @@ function PezziCarousel() {
     };
 
     return (
-        <section className="bg-slate-50 px-6 py-20 md:py-28">
+        <section className="bg-blue-50 px-6 py-20 md:py-28">
             <div className="mx-auto max-w-6xl">
                 <Reveal delay="d1">
                     <h2 className="font-display mb-12 text-3xl font-bold text-slate-900 md:text-4xl">
