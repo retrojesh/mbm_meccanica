@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import InViewVideo from '../components/InViewVideo';
 import '../styles/global.css';
 import progettazioneImg from '../assets/pages/servizi/progettazione.webp';
 
@@ -63,7 +64,7 @@ const SERVIZI = [
         image: null,
     },
     {
-        title: 'Lavorazione su Misura',
+        title: 'Progettazione su Misura',
         short: 'Soluzioni progettate per soddisfare le esigenze specifiche del cliente.',
         detail: [
             'Lavoriamo dal disegno tecnico al componente finito',
@@ -93,6 +94,7 @@ const SERVIZI = [
         ],
         tag: 'Reverse engineering · Manutenzione',
         image: null,
+        video: { src: '/video/utensili.mp4', poster: '/video/utensili-poster.webp' },
     },
 ];
 
@@ -141,7 +143,13 @@ function ServiceBlock({ s, reverse, index }) {
                 <div
                     className={`relative h-[360px] overflow-hidden rounded-2xl shadow-md ${inView ? `fade-up delay-2` : 'opacity-0'}`}
                 >
-                    {s.image ? (
+                    {s.video ? (
+                        <InViewVideo
+                            src={s.video.src}
+                            poster={s.video.poster}
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
+                    ) : s.image ? (
                         <img
                             src={s.image}
                             alt={s.title}
