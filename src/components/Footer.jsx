@@ -21,16 +21,15 @@ export default function Footer() {
     ].filter(Boolean);
 
     return (
-        <footer className="border-t border-white/10 bg-slate-950 px-6 py-6 text-xs leading-relaxed text-slate-400">
-            <div className="mx-auto flex max-w-6xl flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                <div className="space-y-1">
-                    <p>
-                        <span className="font-semibold text-slate-300">{COMPANY.name}</span>
-                        {' · '}Sede legale: {COMPANY.registeredOffice}
-                        {' · '}Sede operativa: {COMPANY.operatingOffice}
-                    </p>
-                    <p>{legalInfo.join(' · ')}</p>
-                </div>
+        <footer className="border-t border-white/10 bg-slate-950 py-6 text-xs leading-relaxed text-slate-400">
+            {/* Stessa larghezza della navbar; tutto su una riga dove c'è spazio */}
+            <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 xl:flex-row xl:items-center xl:justify-between xl:gap-8">
+                <p>
+                    <span className="font-semibold text-slate-300">{COMPANY.name}</span>
+                    {' · '}Sede legale: {COMPANY.registeredOffice}
+                    {' · '}Sede operativa: {COMPANY.operatingOffice}
+                    {legalInfo.map(info => ` · ${info}`)}
+                </p>
                 <nav aria-label="Note legali" className="flex shrink-0 gap-4">
                     <Link to="/privacy" className="transition-colors hover:text-white">
                         Privacy e cookie policy
