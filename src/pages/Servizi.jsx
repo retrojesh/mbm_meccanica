@@ -135,7 +135,8 @@ function ServiceBlock({ s, reverse, index }) {
                             key={i}
                             className={`flex items-start gap-3 text-base leading-relaxed text-slate-600 xl:text-lg ${inView ? `fade-up delay-${Math.min(i + 2, 4)}` : 'opacity-0'}`}
                         >
-                            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-500" />
+                            {/* Centrato sulla prima riga: metà interlinea (1.625em / 2) meno metà punto */}
+                            <span className="mt-[calc(0.8125em-3px)] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-500" />
                             {d}
                         </li>
                     ))}
