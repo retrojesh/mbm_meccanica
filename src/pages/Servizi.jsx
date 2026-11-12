@@ -232,7 +232,7 @@ export default function Servizi() {
                 </section>
 
                 {/* CTA */}
-                <section className="border-t border-slate-200 bg-white px-6 py-20 md:py-28">
+                <section className="bg-blue-50 px-6 py-20 md:py-28">
                     <div className="mx-auto max-w-3xl text-center">
                         <Reveal delay="delay-1">
                             <p className="eyebrow mb-4 text-blue-600">
