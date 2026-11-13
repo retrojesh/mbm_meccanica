@@ -337,7 +337,9 @@ export default function Home() {
                         alt="Officina MBM Meccanica con i centri di lavoro CNC"
                         loading="lazy"
                         decoding="async"
-                        className="h-[520px] w-full object-cover object-center md:h-[640px]"
+                        width={2400}
+                        height={1603}
+                        className="aspect-video w-full scale-115 object-cover object-[50%_35%] md:aspect-auto md:h-[640px] md:scale-100 md:object-center"
                     />
                     <div className="absolute inset-0 hidden bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-transparent md:block" />
                     <div className="absolute inset-0 hidden items-center justify-end px-20 md:flex">
