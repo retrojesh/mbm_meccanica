@@ -85,28 +85,9 @@ function ServicesAccordion() {
                         className={`overflow-hidden transition-all duration-300 ease-out ${open === i ? 'max-h-56 pb-8' : 'max-h-0'}`}
                     >
                         <div className="pl-14">
-                            <p className="mb-5 max-w-2xl text-lg leading-relaxed text-slate-500">
+                            <p className="max-w-2xl text-lg leading-relaxed text-slate-500">
                                 {s.desc}
                             </p>
-                            <Link
-                                to="/servizi"
-                                className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition-all hover:gap-3"
-                            >
-                                Scopri di più
-                                <svg
-                                    className="h-4 w-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M9 5l7 7-7 7"
-                                    />
-                                </svg>
-                            </Link>
                         </div>
                     </div>
                 </div>
@@ -142,27 +123,60 @@ const SETTORI = [
     },
 ];
 
+const AUTOPLAY_MS = 4000;
+const SWIPE_THRESHOLD_PX = 50;
+const DIRECTION_LOCK_PX = 8;
+const EDGE_RESISTANCE = 3;
+
 function SettoriCarousel() {
     const [active, setActive] = useState(0);
-    const [animating, setAnimating] = useState(false);
+    const [dragX, setDragX] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const touchStart = useRef(null);
+    const last = SETTORI.length - 1;
 
-    const goTo = idx => {
-        if (idx === active) return;
-        setAnimating(true);
-        setTimeout(() => {
-            setActive(idx);
-            setAnimating(false);
-        }, 200);
+    // Riparte da zero a ogni cambio di slide e resta in pausa durante lo swipe
+    useEffect(() => {
+        if (isDragging) return undefined;
+        const t = setTimeout(() => setActive(a => (a + 1) % SETTORI.length), AUTOPLAY_MS);
+        return () => clearTimeout(t);
+    }, [active, isDragging]);
+
+    const onTouchStart = e => {
+        const { clientX, clientY } = e.touches[0];
+        touchStart.current = { x: clientX, y: clientY, isHorizontal: null };
     };
 
-    useEffect(() => {
-        const t = setInterval(() => {
-            goTo((active + 1) % SETTORI.length);
-        }, 4000);
-        return () => clearInterval(t);
-    }, [active]);
+    const onTouchMove = e => {
+        const start = touchStart.current;
+        if (!start) return;
+        const { clientX, clientY } = e.touches[0];
+        const dx = clientX - start.x;
+        const dy = clientY - start.y;
 
-    const s = SETTORI[active];
+        if (start.isHorizontal === null) {
+            if (Math.abs(dx) < DIRECTION_LOCK_PX && Math.abs(dy) < DIRECTION_LOCK_PX) return;
+            const isHorizontal = Math.abs(dx) > Math.abs(dy);
+            touchStart.current = { ...start, isHorizontal };
+            if (!isHorizontal) return;
+            setIsDragging(true);
+        } else if (!start.isHorizontal) {
+            return;
+        }
+
+        const isPastEdge = (dx > 0 && active === 0) || (dx < 0 && active === last);
+        setDragX(isPastEdge ? dx / EDGE_RESISTANCE : dx);
+    };
+
+    const onTouchEnd = () => {
+        const start = touchStart.current;
+        touchStart.current = null;
+        if (!start?.isHorizontal) return;
+        if (dragX <= -SWIPE_THRESHOLD_PX && active < last) setActive(active + 1);
+        else if (dragX >= SWIPE_THRESHOLD_PX && active > 0) setActive(active - 1);
+        setDragX(0);
+        setIsDragging(false);
+    };
 
     return (
         <div className="mx-auto max-w-6xl">
@@ -182,42 +196,61 @@ function SettoriCarousel() {
                         {SETTORI.map((item, i) => (
                             <button
                                 key={item.num}
-                                onClick={() => goTo(i)}
-                                className={`group flex items-center gap-4 border-l-2 px-4 py-4 text-left transition-all duration-200 ${
+                                onClick={() => setActive(i)}
+                                className={`group flex items-center gap-4 border-l-2 px-4 py-4 text-left transition-colors duration-150 ${
                                     active === i
                                         ? 'border-blue-500 text-slate-900'
                                         : 'border-transparent text-slate-400 hover:border-slate-300 hover:text-slate-700'
                                 }`}
                             >
-                                <span
-                                    className={`transition-all ${active === i ? 'font-semibold' : 'font-medium'}`}
-                                >
+                                <span className={active === i ? 'font-semibold' : 'font-medium'}>
                                     {item.title}
                                 </span>
                             </button>
                         ))}
                     </div>
 
-                    <div className="md:col-span-3">
+                    <div className="min-w-0 md:col-span-3">
                         <div
-                            className="flex h-64 flex-col justify-center rounded-2xl border border-slate-200 bg-white p-10 shadow-sm transition-opacity duration-200"
-                            style={{ opacity: animating ? 0 : 1 }}
+                            className="touch-pan-y overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+                            onTouchStart={onTouchStart}
+                            onTouchMove={onTouchMove}
+                            onTouchEnd={onTouchEnd}
+                            onTouchCancel={onTouchEnd}
                         >
-                            <h3 className="font-display mb-4 text-3xl font-bold text-slate-900">
-                                {s.title}
-                            </h3>
-                            <p className="text-lg leading-relaxed text-slate-500">{s.desc}</p>
-                            <div className="mt-8 flex gap-1.5">
-                                {SETTORI.map((_, i) => (
-                                    <button
-                                        key={i}
-                                        onClick={() => goTo(i)}
-                                        className={`h-1 rounded-full transition-all duration-300 ${
-                                            active === i ? 'w-8 bg-slate-900' : 'w-4 bg-slate-200'
-                                        }`}
-                                    />
+                            <div
+                                className={`flex ${isDragging ? '' : 'transition-transform duration-300 ease-out'}`}
+                                style={{
+                                    transform: `translateX(calc(${-active * 100}% + ${dragX}px))`,
+                                }}
+                            >
+                                {SETTORI.map((item, i) => (
+                                    <div
+                                        key={item.num}
+                                        aria-hidden={active !== i}
+                                        className="flex min-h-64 w-full shrink-0 flex-col justify-center p-8 md:p-10"
+                                    >
+                                        <h3 className="font-display mb-4 text-3xl font-bold text-slate-900">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-lg leading-relaxed text-slate-500">
+                                            {item.desc}
+                                        </p>
+                                    </div>
                                 ))}
                             </div>
+                        </div>
+                        <div className="mt-6 flex gap-1.5">
+                            {SETTORI.map((item, i) => (
+                                <button
+                                    key={item.num}
+                                    onClick={() => setActive(i)}
+                                    aria-label={`Mostra ${item.title}`}
+                                    className={`h-1 rounded-full transition-all duration-300 ${
+                                        active === i ? 'w-8 bg-slate-900' : 'w-4 bg-slate-200'
+                                    }`}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -271,22 +304,6 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
-
-                    <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
-                        <svg
-                            className="hero-scroll-arrow h-6 w-6 text-white/60"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 9l-7 7-7-7"
-                            />
-                        </svg>
-                    </div>
                 </section>
 
                 {/* Servizi */}
@@ -320,10 +337,12 @@ export default function Home() {
                         alt="Officina MBM Meccanica con i centri di lavoro CNC"
                         loading="lazy"
                         decoding="async"
-                        className="h-[520px] w-full object-cover object-center md:h-[640px]"
+                        width={2400}
+                        height={1603}
+                        className="aspect-video w-full scale-115 object-cover object-[50%_35%] md:aspect-auto md:h-[640px] md:scale-100 md:object-center"
                     />
-                    <div className="absolute inset-0 bg-slate-900/70 md:bg-transparent md:bg-gradient-to-l md:from-slate-900/90 md:via-slate-900/60 md:to-transparent" />
-                    <div className="absolute inset-0 flex items-center justify-end px-8 md:px-20">
+                    <div className="absolute inset-0 hidden bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-transparent md:block" />
+                    <div className="absolute inset-0 hidden items-center justify-end px-20 md:flex">
                         <div className="max-w-lg">
                             <Reveal delay="d1">
                                 <h2 className="font-display mb-5 text-4xl font-bold text-white md:text-5xl">
