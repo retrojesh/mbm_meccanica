@@ -271,22 +271,6 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
-
-                    <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
-                        <svg
-                            className="hero-scroll-arrow h-6 w-6 text-white/60"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 9l-7 7-7-7"
-                            />
-                        </svg>
-                    </div>
                 </section>
 
                 {/* Servizi */}
