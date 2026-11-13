@@ -287,8 +287,8 @@ export default function Home() {
                         decoding="async"
                         className="h-[520px] w-full object-cover object-center md:h-[640px]"
                     />
-                    <div className="absolute inset-0 bg-slate-900/70 md:bg-transparent md:bg-gradient-to-l md:from-slate-900/90 md:via-slate-900/60 md:to-transparent" />
-                    <div className="absolute inset-0 flex items-center justify-end px-8 md:px-20">
+                    <div className="absolute inset-0 hidden bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-transparent md:block" />
+                    <div className="absolute inset-0 hidden items-center justify-end px-20 md:flex">
                         <div className="max-w-lg">
                             <Reveal delay="d1">
                                 <h2 className="font-display mb-5 text-4xl font-bold text-white md:text-5xl">
