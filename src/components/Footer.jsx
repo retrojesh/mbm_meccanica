@@ -2,23 +2,23 @@ import { Link } from 'react-router-dom';
 import { setConsent } from '../utils/consent';
 
 // Dati societari obbligatori per le Srl (art. 2250 c.c.) e P.IVA (art. 35 DPR 633/72).
-// REA e capitale sociale: da compilare con i dati della visura camerale.
-// Finché sono vuoti non vengono mostrati.
+// Dati presi dalla visura camerale CCIAA di Modena del 22.07.2026.
 const COMPANY = {
     name: 'M.B.M. Meccanica Srl',
     registeredOffice: 'Via Renzo Boni 54, 41058 Vignola (MO)',
     operatingOffice: 'Via M. Buonarroti 22/24, 41014 Castelvetro di Modena (MO)',
     vatNumber: '04125990368',
-    rea: '', // es. 'MO-123456'
-    shareCapital: '', // es. '10.000,00 € i.v.'
+    rea: 'MO-444896',
+    shareCapital: '€ 10.000,00 i.v.',
 };
 
 export default function Footer() {
     const legalInfo = [
-        `P.IVA ${COMPANY.vatNumber}`,
-        COMPANY.rea && `Reg. Imprese di Modena - REA ${COMPANY.rea}`,
-        COMPANY.shareCapital && `Capitale sociale ${COMPANY.shareCapital}`,
-    ].filter(Boolean);
+        // C.F. e n. di iscrizione al Registro Imprese coincidono con la P.IVA
+        `P.IVA, C.F. e Reg. Imprese di Modena n. ${COMPANY.vatNumber}`,
+        `REA ${COMPANY.rea}`,
+        `Capitale sociale ${COMPANY.shareCapital}`,
+    ];
 
     return (
         <footer className="border-t border-white/10 bg-slate-950 py-6 text-xs leading-relaxed text-slate-400">
