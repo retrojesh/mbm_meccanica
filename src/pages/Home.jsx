@@ -273,7 +273,7 @@ export default function Home() {
                 {/* Hero */}
                 <section className="relative h-svh w-full overflow-hidden">
                     <InViewVideo
-                        className="absolute inset-0 h-full w-full object-cover object-[46%_50%] md:object-center"
+                        className="absolute inset-0 h-full w-full object-cover object-[53%_50%] md:object-center"
                         src="/video/hero.mp4"
                         poster="/video/hero-poster.webp"
                         preload="auto"
