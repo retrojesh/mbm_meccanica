@@ -31,17 +31,16 @@ const TIPI_PEZZO = [
 
 const MACCHINE = [
     {
-        cat: 'Tornitura',
-        nome: 'DMG CTX 410',
-        lavorazione: 'Tornitura di alberi, flange e collari con asse Y per fresature fuori centro.',
-        video: '/video/macchine/ctx-410.mp4',
+        cat: 'Fresatura 5 assi',
+        nome: 'Mikron HEM 700',
+        lavorazione:
+            'Fresatura a 5 assi con tavola basculante per particolari complessi lavorati in un unico piazzamento.',
         specs: [
-            { label: 'Ø tornitura max', value: '320 mm' },
-            { label: 'Lunghezza max', value: '600 mm' },
-            { label: 'Capacità barra', value: 'Ø 65 mm' },
-            { label: 'Corsa Y', value: '± 40 mm' },
-            { label: 'Mandrino', value: '5.000 giri/min' },
-            { label: 'Torretta', value: '12 posizioni' },
+            { label: 'Corsa X', value: '700 mm' },
+            { label: 'Corsa Y', value: '700 mm' },
+            { label: 'Corsa Z', value: '700 mm' },
+            { label: 'Asse B', value: 'basculante ± 100°' },
+            { label: 'Asse C', value: '360°' },
         ],
     },
     {
