@@ -44,7 +44,7 @@ export default function Azienda() {
                 {/* Hero Section */}
                 <section className="relative mt-20 flex h-[calc(100vh-80px)] items-center justify-center overflow-hidden text-center">
                     <InViewVideo
-                        className="absolute inset-0 h-full w-full object-cover object-center"
+                        className="absolute inset-0 h-full w-full object-cover object-[35%_50%] md:object-center"
                         src="/video/hero-azienda.mp4"
                         poster="/video/hero-azienda-poster.webp"
                         preload="auto"

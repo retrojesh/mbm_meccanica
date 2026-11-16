@@ -145,7 +145,7 @@ function ServiceBlock({ s, reverse, index }) {
 
             <div className={`${reverse ? 'md:order-1' : ''}`}>
                 <div
-                    className={`relative h-[360px] overflow-hidden rounded-2xl shadow-md md:h-full md:min-h-[320px] xl:min-h-[420px] ${inView ? `fade-up delay-2` : 'opacity-0'}`}
+                    className={`relative ${s.video ? 'aspect-video md:aspect-auto' : 'h-[360px]'} overflow-hidden rounded-2xl shadow-md md:h-full md:min-h-[320px] xl:min-h-[420px] ${inView ? `fade-up delay-2` : 'opacity-0'}`}
                 >
                     {s.video ? (
                         <InViewVideo
