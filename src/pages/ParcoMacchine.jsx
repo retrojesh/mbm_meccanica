@@ -68,7 +68,7 @@ const MACCHINE = [
         specs: [
             { label: 'Lunghezza max X', value: '2.200 mm' },
             { label: 'Lunghezza max Y', value: '700 mm' },
-            { label: 'Corsa X', value: '2.300 mm' },
+            { label: 'Corsa X', value: '2.000 mm' },
             { label: 'Corsa Y', value: '± 720 mm' },
             { label: 'Corsa Z', value: '650 mm' },
             { label: 'Asse C', value: '360° continuo' },
