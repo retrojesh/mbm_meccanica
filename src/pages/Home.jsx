@@ -38,12 +38,12 @@ const SERVIZI = [
     {
         num: '02',
         title: 'Fresatura CNC',
-        desc: 'Centri di lavoro CNC 3 e 5 assi per la realizzazione di pezzi complessi, stampi, particolari strutturali e superfici di precisione in alluminio, acciaio e leghe speciali.',
+        desc: 'Centri di lavoro CNC 3 e 5 assi per la realizzazione di componenti, particolari strutturali e superfici di precisione in alluminio, acciaio e leghe speciali.',
     },
     {
         num: '03',
         title: 'Conto Terzi',
-        desc: 'Produciamo su commessa per aziende di ogni dimensione. Flessibilità nei volumi, rispetto delle scadenze e tracciabilità completa dalla progettazione CAD/CAM alla consegna.',
+        desc: 'Produciamo su commessa per aziende di ogni dimensione. Flessibilità nei volumi, rispetto delle scadenze e tracciabilità completa dalla programmazione CAD/CAM alla consegna.',
     },
 ];
 

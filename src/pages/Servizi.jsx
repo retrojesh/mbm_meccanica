@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import InViewVideo from '../components/InViewVideo';
 import '../styles/global.css';
-import cad3dImg from '../assets/pages/servizi/cad3d.webp';
+import programmazioneImg from '../assets/pages/servizi/programmazione.webp';
 
 // Hook: detects when element enters viewport
 function useInView(threshold = 0.15, triggerOnce = true) {
@@ -65,7 +65,7 @@ const SERVIZI = [
         video: { src: '/video/fresata.mp4', poster: '/video/fresata-poster.webp' },
     },
     {
-        title: 'Progettazione su Misura',
+        title: 'Programmazione su Misura',
         short: 'Soluzioni progettate per soddisfare le esigenze specifiche del cliente.',
         detail: [
             'Lavoriamo dal disegno tecnico al componente finito',
@@ -73,7 +73,7 @@ const SERVIZI = [
             'Finiture superficiali, trattamenti termici e controlli frequenti',
         ],
         tag: 'CAD/CAM Su commessa · Supporto tecnico',
-        image: cad3dImg,
+        image: programmazioneImg,
     },
     {
         title: 'Prototipazione Rapida',
