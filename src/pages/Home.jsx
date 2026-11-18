@@ -276,6 +276,8 @@ export default function Home() {
                         className="absolute inset-0 h-full w-full object-cover object-[53%_50%] md:object-center"
                         src="/video/hero.mp4"
                         poster="/video/hero-poster.webp"
+                        mobileSrc="/video/hero-mobile.mp4"
+                        mobilePoster="/video/hero-mobile-poster.webp"
                         preload="auto"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />

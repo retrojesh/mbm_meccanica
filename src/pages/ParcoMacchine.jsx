@@ -35,6 +35,7 @@ const MACCHINE = [
         nome: 'Mikron HEM 700',
         lavorazione:
             'Fresatura a 5 assi con tavola basculante per particolari complessi lavorati in un unico piazzamento.',
+        video: '/video/macchine/mikron-hem-700.mp4',
         specs: [
             { label: 'Corsa X', value: '700 mm' },
             { label: 'Corsa Y', value: '700 mm' },
