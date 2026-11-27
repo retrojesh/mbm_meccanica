@@ -41,6 +41,32 @@
             content="Officina metalmeccanica tra Vignola e Castelvetro di Modena: fresatura e tornitura CNC di precisione per automotive, packaging e meccanica industriale. Conto terzi."
         />
         <meta name="twitter:image" content="https://www.mbmmeccanica.com/og-image.jpg" />
+
+        <!--
+      Il poster della hero è la prima cosa grande che si vede: lo scarichiamo
+      subito, in parallelo al bundle JS, invece di aspettare che React lo monti.
+      L'HTML è lo stesso per tutte le rotte, quindi si sceglie qui in base al
+      percorso (e al breakpoint md per la variante mobile della home).
+      Gli URL devono coincidere con i poster usati in Home.jsx e Azienda.jsx.
+    -->
+        <script>
+            (function () {
+                var path = location.pathname.replace(/\/+$/, '') || '/';
+                var mobile = window.matchMedia('(max-width: 767px)').matches;
+                var posters = {
+                    '/': mobile ? '/video/hero-mobile-poster.webp' : '/video/hero-poster.webp',
+                    '/azienda': '/video/hero-azienda-poster.webp',
+                };
+                var href = posters[path];
+                if (!href) return;
+                var link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = href;
+                link.fetchPriority = 'high';
+                document.head.appendChild(link);
+            })();
+        </script>
     </head>
     <body>
         <div id="root"></div>

@@ -36,6 +36,7 @@ const MACCHINE = [
         lavorazione:
             'Fresatura a 5 assi con tavola basculante per particolari complessi lavorati in un unico piazzamento.',
         video: '/video/macchine/mikron-hem-700.mp4',
+        poster: '/video/macchine/mikron-hem-700-poster.webp',
         specs: [
             { label: 'Corsa X', value: '700 mm' },
             { label: 'Corsa Y', value: '700 mm' },
@@ -50,6 +51,7 @@ const MACCHINE = [
         lavorazione:
             'Tornitura di alta precisione con torretta motorizzata e asse Y per lavorazioni complete in un solo serraggio.',
         video: '/video/macchine/dmg-mori.mp4',
+        poster: '/video/macchine/dmg-mori-poster.webp',
         specs: [
             { label: 'Ø tornitura max', value: '275 mm' },
             { label: 'Lunghezza max', value: '510 mm' },
@@ -65,6 +67,7 @@ const MACCHINE = [
         lavorazione:
             'Fresatura su pezzi lunghi e complessi con testa orientabile a 5 assi simultanei.',
         video: '/video/macchine/sigma-flexy.mp4',
+        poster: '/video/macchine/sigma-flexy-poster.webp',
         specs: [
             { label: 'Lunghezza max X', value: '2.200 mm' },
             { label: 'Lunghezza max Y', value: '700 mm' },
@@ -80,6 +83,7 @@ const MACCHINE = [
         lavorazione:
             'Fresatura ad alta velocità per stampi, particolari di precisione e superfici complesse.',
         video: '/video/macchine/gf-hsm-800.mp4',
+        poster: '/video/macchine/gf-hsm-800-poster.webp',
         specs: [
             { label: 'Lunghezza max X', value: '1.000 mm' },
             { label: 'Lunghezza max Y', value: '700 mm' },
@@ -341,6 +345,7 @@ export default function ParcoMacchine() {
                                             {m.video ? (
                                                 <InViewVideo
                                                     src={m.video}
+                                                    poster={m.poster}
                                                     className="absolute inset-0 h-full w-full object-cover"
                                                 />
                                             ) : (
