@@ -35,6 +35,13 @@
   to = "/index.html"
   status = 200
 
+# Vecchio URL del sito Google Sites: rimanda alla pagina nuova equivalente.
+# Netlify normalizza lo slash finale, quindi vale anche per /macchinari/.
+[[redirects]]
+  from = "/macchinari"
+  to = "/parco-macchine"
+  status = 301
+
 # Qualsiasi altro URL: la SPA mostra la pagina 404 e il server risponde 404 reale.
 [[redirects]]
   from = "/*"
